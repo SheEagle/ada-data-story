@@ -1,0 +1,222 @@
+---
+layout: default
+title: Digital Tribes
+---
+
+<nav class="side-nav">
+    <a href="#hero" class="nav-dot active" data-tooltip="Top"></a>
+    <a href="#rq1" class="nav-dot" data-tooltip="RQ1: Patterns"></a>
+    <a href="#rq2" class="nav-dot" data-tooltip="RQ2: Strategy"></a>
+    <a href="#rq3" class="nav-dot" data-tooltip="RQ3: Conflict"></a>
+    <a href="#rq4" class="nav-dot" data-tooltip="RQ4: Actors"></a>
+    <a href="#rq5" class="nav-dot" data-tooltip="RQ5: Time"></a>
+</nav>
+
+<section id="hero" class="hero">
+    <div class="hero-content reveal">
+        <h1 class="glitch-text" data-text="DIGITAL TRIBES">DIGITAL TRIBES</h1>
+        <p class="subtitle">Decoding the Hidden Dialects of Reddit</p>
+        <div class="scroll-indicator">SCROLL TO BEGIN INQUIRY ↓</div>
+    </div>
+</section>
+
+
+<section id="rq1" class="rq-header">
+    <div class="rq-content">
+        <span class="rq-label">RESEARCH QUESTION 01</span>
+        <h2 class="typewriter">Based on community cultural attributes, what distinct communication patterns can we
+            define?</h2>
+        <p class="rq-desc">We begin by reconstructing the map using the Leiden algorithm to define four distinct
+            communication modes.</p>
+    </div>
+</section>
+
+<div class="scrolly-container">
+    <div class="text-column">
+        <div class="step reveal">
+            <h3>Re-mapping the Territory</h3>
+            <p>We utilized embedded vectors and graph clustering algorithms to partition thousands of subreddits into
+                distinct "cultural clusters."</p>
+        </div>
+        <div class="step reveal">
+            <h3>The Four Modes</h3>
+            <div class="concept-card">
+                <ul>
+                    <li><strong>🟦 Intra-core:</strong> The Echo Chamber of the Core.</li>
+                    <li><strong>🟨 Intra-periphery:</strong> Internal Pluralistic Debate.</li>
+                    <li><strong>🤝 Cross-Strong:</strong> Diplomacy between friends.</li>
+                    <li><strong>⚔️ Cross-Weak:</strong> War with strangers.</li>
+                </ul>
+            </div>
+            <p>These four modes form the cornerstone of our analysis.</p>
+        </div>
+    </div>
+    <div class="graphic-column">
+        <iframe src="{{ '/assets/plots/network_map.html' | relative_url }}"></iframe>
+    </div>
+</div>
+
+
+<section id="rq2" class="rq-header">
+    <div class="rq-content">
+        <span class="rq-label">RESEARCH QUESTION 02</span>
+        <h2 class="typewriter">Do communities employ distinct linguistic strategies across different communication
+            modes?</h2>
+        <p class="rq-desc">For instance: do we switch to simpler, jargon-free language when communicating across
+            borders?</p>
+    </div>
+</section>
+
+<div class="scrolly-container">
+    <div class="text-column">
+        <div class="step reveal">
+            <h3>The Paradox of Complexity</h3>
+            <p>We measured the <code>Readability Index</code> and linguistic variance across the different modes.</p>
+        </div>
+        <div class="step reveal">
+            <h3>Tactical Simplicity</h3>
+            <p>The data confirms our hypothesis:</p>
+            <p class="highlight-text">We speak simply to strangers.</p>
+            <p>In cross-cluster communication, users tend to abandon internal jargon in favor of general vocabulary.
+                This acts as both "diplomatic protocol" and a strategy to ensure their attacks are understood by the
+                enemy.</p>
+        </div>
+    </div>
+    <div class="graphic-column">
+        <iframe src="{{ '/assets/plots/complexity_plot.html' | relative_url }}"></iframe>
+    </div>
+</div>
+
+
+<section id="rq3" class="rq-header">
+    <div class="rq-content">
+        <span class="rq-label">RESEARCH QUESTION 03</span>
+        <h2 class="typewriter">How do the "quantity" and "nature" of conflicts distribute across communication
+            modes?</h2>
+        <p class="rq-desc">Hypothesis: Internal conflicts focus on "viewpoints," while external conflicts emphasize
+            "identity."</p>
+    </div>
+</section>
+
+<div class="scrolly-container">
+    <div class="text-column">
+        <div class="step reveal">
+            <h3>Anatomy of an Argument</h3>
+            <p>We dissected the vocabulary composition of negative comments, revealing two completely different types of
+                warfare.</p>
+        </div>
+        <div class="step reveal">
+            <h3>Viewpoint vs. Identity</h3>
+            <p>Observe the Radar Chart on the right:</p>
+            <ul class="comparison-list">
+                <li>
+                    <strong>Internal Heterogeneous Conflict:</strong>
+                    Dominated by <code>Dissent</code> (but, however) and Logic words. This is a debate about ideas.
+                </li>
+                <li>
+                    <strong>External Cross-Cluster Conflict:</strong>
+                    Dominated by <code>We/They</code> (Pronouns) and pure <code>Anger</code>. This is a battle of
+                    tribes.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="graphic-column">
+        <iframe src="{{ '/assets/plots/conflict_radar.html' | relative_url }}"></iframe>
+    </div>
+</div>
+
+
+<section id="rq4" class="rq-header">
+    <div class="rq-content">
+        <span class="rq-label">RESEARCH QUESTION 04</span>
+        <h2 class="typewriter">Who is driving the conflict? The Core or The Periphery?</h2>
+        <p class="rq-desc">A deep dive into the identity of the participants.</p>
+    </div>
+</section>
+
+<div class="scrolly-container">
+    <div class="text-column">
+        <div class="step reveal">
+            <h3>The Watchdog Effect</h3>
+            <p>The data subverts common assumptions: it is not the fringe extremists provoking the conflict.</p>
+        </div>
+        <div class="step reveal">
+            <h3>The Guardians of the Gate</h3>
+            <p><strong>Core Members</strong>—the most active leaders of the community—are the most aggressive actors.
+            </p>
+            <p>In external conflicts, their usage of profanity is <strong>20% higher</strong> than that of average
+                users. They are not just managing the community; they are defending its borders.</p>
+        </div>
+    </div>
+    <div class="graphic-column">
+        <iframe src="{{ '/assets/plots/watchdog_plot.html' | relative_url }}"></iframe>
+    </div>
+</div>
+
+
+<section id="rq5" class="rq-header">
+    <div class="rq-content">
+        <span class="rq-label">RESEARCH QUESTION 05</span>
+        <h2 class="typewriter">How do these patterns evolve over time?</h2>
+        <p class="rq-desc">Are we merging into a global village, or fracturing further?</p>
+    </div>
+</section>
+
+<div class="scrolly-container">
+    <div class="text-column">
+        <div class="step reveal">
+            <h3>Solidifying Borders</h3>
+            <p>Time series analysis offers a grim outlook.</p>
+        </div>
+        <div class="step reveal">
+            <h3>The Rising Tide</h3>
+            <p>Cross-cluster anger is rising year over year. The walls of the digital tribes are growing higher, and the
+                echo chambers are becoming soundproof.</p>
+        </div>
+    </div>
+    <div class="graphic-column">
+        <iframe src="{{ '/assets/plots/temporal_plot.html' | relative_url }}"></iframe>
+    </div>
+</div>
+
+
+<section class="outro">
+    <h2>Data Story Completed.</h2>
+    <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" class="btn glow-btn">SOURCE CODE</a>
+</section>
+
+
+<script>
+    // 1. Reveal on Scroll Animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {threshold: 0.1});
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // 2. Side Navigation Highlighting
+    const sections = document.querySelectorAll('section');
+    const navDots = document.querySelectorAll('.nav-dot');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            // Adjust offset for better triggering
+            if (scrollY >= sectionTop - 300) {
+                current = section.getAttribute('id');
+            }
+        });
+        navDots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.getAttribute('href').includes(current)) {
+                dot.classList.add('active');
+            }
+        });
+    });
+</script>
