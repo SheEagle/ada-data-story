@@ -20,240 +20,162 @@
 <!--</nav>-->
 
 <main>
-    <nav class="side-nav">
-    <a href="#hero" class="nav-dot active" data-tooltip="Top"></a>
-    <a href="#story" class="nav-dot" data-tooltip="Story"></a>
-    <a href="#rq1" class="nav-dot" data-tooltip="RQ1: Patterns"></a>
-    <a href="#rq2" class="nav-dot" data-tooltip="RQ2: Strategy"></a>
-    <a href="#rq3" class="nav-dot" data-tooltip="RQ3: Conflict"></a>
-    <a href="#rq4" class="nav-dot" data-tooltip="RQ4: Actors"></a>
-    <a href="#rq5" class="nav-dot" data-tooltip="RQ5: Time"></a>
-</nav>
-
-<section id="hero" class="hero">
-    <div class="hero-content reveal">
-        <h1 class="glitch-text" data-text="How We Talk About Others">How We Talk About Others</h1>
-        <p class="subtitle"> Linguistic Patterns within Social Networks of Online Communities</p>
-        <div class="scroll-indicator">SCROLL TO BEGIN INQUIRY ↓</div>
+    <section style="height:80vh; display:flex; flex-direction:column; justify-content:center; padding:0 5%;">
+    <div style="max-width:1000px; margin:0 auto; width:100%;">
+        <h1 style="font-size:4rem; margin:10px 0; line-height:1.1;">How We Talk<br>About Others</h1>
+        <p style="font-size:1.5rem; color:#888; max-width:800px;">
+            Linguistic Patterns within Social Networks of Reddit Communities
+        </p>
     </div>
 </section>
 
-<section id="story" class="story-section">
-    <div class="story-card reveal">
-        <h2>Introduction</h2>
-        <p>People naturally form communities around shared interests, yet because our interests differ, we end up belonging 
-            to several overlapping social circles. As our participation shifts among them, we transfer the information we 
-            perceived from one to another. Experiences drawn from one context are used to justify points or share ideas in 
-            others, but this process introduces personal interpretation and validation. Same information can be tranformed 
-            into grounds for both agreement and disagreement. References can serve to affirm another community’s ideas or to 
-            criticize, correct, or contrast them. This project examines how the closeness of social circles that people reference 
-            influences linguistic style, evaluative tone, and reactions to information from socially close to distant communities. 
-            Using the Reddit Hyperlink Network as a large-scale map of reference-based interaction, we analyze how communities 
-            respond to information from groups they frequently reference compared to those they rarely talk about..</p>
-        
-            <p>Second paragraph if needed.</p>
-    </div>
-</section>
+<section class="content-block">
+    <div class="text-container reveal">
 
-
-<section id="rq1" class="rq-header">
-    <div class="rq-content">
-        <span class="rq-label">RESEARCH QUESTION 01</span>
-        <h2 class="typewriter">How do the linguistic characteristics of references with positive or neutral sentiment 
-            change when referring to socially close groups, and how do they change as the distance increases?</h2>
-        <p class="rq-desc">=== We begin by reconstructing the map using the Leiden algorithm to define four distinct
-            communication modes.</p>
-    </div>
-</section>
-
-<div class="scrolly-container">
-    <div class="text-column">
-        <div class="step reveal">
-            <h3>Re-mapping the Territory</h3>
-            <p>We utilized embedded vectors and graph clustering algorithms to partition thousands of subreddits into
-                distinct "cultural clusters."</p>
+        <div class="rq-box">
+            <span class="rq-label">Phase 01: General Analysis</span>
+            <h2 class="rq-title">Take a Look at Reddit’s Galaxy</h2>
         </div>
-        <div class="step reveal">
-            <h3>The Four Modes</h3>
-            <div class="concept-card">
-                <ul>
-                    <li><strong>🟦 Intra-core:</strong> The Echo Chamber of the Core.</li>
-                    <li><strong>🟨 Intra-periphery:</strong> Internal Pluralistic Debate.</li>
-                    <li><strong>🤝 Cross-Strong:</strong> Diplomacy between friends.</li>
-                    <li><strong>⚔️ Cross-Weak:</strong> War with strangers.</li>
-                </ul>
+
+        <p>Welcome to the Reddit Galaxy. In this vast digital expanse, every <strong>Subreddit</strong> acts as a unique
+            planet. These worlds do not exist in isolation; they are tethered by "gravitational bridges"—hyperlinks that
+            allow information and users to travel from one corner of the universe to another. To understand this cosmos,
+            we first calibrated our instruments to capture the basic signals of inter-community interaction.</p>
+
+
+        <p>Our initial scan revealed two distinct frequencies of communication: <strong>Title</strong> and
+            <strong>Body</strong> mentions. The Title frequency is significantly more active, generating approximately
+            572,000 links across 54,075 unique planets—nearly double the volume and 1.5 times the variety found in Body
+            mentions (287,000 links). Interestingly, these two frequencies never overlap; every signal is a unique
+            star-bridge, suggesting that most interstellar dialogue begins with a high-impact "broadcast" in the title
+            rather than within the deeper "crust" of the post body.</p>
+
+        <p>As we tracked this galaxy over a 2.5-year period (2014–2017), we observed a steady, linear expansion ($R^2 =
+            0.87$). This is not a chaotic growth, but a rhythmic pulse. Perhaps most encouragingly, the "spectral
+            analysis" of these links shows a galaxy dominated by light: <strong>Positive sentiment</strong> links
+            outnumber negative ones by a staggering <strong>8.35 to 1</strong>. Furthermore, positive connections are
+            expanding at a much faster rate (slope 2.39) than negative ones (slope 0.24), indicating that as the Reddit
+            Galaxy grows, it is becoming increasingly defined by constructive alignment rather than friction.</p>
+
+        <p>Zooming out to view the entire topological map, we identified <strong>67,180 planets</strong> interconnected
+            by <strong>339,643 bridges</strong>. On average, each planet maintains roughly 10 gravitational ties to
+            others, creating a densely populated social space. However, the connectivity is not uniform. We discovered a
+            <strong>"Great Super-cluster"</strong>—a massive, weakly connected structure encompassing over 97% (65,648)
+            of all known planets. Outside this main civilization, about 711 tiny "Islands" float in deep space,
+            consisting of only a handful of planets that remain disconnected from the galactic hub.</p>
+
+        <p>This directed network reveals a clear hierarchy: while the galaxy is physically massive and largely
+            reachable, the flow of influence is often one-way. This directional gravity shapes how information cascades
+            through the system, moving from influential "super-giants" to the peripheral settlements of the outer
+            rim.</p>
+
+        <div class="chart-frame">
+            <iframe src="/ada-data-story/assets/plots/weekly_sentiment_growth.png"></iframe>
+            <div style="padding:10px; color:#666; font-size:0.9rem; text-align:center; font-family:var(--font-mono);">
+                FIG 1.1 - The Expansion of the Reddit Galaxy: Linear Growth and Sentiment Polarization.
             </div>
-            <p>These four modes form the cornerstone of our analysis.</p>
         </div>
-    </div>
-    <div class="graphic-column">
-        <iframe src="/ada-data-story/assets/plots/network_map.html"></iframe>
-    </div>
-</div>
 
-
-<section id="rq2" class="rq-header">
-    <div class="rq-content">
-        <span class="rq-label">RESEARCH QUESTION 02</span>
-        <h2 class="typewriter">What linguistic patterns appear when referring to socially close groups with 
-            negative sentiment, and how do they change as the distance increases?</h2>
-        <p class="rq-desc">=== For instance: do we switch to simpler, jargon-free language when communicating across
-            borders?</p>
-    </div>
-</section>
-
-<div class="scrolly-container">
-    <div class="text-column">
-        <div class="step reveal">
-            <h3>The Paradox of Complexity</h3>
-            <p>We measured the <code>Readability Index</code> and linguistic variance across the different modes.</p>
-        </div>
-        <div class="step reveal">
-            <h3>Tactical Simplicity</h3>
-            <p>The data confirms our hypothesis:</p>
-            <p class="highlight-text">We speak simply to strangers.</p>
-            <p>In cross-cluster communication, users tend to abandon internal jargon in favor of general vocabulary.
-                This acts as both "diplomatic protocol" and a strategy to ensure their attacks are understood by the
-                enemy.</p>
-        </div>
-    </div>
-    <div class="graphic-column">
-        <iframe src="/ada-data-story/assets/plots/complexity_plot.html"></iframe>
-    </div>
-</div>
-
-
-<section id="rq3" class="rq-header">
-    <div class="rq-content">
-        <span class="rq-label">RESEARCH QUESTION 03</span>
-        <h2 class="typewriter">How do the structures of positive and negative sentiment reference networks differ?</h2>
-        <p class="rq-desc">Hypothesis: Internal conflicts focus on "viewpoints," while external conflicts emphasize
-            "identity."</p>
-    </div>
-</section>
-
-<div class="scrolly-container">
-    <div class="text-column">
-        <div class="step reveal">
-            <h3>Anatomy of an Argument</h3>
-            <p>We dissected the vocabulary composition of negative comments, revealing two completely different types of
-                warfare.</p>
-        </div>
-        <div class="step reveal">
-            <h3>Viewpoint vs. Identity</h3>
-            <p>Observe the Radar Chart on the right:</p>
-            <ul class="comparison-list">
-                <li>
-                    <strong>Internal Heterogeneous Conflict:</strong>
-                    Dominated by <code>Dissent</code> (but, however) and Logic words. This is a debate about ideas.
-                </li>
-                <li>
-                    <strong>External Cross-Cluster Conflict:</strong>
-                    Dominated by <code>We/They</code> (Pronouns) and pure <code>Anger</code>. This is a battle of
-                    tribes.
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="graphic-column">
-        <iframe src="/ada-data-story/assets/plots/conflict_radar.html"></iframe>
-    </div>
-</div>
-
-
-<section id="rq4" class="rq-header">
-    <div class="rq-content">
-        <span class="rq-label">RESEARCH QUESTION 04</span>
-        <h2 class="typewriter">Do positively linked groups share similar negative referencing patterns toward external communities?</h2>
-        <p class="rq-desc">A deep dive into the identity of the participants.</p>
-    </div>
-</section>
-
-<div class="scrolly-container">
-    <div class="text-column">
-        <div class="step reveal">
-            <h3>The Watchdog Effect</h3>
-            <p>The data subverts common assumptions: it is not the fringe extremists provoking the conflict.</p>
-        </div>
-        <div class="step reveal">
-            <h3>The Guardians of the Gate</h3>
-            <p><strong>Core Members</strong>—the most active leaders of the community—are the most aggressive actors.
+        <div class="insight-box">
+            <p style="margin:0; font-size:1.2rem; color:#fff;">
+                <strong>Finding:</strong> The Reddit Galaxy is a cohesive, rapidly expanding system where positive
+                interactions act as the primary engine of growth, binding 97% of communities into a single
+                "Super-cluster."
             </p>
-            <p>In external conflicts, their usage of profanity is <strong>20% higher</strong> than that of average
-                users. They are not just managing the community; they are defending its borders.</p>
         </div>
-    </div>
-    <div class="graphic-column">
-        <iframe src="/ada-data-story/assets/plots/watchdog_plot.html"></iframe>
-    </div>
-</div>
 
-
-<section id="rq5" class="rq-header">
-    <div class="rq-content">
-        <span class="rq-label">RESEARCH QUESTION 05</span>
-        <h2 class="typewriter">How do these patterns evolve over time?</h2>
-        <p class="rq-desc">Are we merging into a global village, or fracturing further?</p>
     </div>
 </section>
 
-<div class="scrolly-container">
-    <div class="text-column">
-        <div class="step reveal">
-            <h3>Solidifying Borders</h3>
-            <p>Time series analysis offers a grim outlook.</p>
-        </div>
-        <div class="step reveal">
-            <h3>The Rising Tide</h3>
-            <p>Cross-cluster anger is rising year over year. The walls of the digital tribes are growing higher, and the
-                echo chambers are becoming soundproof.</p>
-        </div>
-    </div>
-    <div class="graphic-column">
-        <iframe src="/ada-data-story/assets/plots/temporal_plot.html"></iframe>
-    </div>
-</div>
+<section class="content-block">
+    <div class="text-container reveal">
 
+        <div class="rq-box">
+            <span class="rq-label">Research Question 01</span>
+            <h2 class="rq-title">Based on community social attributes, what distinct communication patterns can we
+                define?</h2>
+        </div>
 
-<section class="outro">
-    <h2>Data Story Completed.</h2>
-    <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" class="btn glow-btn">SOURCE CODE</a>
+        <p>When we first approached Reddit as a data “galaxy” of this scale, the most intuitive strategy was
+            straightforward: to examine what these individual “planets” (subreddits) were talking about. We began with a
+            set of content-based embedding vectors representing each community, which functioned much like a resource
+            map—highlighting where discussions of technology, entertainment, or shared topical interests were
+            concentrated.</p>
+
+        <p>However, it quickly became clear that a purely content-driven perspective was insufficient. Two communities
+            that frequently discuss “Bitcoin” are not necessarily close in any meaningful social sense: one may be a
+            long-standing supporter community, while the other exists primarily to criticize or mock it. Treating them
+            as neighbors solely on the basis of shared vocabulary obscures the more consequential social structure
+            beneath. Content captures what communities talk about, but it offers limited insight into whom they align
+            with.</p>
+
+        <p>For this reason, we shifted our focus away from the content map and toward a more fundamental layer of the
+            system: the hyperlink structure connecting communities. Each citation, cross-post, or reference represents a
+            point of contact between subreddits—whether as endorsement, borrowing, critique, or confrontation. Using
+            these links, we constructed an inter-community network and applied the Leiden clustering algorithm to
+            identify cohesive “constellations” within it. Compared to traditional classification methods, Leiden is
+            particularly effective at detecting groups that are structurally dense and interactionally cohesive, making
+            these constellations a closer approximation of Reddit’s operative social topology.</p>
+
+        <p>Once this structural star map was established, a new challenge emerged: how to characterize the “social
+            distance” between communities. A binary distinction between interactions occurring within the same
+            constellation and those crossing constellation boundaries proved too coarse, as it could not account for why
+            some cross-community exchanges remain measured and constructive while others escalate rapidly into
+            hostility.</p>
+
+        <p>To address this, we further partitioned all interactions into four categories, which form the analytical
+            foundation of our subsequent analyses. Intra-Core interactions occur between the most tightly connected
+            communities within a constellation; these communities share a highly aligned discourse and normative
+            framework, and their exchanges tend to be more nuanced and internally coherent. Intra-Periphery interactions
+            also take place within the same constellation but involve more peripheral communities, where shared cultural
+            background exists alongside weaker ties, often creating conditions for internal friction.
+            Beyond constellation boundaries, we distinguish Cross-Strong interactions, which connect communities from
+            different constellations that nonetheless maintain stable, recurrent exchanges, typically supported by a
+            partial shared context. Finally, Cross-Weak interactions occur between communities with little or no prior
+            relationship, representing the greatest social distance and the highest likelihood of contextual mismatch
+            and emotionally charged communication.</p>
+
+        <p>The purpose of this four-way classification is not to introduce additional labels, but to more precisely
+            examine how language and conflict vary with social distance. </p>
+
+        <div class="chart-frame">
+            <iframe src="/ada-data-story/assets/plots/cluster_graph_global.png"></iframe>
+            <div style="padding:10px; color:#666; font-size:0.9rem; text-align:center; font-family:var(--font-mono);">
+                FIG 1.1 -
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <p style="margin:0; font-size:1.2rem; color:#fff;">
+                <strong>Finding:</strong> We identified four distinct modes of communication.
+            </p>
+        </div>
+
+    </div>
 </section>
 
+<section class="content-block">
+    <div class="text-container reveal">
 
-<script>
-    // 1. Reveal on Scroll Animation
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, {threshold: 0.1});
+        <div class="rq-box" style="border-left-color: var(--accent-purple);"><span
+                class="rq-label">Research Question 02</span>
+            <h2 class="rq-title">Does linguistic complexity decrease when users engage with hostile out-groups?</h2>
+        </div>
 
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        <p>When we analyzed the complexity of language used between different groups, a striking pattern emerged. We
+            discovered that as communities engage with "outsiders," their language shifts dramatically.</p>
 
-    // 2. Side Navigation Highlighting
-    const sections = document.querySelectorAll('section');
-    const navDots = document.querySelectorAll('.nav-dot');
+        <p>This phenomenon, which we call "Tactical Simplicity," suggests that complex jargon is reserved for the
+            in-group, while simple, aggressive language is weaponized for the out-group.</p>
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            // Adjust offset for better triggering
-            if (scrollY >= sectionTop - 300) {
-                current = section.getAttribute('id');
-            }
-        });
-        navDots.forEach(dot => {
-            dot.classList.remove('active');
-            if (dot.getAttribute('href').includes(current)) {
-                dot.classList.add('active');
-            }
-        });
-    });
-</script>
+        <div class="chart-frame">
+            <iframe src="/ada-data-story/assets/plots/complexity_plot.html"></iframe>
+        </div>
+
+    </div>
+</section>
+
+<div style="height: 20vh;"></div>
 </main>
 
 <!--<footer>-->
