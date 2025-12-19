@@ -24,17 +24,28 @@
 </nav>
 
 <main class="galaxy-wrapper">
-    <div class="galaxy-bg"></div>
+    <div class="scroll-progress" id="progressBar"></div>
+
+<div class="galaxy-bg"></div>
+
+<div class="hud-overlay"></div>
+
 
 <section id="hero" class="hero">
-    <span class="hero-meta">Academic Inquiry</span>
-    <h1 class="hero-title">How We Talk<br>About Others</h1>
-    <div class="hero-sub">
-        Linguistic Patterns within Social Networks of Reddit Communities.
+    <div class="hero-content">
+        <span class="hero-meta" style="animation: pulse 2s infinite;">System Ready: Deep Space Scan Initialized</span>
+        <h1 class="hero-title">How We Talk<br>About Others</h1>
+        <div class="hero-sub">
+            An academic voyage through the linguistic patterns within the social networks of 67,000+ Reddit communities.
+        </div>
+        <a href="#phase0" class="btn-explore">Initiate Galaxy Scan</a>
     </div>
 </section>
 
 <section id="phase0">
+    <div class="celestial-body planet-gas"
+         style="width: 300px; height: 300px; top: 10%; right: 5%; animation: float-slow 120s infinite linear;"></div>
+    <div class="celestial-body planet-ice" style="width: 150px; height: 150px; bottom: 10%; left: 5%;"></div>
     <div class="container-text">
         <div class="rq-header">
             <span class="rq-label">Phase 0: General Analysis</span>
@@ -103,6 +114,8 @@
         </div>
     </div>
 </section>
+
+<div class="cosmic-gate"></div>
 
 <section id="rq1">
     <div class="container-text">
@@ -233,6 +246,8 @@
         </div>
     </div>
 </section>
+
+<div class="cosmic-gate"></div>
 
 <section id="rq2">
     <div class="container-text">
@@ -429,6 +444,8 @@
     </div>
 </section>
 
+<div class="cosmic-gate"></div>
+
 <section id="rq3">
     <div class="container-text">
         <div class="rq-header purple">
@@ -600,6 +617,7 @@
     </div>
 </section>
 
+<div class="cosmic-gate"></div>
 
 <section id="rq4">
     <div class="container-text">
@@ -746,7 +764,21 @@
     </div>
 </section>
 
+<script>
+    // 进度条控制
+    window.onscroll = function () {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+    };
 
+    // 平滑滚动按钮
+    document.querySelector('.btn-explore').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector('#phase0').scrollIntoView({behavior: 'smooth'});
+    });
+</script>
 </main>
 
 <script>
