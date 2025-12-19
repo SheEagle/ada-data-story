@@ -53,15 +53,23 @@ title: Digital Tribes
 
     <div class="container-wide">
         <div class="chart-grid">
+
             <div class="chart-wrapper">
-                <iframe class="chart-content" src="{{ '/assets/plots/phase0/trend.png' | relative_url }}"></iframe>
+                <iframe
+                        class="chart-content"
+                        src="{{ '/assets/plots/phase0/trend.html' | relative_url }}"
+                        style="border:none; width:100%; height:500px;"
+                        allowfullscreen>
+                </iframe>
                 <div class="chart-caption">
                     Figure 0.1 - The Expansion of the Reddit Galaxy: Linear Growth ($R^2 = 0.87$).
                 </div>
             </div>
 
             <div class="chart-wrapper">
-                <iframe class="chart-content" src="{{ '/assets/plots/phase0/comparison.png' | relative_url }}"></iframe>
+                <iframe class="chart-content" src="{{ '/assets/plots/phase0/sentiment_trend.html' | relative_url }}"
+                        style="border:none; width:100%; height:500px;"
+                        allowfullscreen></iframe>
                 <div class="chart-caption">
                     Figure 0.2 -
                 </div>
@@ -71,7 +79,7 @@ title: Digital Tribes
 
     <div class="container-text">
         <p>Zooming out to view the entire topological map, we identified <strong>67,180 planets</strong> interconnected
-            by <strong>339,643 bridges</strong>. On average, each planet maintains roughly 10 gravitational ties to
+            by <strong>339,643 bridges</strong>. On average, each planet has roughly 10 gravitational ties to
             others, creating a densely populated social space. However, the connectivity is not uniform. We discovered a
             <strong>"Great Super-cluster"</strong>—a massive, weakly connected structure encompassing over 97% (65,648)
             of all known planets. Outside this main civilization, about 711 tiny "Islands" float in deep space,
@@ -261,8 +269,9 @@ title: Digital Tribes
         <ul style="line-height: 1.8; margin-bottom: 2rem;">
             <li>
                 <strong>Stage 1: Intra-cluster role differentiation</strong><br>
-                Based on centrality within each star cluster, communities are classified as <strong>Core</strong> or
-                <strong>Periphery</strong>.
+                Based on centrality within each star cluster, communities are classified as <strong>Core(Top 30%
+                active)</strong> or
+                <strong>Periphery(The rest 70%)</strong>.
                 This distinction captures whether a signal originates from a dominant, well-established position or from
                 a more marginal one.
             </li>
@@ -511,7 +520,8 @@ title: Digital Tribes
             <p style="margin-bottom: 0;">To ensure analytical clarity, we divide interaction contexts into two
                 categories based on the sentiment of links:</p>
             <ul style="margin-top: 0.5rem;">
-                <li><strong>Peace:</strong> Interactions classified as <strong>positive</strong> or <strong>neutral</strong>,
+                <li><strong>Peace:</strong> Interactions classified as <strong>positive</strong> or
+                    <strong>neutral</strong>,
                     representing the galaxy’s steady state.
                 </li>
                 <li><strong>Conflict:</strong> Interactions classified as <strong>negative</strong>,
@@ -535,7 +545,8 @@ title: Digital Tribes
                 </div>
             </div>
         </div>
-        <p>To address this, we divide the corpus into peaceful and conflictual contexts. In this analysis, we focus first on the peaceful context, where language choices
+        <p>To address this, we divide the corpus into peaceful and conflictual contexts. In this analysis, we focus
+            first on the peaceful context, where language choices
             reliably reflect communicative expectations and audience perception.</p>
 
         <h3 class="sub-glow">Second Calibration: Controlling Source Clusters</h3>
@@ -559,104 +570,146 @@ title: Digital Tribes
             </p>
         </div>
 
-        <div class="dimensions-grid">
-
-            <div class="info-card dimension-card">
-                <div class="card-tag" style="color: var(--accent-cyan);">DIMENSION 01</div>
-                <span class="card-title">Complexity: Signal Resolution and Information Density</span>
-                <div class="feature-tags">
-                    <code>readability_index</code> <code>avg_words_per_sentence</code> <code>avg_word_length</code>
-                    <code>frac_upper</code>
-                </div>
-                <div class="card-desc">
-                    <strong>Observations:</strong>
-                    <ul>
-                        <li><strong>Intra-Core:</strong> High readability_index and long sentences indicate dense,
-                            precise communication—like a high-resolution signal in a stable orbit.
-                        </li>
-                        <li><strong>Intra-Periphery:</strong> Shorter sentences and high frac_upper suggest coarser,
-                            pulse-like communication emphasizing visual cues over structural complexity.
-                        </li>
-                        <li><strong>Cross-Strong:</strong> Complexity remains moderate, optimized for cross-community
-                            clarity.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="info-card dimension-card">
-                <div class="card-tag" style="color: var(--accent-blue);">DIMENSION 02</div>
-                <span class="card-title">Logical Style: Organization and Alignment</span>
-                <div class="feature-tags">
-                    <code>LIWC_Funct</code> <code>LIWC_CogMech</code> <code>LIWC_Article</code> <code>LIWC_Prep</code>
-                    <code>LIWC_Certain</code>
-                </div>
-                <div class="card-desc">
-                    <strong>Observations:</strong>
-                    <ul>
-                        <li><strong>Cross-Strong:</strong> High proportions of functional words, articles, and
-                            prepositions indicate structured, aligned communication designed to avoid misinterpretation
-                            across clusters.
-                        </li>
-                        <li><strong>Intra-Core & Intra-Periphery:</strong> Lower LIWC_CogMech and LIWC_Certain suggest
-                            that some reasoning is implicit, embedded in shared knowledge.
-                        </li>
-                    </ul>
+        <!-- Dimension 01 -->
+        <div class="dimension-row"
+             style="display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap;">
+            <div class="dimension-text" style="flex: 1; min-width: 400px;">
+                <div class="info-card dimension-card" style="margin: 0; height: 100%;">
+                    <div class="card-tag" style="color: var(--accent-cyan);">DIMENSION 01</div>
+                    <span class="card-title" style="font-size: 1.8rem; display: block; margin-bottom: 1rem;">
+                    Complexity: Signal Resolution and Information Density
+                </span>
+                    <div class="feature-tags" style="margin-bottom: 1.5rem;">
+                        <code>readability</code> <code>avg_words_per_sentence</code> <code>avg_word_length</code> <code>frac_upper</code>
+                    </div>
+                    <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
+                        <strong>Key observations:</strong>
+                        <ul style="padding-left: 1.2rem;">
+                            <li><strong>Intra-Core:</strong> Shows the highest syntactic complexity and longest
+                                sentences. Within stable core orbits, users rely on high-resolution signals for dense
+                                and precise discussion.
+                            </li>
+                            <li><strong>Intra-Periphery:</strong> Uses shorter sentences with a markedly higher share of
+                                capitalization, suggesting a reliance on visual emphasis to compensate for weaker
+                                contextual grounding.
+                            </li>
+                            <li><strong>Cross-Strong:</strong> Maintains moderate complexity, balancing clarity and
+                                accessibility in cross-cluster communication.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <div class="info-card dimension-card">
-                <div class="card-tag" style="color: var(--accent-purple);">DIMENSION 03</div>
-                <span class="card-title">Identity Expression: Pronouns as Orbital Markers</span>
-                <div class="feature-tags">
-                    <code>LIWC_I</code> <code>LIWC_We</code> <code>LIWC_They</code> <code>LIWC_Excl</code> <code>LIWC_Social</code>
-                </div>
-                <div class="card-desc">
-                    <strong>Observations:</strong>
-                    <ul>
-                        <li><strong>Intra-Periphery:</strong> High LIWC_We and LIWC_Excl reflect reinforcement of group
-                            boundaries, stabilizing identity in less stable regions.
-                        </li>
-                        <li><strong>Intra-Core:</strong> High LIWC_I and low LIWC_They indicate internalized identity
-                            and confidence.
-                        </li>
-                        <li><strong>Cross-community:</strong> Elevated LIWC_They shows outward orientation, highlighting
-                            communication aimed at external audiences.
-                        </li>
-                    </ul>
-                </div>
+            <div class="dimension-chart"
+                 style="flex: 1.2; min-width: 600px; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 1rem;">
+                <iframe class="chart-content" style="width: 100%; height: 500px; border: none;"
+                        src="{{ '/assets/plots/RQ2/lmm_text_complexity_and_structure.html' | relative_url }}"></iframe>
             </div>
-
-            <div class="info-card dimension-card">
-                <div class="card-tag" style="color: var(--accent-red);">DIMENSION 04</div>
-                <span class="card-title">Emotional Temperature: Signal Energy</span>
-                <div class="feature-tags">
-                    <code>vader_compound</code> <code>vader_neg</code> <code>LIWC_Anger</code> <code>LIWC_Swear</code>
-                    <code>LIWC_Affect</code>
-                </div>
-                <div class="card-desc">
-                    <strong>Observations:</strong>
-                    <ul>
-                        <li><strong>Intra-Core:</strong> High vader_compound with low LIWC_Anger and LIWC_Swear forms a
-                            stable, high-energy zone—strong engagement without destructive conflict.
-                        </li>
-                        <li><strong>Cross-Strong:</strong> Lower emotional values reflect deliberate moderation to
-                            reduce misinterpretation risk.
-                        </li>
-                        <li><strong>Cross-community:</strong> LIWC_Swear remains higher than internal interactions,
-                            indicating baseline friction due to social distance.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <div class="container-wide">
-        <div class="chart-wrapper">
-            <iframe class="chart-content" src="{{ '/assets/plots/complexity_plot.html' | relative_url }}"></iframe>
-            <div class="chart-caption">Analysis Map: Visualizing linguistic shifts across calibrated social distances.
+        <!-- Dimension 02 -->
+        <div class="dimension-row"
+             style="display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; flex-direction: row-reverse;">
+            <div class="dimension-text" style="flex: 1; min-width: 400px;">
+                <div class="info-card dimension-card" style="margin: 0; height: 100%;">
+                    <div class="card-tag" style="color: var(--accent-blue);">DIMENSION 02</div>
+                    <span class="card-title" style="font-size: 1.8rem; display: block; margin-bottom: 1rem;">
+                    Logical Style: Alignment and Defensive Clarity
+                </span>
+                    <div class="feature-tags" style="margin-bottom: 1.5rem;">
+                        <code>LIWC_Funct</code> <code>LIWC_CogMech</code> <code>LIWC_Article</code>
+                        <code>LIWC_Prep</code>
+                    </div>
+                    <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
+                        <strong>Key observations:</strong>
+                        <ul style="padding-left: 1.2rem;">
+                            <li><strong>Cross-Strong:</strong> Displays elevated use of function words, articles, and
+                                prepositions, reflecting carefully aligned and defensive communication across cultural
+                                boundaries.
+                            </li>
+                            <li><strong>Intra-Cluster:</strong> Logical reasoning markers are less explicit, as shared
+                                norms allow much of the reasoning to remain implicit.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="dimension-chart"
+                 style="flex: 1.2; min-width: 600px; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 1rem;">
+                <iframe class="chart-content" style="width: 100%; height: 500px; border: none;"
+                        src="{{ '/assets/plots/RQ2/lmm_cognitive_and_linguistic_styles.html' | relative_url }}"></iframe>
+            </div>
+        </div>
+
+
+        <!-- Dimension 03 -->
+        <div class="dimension-row"
+             style="display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap;">
+            <div class="dimension-text" style="flex: 1; min-width: 400px;">
+                <div class="info-card dimension-card" style="margin: 0; height: 100%;">
+                    <div class="card-tag" style="color: var(--accent-purple);">DIMENSION 03</div>
+                    <span class="card-title" style="font-size: 1.8rem; display: block; margin-bottom: 1rem;">
+                    Identity Expression: Pronouns as Orbital Markers
+                </span>
+                    <div class="feature-tags" style="margin-bottom: 1.5rem;">
+                        <code>LIWC_I</code> <code>LIWC_We</code> <code>LIWC_They</code> <code>LIWC_Social</code>
+                    </div>
+                    <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
+                        <strong>Key observations:</strong>
+                        <ul style="padding-left: 1.2rem;">
+                            <li><strong>Intra-Periphery:</strong> Peaks in “we” usage, indicating stronger boundary
+                                reinforcement as peripheral members seek collective validation.
+                            </li>
+                            <li><strong>Intra-Core:</strong> Shows confident and frequent use of “I,” reflecting
+                                internalized identity that requires less explicit group signaling.
+                            </li>
+                            <li><strong>Cross-community:</strong> Increased use of “they,” marking a clear outward shift
+                                in perspective.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="dimension-chart"
+                 style="flex: 1.2; min-width: 500px; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 1rem;">
+                <iframe class="chart-content" style="width: 100%; height: 500px; border: none;"
+                        src="{{ '/assets/plots/RQ2/lmm_social_and_personal_orientation.html' | relative_url }}"></iframe>
+            </div>
+        </div>
+
+
+        <!-- Dimension 04 -->
+        <div class="dimension-row"
+             style="display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; flex-direction: row-reverse;">
+            <div class="dimension-text" style="flex: 1; min-width: 400px;">
+                <div class="info-card dimension-card" style="margin: 0; height: 100%;">
+                    <div class="card-tag" style="color: var(--accent-red);">DIMENSION 04</div>
+                    <span class="card-title" style="font-size: 1.8rem; display: block; margin-bottom: 1rem;">
+                    Emotional Temperature: Signal Energy Distribution
+                </span>
+                    <div class="feature-tags" style="margin-bottom: 1.5rem;">
+                        <code>vader_compound</code> <code>LIWC_Swear</code> <code>LIWC_Affect</code>
+                    </div>
+                    <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
+                        <strong>Key observations:</strong>
+                        <ul style="padding-left: 1.2rem;">
+                            <li><strong>Intra-Core:</strong> Forms a highly stable and positive emotional zone, with
+                                strong positive sentiment and minimal profanity.
+                            </li>
+                            <li><strong>Cross-Strong:</strong> Shows restrained emotional variance, reflecting
+                                deliberate moderation to maintain cross-cluster stability.
+                            </li>
+                            <li><strong>Cross-cluster:</strong> Retain higher baseline profanity than internal
+                                links, indicating persistent friction introduced by social distance.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="dimension-chart"
+                 style="flex: 1.2; min-width: 500px; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 1rem;">
+                <iframe class="chart-content" style="width: 100%; height: 500px; border: none;"
+                        src="{{ '/assets/plots/RQ2/lmm_sentiment_and_affect.html' | relative_url }}"></iframe>
             </div>
         </div>
     </div>
@@ -667,27 +720,34 @@ title: Digital Tribes
     </div>
 
     <div class="container-wide">
-        <div class="card-grid">
-            <div class="info-card core">
-                <span class="card-title">Intra-Core</span>
-                <p class="card-desc">High readability, long sentences, implicit logic, elevated LIWC_I, high affect with
-                    low anger → <strong>Stable core orbit</strong></p>
+        <div class="card-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+
+            <div class="info-card core" style="margin: 0; padding: 2rem; border-top: 4px solid var(--accent-blue);">
+                <span class="card-title"
+                      style="font-size: 1.5rem; display: block; margin-bottom: 1rem;">Intra-Core</span>
+                <p class="card-desc">High readability, implicit logic, elevated LIWC_I, high affect with low anger. <br><strong>→
+                    Stable Core Orbit</strong></p>
             </div>
-            <div class="info-card periphery">
+
+            <div class="info-card periphery"
+                 style="margin: 0; padding: 2rem; border-top: 4px solid var(--accent-gold);">
                 <span class="card-title">Intra-Periphery</span>
-                <p class="card-desc">Short sentences, high frac_upper, weakly explicit logic, high LIWC_We and exclusion
-                    markers, more volatile emotion → <strong>Near-core unstable belt</strong></p>
+                <p class="card-desc">Short sentences, high frac_upper, high LIWC_We and exclusion markers. <br><strong>→
+                    Near-Core Unstable Belt</strong></p>
             </div>
-            <div class="info-card strong">
+
+            <div class="info-card strong" style="margin: 0; padding: 2rem; border-top: 4px solid var(--accent-cyan);">
                 <span class="card-title">Cross-Strong</span>
-                <p class="card-desc">Moderate complexity, structured grammar, high LIWC_They, low emotional fluctuation
-                    → <strong>Stable interstellar transfer path</strong></p>
+                <p class="card-desc">Moderate complexity, structured defensive grammar, low emotional fluctuation.
+                    <br><strong>→ Stable Interstellar Transfer Path</strong></p>
             </div>
-            <div class="info-card weak">
+
+            <div class="info-card weak" style="margin: 0; padding: 2rem; border-top: 4px solid var(--accent-red);">
                 <span class="card-title">Cross-Weak</span>
-                <p class="card-desc">Dispersed features, unstructured communication, rapidly shifting identity and
-                    emotion → <strong>High-uncertainty long-range traversal</strong></p>
+                <p class="card-desc">Dispersed features, unstructured communication, rapidly shifting identity.
+                    <br><strong>→ High-Uncertainty Long-Range Traversal</strong></p>
             </div>
+
         </div>
     </div>
 </section>
