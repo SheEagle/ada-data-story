@@ -657,3 +657,775 @@ strong {
         transform: translate(0, 0) rotate(360deg);
     }
 }
+
+.shooting-star {
+    position: absolute;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-cyan), transparent);
+    animation: shoot 5s linear infinite;
+    opacity: 0;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    30% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.shockwave {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 77, 77, 0.2) 0%, transparent 70%);
+    border: 1px solid rgba(255, 77, 77, 0.1);
+    border-radius: 50%;
+    animation: shockwave-expand 4s ease-out infinite;
+    z-index: -1;
+}
+
+@keyframes shockwave-expand {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.binary-system {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    animation: rotation 10s linear infinite;
+}
+
+.star-a, .star-b {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.star-a {
+    background: var(--accent-blue);
+    top: 0;
+    left: 26px;
+    box-shadow: 0 0 10px var(--accent-blue);
+}
+
+.star-b {
+    background: #fff;
+    bottom: 0;
+    left: 26px;
+    box-shadow: 0 0 10px #fff;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pulsar {
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 15px var(--accent-cyan);
+}
+
+.pulsar::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent-cyan);
+    border-radius: 50%;
+    animation: pulsar-pulse 2s infinite;
+}
+
+@keyframes pulsar-pulse {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+    100% {
+        width: 800%;
+        height: 800%;
+        opacity: 0;
+    }
+}
+
+.hud-scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+    transparent 50%,
+    rgba(0, 243, 255, 0.02) 50%
+    );
+    background-size: 100% 4px; /* 极细的水平扫描线 */
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* 文件路径: assets/css/main.css */
+
+:root {
+    /* 1. 深度优化：背景从纯黑改为深午夜蓝，减少视觉压迫感 */
+    --bg-deep: #050a15;
+    --bg-panel: rgba(15, 23, 42, 0.8); /* 稍微增加不透明度，提升文字背景稳定性 */
+
+    /* 2. 色彩优化：降低霓虹色的饱和度，使其更柔和，不刺眼 */
+    --accent-cyan: #22d3ee; /* 柔和青 */
+    --accent-purple: #a855f7; /* 柔和紫 */
+    --accent-blue: #3b82f6; /* 科技蓝 */
+    --accent-gold: #fbbf24; /* 琥珀金 */
+    --accent-red: #f43f5e; /* 胭脂红 */
+
+    /* 3. 文字优化：显著提升对比度 */
+    --text-main: #f1f5f9; /* 接近白色的蓝灰，阅读极佳 */
+    --text-muted: #cbd5e1; /* 辅助文字不再过于灰暗 */
+
+    --font-header: 'Space Grotesk', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* --- 全局样式微调 --- */
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.8; /* 增加行高，提升长文舒适度 */
+    letter-spacing: 0.015em;
+}
+
+/* 让段落文字更厚实一点，不再用 300 这种极细体 */
+p {
+    font-size: 1.15rem;
+    font-weight: 400; /* 从 300 提升到 400 */
+    margin-bottom: 2.2rem;
+    color: var(--text-muted);
+    max-width: 75ch; /* 限制每行字符数，这是人类阅读最舒适的宽度 */
+}
+
+/* 增强重点文字的可读性 */
+strong {
+    color: var(--accent-cyan);
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(34, 211, 238, 0.2); /* 极细微的发光 */
+}
+
+/* 标题样式：层次分明 */
+.rq-title {
+    font-family: var(--font-header);
+    font-size: 2.6rem;
+    line-height: 1.3;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* 让小标题更具引导性 */
+.sub-glow {
+    font-size: 1.7rem;
+    color: #fff;
+    margin-top: 5rem;
+    font-weight: 600;
+}
+
+/* 修改 Info Card 样式 */
+.info-card {
+    background: var(--bg-panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 增加深度感 */
+}
+
+/* 调整维度卡片 (Dimension Cards) 的排版 */
+.dimension-card {
+    background: rgba(15, 23, 42, 0.9);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dimension-card:hover {
+    transform: translateY(-5px);
+    background: rgba(20, 30, 50, 0.95);
+}
+
+/* 让代码标签 (Feature Tags) 更精致 */
+.feature-tags code {
+    background: rgba(34, 211, 238, 0.1);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+/* 核心发现卡片 (Insight Card) 的强调效果 */
+.insight-card {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(5, 10, 21, 0.4) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    padding: 2.5rem;
+    margin: 4rem 0;
+}
+
+:root {
+    --bg-deep: #02040a;
+    --text-white: #ffffff;
+    --text-high-bright: #f8fafc;
+    --text-dim: #cbd5e1;
+    --accent-cyan: #00f3ff;
+    --accent-purple: #bc13fe;
+    --glass-panel: rgba(15, 23, 42, 0.9);
+    --font-main: 'Outfit', sans-serif;
+}
+
+/* --- 全局可读性提升 --- */
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-high-bright);
+    font-family: var(--font-main);
+    line-height: 1.9; /* 极佳的行高 */
+    font-size: 18px;
+}
+
+/* 拓宽正文区域 */
+.container-text {
+    max-width: 950px; /* 增加宽度 */
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+p {
+    font-size: 1.25rem; /* 字号加大 */
+    font-weight: 400;
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 提升文字清晰度 */
+}
+
+/* 强化重点 */
+strong {
+    color: var(--accent-cyan);
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+}
+
+/* --- 电影感进场动画库 --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 交互式卡片：引力场效果 --- */
+.info-card {
+    background: var(--glass-panel);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 24px;
+    position: relative;
+    transition: all 0.5s ease;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.info-card:hover {
+    border-color: var(--accent-cyan);
+    transform: scale(1.03) translateY(-10px);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.2);
+}
+
+/* 卡片光效线条 */
+.info-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.info-card:hover::after {
+    opacity: 1;
+}
+
+/* --- 标题与装饰 --- */
+.rq-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 2rem;
+    background: linear-gradient(to bottom, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub-glow {
+    font-size: 2rem;
+    color: #fff;
+    border-bottom: 2px solid var(--accent-cyan);
+    padding-bottom: 10px;
+    display: inline-block;
+    box-shadow: 0 4px 15px -5px var(--accent-cyan);
+}
+
+/* --- 针对开头的可读性与交互增强 --- */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+    text-align: left; /* 改为左对齐增加专业感 */
+    max-width: 1200px; /* 拓宽容器 */
+    margin: 0 auto;
+}
+
+/* 飞船终端状态栏 */
+.terminal-boot {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-cyan);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-icon {
+    animation: pulse 1.5s infinite;
+    text-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* 标题：极致清晰度 */
+.hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6rem); /* 更大的字号 */
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff; /* 纯白高亮 */
+    margin: 1rem 0;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title .highlight {
+    background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 副标题：拓宽阅读视窗 */
+.hero-sub {
+    font-size: 1.4rem;
+    max-width: 850px; /* 拓宽 */
+    line-height: 1.8;
+    color: #e2e8f0; /* 提升亮度 */
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* 跃迁按钮：能量流动效果 */
+.btn-warp {
+    position: relative;
+    display: inline-block;
+    padding: 1.2rem 4rem;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    letter-spacing: 4px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.btn-warp:hover {
+    color: #000;
+    box-shadow: 0 0 50px var(--accent-cyan);
+    letter-spacing: 6px;
+}
+
+.btn-energy {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-cyan);
+    z-index: -1;
+    transition: 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.btn-warp:hover .btn-energy {
+    left: 0;
+}
+
+/* 坐标显示 */
+.coord-display {
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.coord-display .value {
+    color: var(--accent-purple);
+}
+
+/* 向下滚动提示 */
+.explore-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0.6;
+}
+
+.mouse-scroller {
+    width: 24px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    margin: 0 auto 10px;
+    position: relative;
+}
+
+.mouse-scroller::before {
+    content: "";
+    width: 4px;
+    height: 8px;
+    background: #fff;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: scroll-anim 2s infinite;
+}
+
+@keyframes scroll-anim {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+}
+
+/* --- 标题基础样式 --- */
+.hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff; /* 纯白 */
+    margin: 1rem 0;
+    position: relative;
+    /* 基础的柔和白光，增加体积感 */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* 移除之前可能存在的彩色高亮样式 */
+.hero-title .highlight {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: inherit;
+}
+
+/* --- 微妙的引力场扭曲特效 --- */
+
+/* 创建两个用于错位的伪元素层 */
+.glitch-gravity::before,
+.glitch-gravity::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-deep); /* 使用背景色遮挡，创造切割效果 */
+    color: #fff; /* 纯白色文字 */
+    overflow: hidden;
+    /* 初始状态为完整显示 */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* --- 错位层 1 (慢速、大范围扭曲) --- */
+.glitch-gravity::before {
+    /* 稍微降低透明度，让叠加效果更融合 */
+    opacity: 0.6;
+    z-index: 2;
+    /* 动画：更慢、更平滑，包含倾斜和位移 */
+    animation: glitch-anim-subtle-1 6s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) alternate;
+}
+
+/* --- 错位层 2 (稍快、细节切割) --- */
+.glitch-gravity::after {
+    opacity: 0.6;
+    z-index: 3;
+    /* 动画：节奏稍快，侧重于局部的水平切割 */
+    animation: glitch-anim-subtle-2 4s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) alternate-reverse;
+}
+
+
+/* --- 动画关键帧定义 (微妙版) --- */
+
+/* 动画 1：侧重于整体的缓慢倾斜和轻微错位 */
+@keyframes glitch-anim-subtle-1 {
+    0%, 100% {
+        transform: translate(0) skewX(0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    20% {
+        /* 轻微向左倾斜，向上浮动 */
+        transform: translate(-1px, -1px) skewX(-1deg);
+        /* 在中上部切开一道口子 */
+        clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%);
+    }
+    45% {
+        /* 回到接近正常 */
+        transform: translate(0.5px, 0.5px) skewX(0.5deg);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    70% {
+        /* 轻微向右倾斜，向下浮动 */
+        transform: translate(1px, 1px) skewX(1deg);
+        /* 在中下部切开一道口子 */
+        clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+    }
+}
+
+/* 动画 2：侧重于更频繁但幅度极小的水平切割错位 */
+@keyframes glitch-anim-subtle-2 {
+    0%, 100% {
+        transform: translate(0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    15% {
+        /* 极小的水平错位 */
+        transform: translate(2px, 0);
+        /* 切割顶部一小条 */
+        clip-path: polygon(0 10%, 100% 10%, 100% 15%, 0 15%);
+    }
+    40% {
+        transform: translate(-1.5px, 0);
+        /* 切割中间一条 */
+        clip-path: polygon(0 45%, 100% 45%, 100% 50%, 0 50%);
+    }
+    65% {
+        transform: translate(1px, 0);
+        /* 切割底部一条 */
+        clip-path: polygon(0 80%, 100% 80%, 100% 85%, 0 85%);
+    }
+    85% {
+        /* 瞬间恢复 */
+        transform: translate(0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+/* --- Hero 基础环境 --- */
+.hero {
+    height: 100vh;
+    background: radial-gradient(circle at 50% 50%, #0a0c12 0%, #000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* --- 核心：引力扭曲标题 --- */
+.glitch-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(4rem, 10vw, 7rem); /* 进一步加大，增强冲击力 */
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    position: relative;
+    /* 增加一层极细微的白光，让文字看起来是发光的实体 */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* 扭曲层设置 */
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent; /* 关键：不要背景色，只留文字 */
+    color: #ffffff;
+    opacity: 0.5;
+}
+
+/* 引力波 A：负责水平切片错位 */
+.glitch-text::before {
+    z-index: -1;
+    animation: gravity-slice 4s infinite cubic-bezier(0.1, 0, 0.9, 1) alternate;
+}
+
+/* 引力波 B：负责整体空间倾斜 (Skew) */
+.glitch-text::after {
+    z-index: -2;
+    animation: gravity-skew 7s infinite ease-in-out alternate;
+}
+
+/* 动画关键帧：模拟重力扰动 */
+@keyframes gravity-slice {
+    0%, 100% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0);
+    }
+    10% {
+        clip-path: inset(20% 0 70% 0);
+        transform: translate(-3px, 0);
+    }
+    30% {
+        clip-path: inset(50% 0 45% 0);
+        transform: translate(3px, 0);
+    }
+    50% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(-1px, 0);
+    }
+    70% {
+        clip-path: inset(10% 0 85% 0);
+        transform: translate(2px, 0);
+    }
+}
+
+@keyframes gravity-skew {
+    0% {
+        transform: skewX(0deg) scale(1);
+        opacity: 0.3;
+    }
+    25% {
+        transform: skewX(-1.5deg) scale(1.01);
+        opacity: 0.6;
+    }
+    50% {
+        transform: skewX(1deg) scale(0.99);
+        opacity: 0.3;
+    }
+    75% {
+        transform: skewX(-0.5deg) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: skewX(0.5deg) scale(1);
+        opacity: 0.3;
+    }
+}
+
+/* --- 文字排版优化 --- */
+.hero-description {
+    font-size: 1.35rem;
+    max-width: 900px; /* 拓宽视窗 */
+    color: #cbd5e1;
+    margin: 2.5rem 0;
+    line-height: 1.8;
+    font-weight: 300;
+    letter-spacing: 0.05em; /* 增加字间距，提升高级感 */
+    text-align: center;
+}
+
+.terminal-boot {
+    font-family: 'Space Mono', monospace;
+    color: var(--accent-cyan);
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+/* --- 交互按钮升级 --- */
+.btn-warp-jump {
+    display: inline-block;
+    padding: 1.2rem 4.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 5px;
+    position: relative;
+    transition: 0.5s;
+    background: transparent;
+    overflow: hidden;
+}
+
+.btn-warp-jump:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+    letter-spacing: 7px;
+}
+
+.btn-flare {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.4), transparent);
+    transition: 0.6s ease;
+}
+
+.btn-warp-jump:hover .btn-flare {
+    left: 100%;
+}
+
+
+

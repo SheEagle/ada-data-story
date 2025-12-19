@@ -28,19 +28,19 @@
 
 <div class="galaxy-bg"></div>
 
-<div class="hud-overlay"></div>
+<div class="hud-scanlines"></div>
 
 
 <section id="hero" class="hero">
     <div class="hero-content">
-        <span class="hero-meta" style="animation: pulse 2s infinite;">System Ready: Deep Space Scan Initialized</span>
         <h1 class="hero-title">How We Talk<br>About Others</h1>
         <div class="hero-sub">
-            An academic voyage through the linguistic patterns within the social networks of 67,000+ Reddit communities.
+            Decoding linguistic Patterns within Social Networks of Reddit Communities
         </div>
-        <a href="#phase0" class="btn-explore">Initiate Galaxy Scan</a>
+        <a href="#phase0" class="btn-explore">Start Exploring Reddit's Galaxy</a>
     </div>
 </section>
+
 
 <section id="phase0">
     <div class="celestial-body planet-gas"
@@ -118,6 +118,12 @@
 <div class="cosmic-gate"></div>
 
 <section id="rq1">
+    <div class="binary-system" style="top: 15%; right: 10%;">
+        <div class="star-a"></div>
+        <div class="star-b"></div>
+    </div>
+    <div class="celestial-body planet-ice"
+         style="width: 200px; height: 200px; bottom: 5%; left: -50px; opacity: 0.2;"></div>
     <div class="container-text">
         <div class="rq-header purple">
             <span class="rq-label">Research Question 01</span>
@@ -447,6 +453,8 @@
 <div class="cosmic-gate"></div>
 
 <section id="rq3">
+    <div class="shockwave" style="top: 20%; left: 50%;"></div>
+    <div class="shockwave" style="bottom: 10%; right: 20%; animation-delay: 2s;"></div>
     <div class="container-text">
         <div class="rq-header purple">
             <span class="rq-label">Research Question 03</span>
@@ -778,7 +786,96 @@
         e.preventDefault();
         document.querySelector('#phase0').scrollIntoView({behavior: 'smooth'});
     });
+
+    function addCosmicElements() {
+        const sections = ['#phase0', '#rq1', '#rq2', '#rq3', '#rq4'];
+
+        sections.forEach(id => {
+            const container = document.querySelector(id);
+            if (!container) return;
+
+// 为 RQ3 添加冲击波
+            if (id === '#rq3') {
+                for (let i = 0; i < 3; i++) {
+                    let s = document.createElement('div');
+                    s.className = 'shockwave';
+                    s.style.top = Math.random() * 80 + '%';
+                    s.style.left = Math.random() * 80 + '%';
+                    container.appendChild(s);
+                }
+            }
+
+// 随机添加流星
+            setInterval(() => {
+                let star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.right = '0px';
+                container.appendChild(star);
+                setTimeout(() => star.remove(), 5000);
+            }, 8000 + Math.random() * 5000);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', addCosmicElements);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. 自动为段落和卡片添加显露类
+        const contents = document.querySelectorAll('p, .info-card, .rq-header, .chart-wrapper, h3');
+        contents.forEach(el => el.classList.add('reveal'));
+
+        // 2. 滚动观测器
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // 增加随机延迟，产生交错感
+                    entry.target.style.transitionDelay = `${Math.random() * 0.2}s`;
+                }
+            });
+        }, {threshold: 0.15});
+
+        contents.forEach(c => revealObserver.observe(c));
+
+        // 3. 背景视差移动
+        window.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            document.querySelector('.galaxy-bg').style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. 打字机效果：初始化序列
+        const bootMsg = document.querySelector('.typewriter');
+        const text = bootMsg.innerText;
+        bootMsg.innerText = '';
+        let i = 0;
+
+        function typeEffect() {
+            if (i < text.length) {
+                bootMsg.innerText += text.charAt(i);
+                i++;
+                setTimeout(typeEffect, 40);
+            }
+        }
+
+        setTimeout(typeEffect, 600);
+
+        // 2. 引力场扰动：背景随鼠标微动
+        const hero = document.querySelector('.hero');
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 15;
+            const y = (e.clientY / window.innerHeight - 0.5) * 15;
+            // 修改背景位置实现视差
+            hero.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+        });
+    });
 </script>
+
+
+
 </main>
 
 <script>
