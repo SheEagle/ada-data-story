@@ -1427,5 +1427,47 @@ strong {
     left: 100%;
 }
 
+/* --- 巨幕级容器：横跨 95% 视口宽度 --- */
+.container-huge {
+    width: 95vw;
+    max-width: 1800px; /* 限制最大宽度，防止超大屏过度拉伸 */
+    margin: 4rem auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); /* 强制居中技巧 */
+}
 
+/* --- 增强版高度与宽度：内联展示 --- */
+.giant-chart {
+    width: 100%;
+    min-height: 950px !important; /* 显著提升高度，从 800px 提升至 950px */
+    border: 1px solid rgba(34, 211, 238, 0.2); /* 淡淡的青色边框 */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 15px rgba(34, 211, 238, 0.1);
+}
+
+/* 调整并排网格以适应巨幕 */
+.chart-grid-huge {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* 减小间距，让图表更贴合 */
+}
+
+/* 移动端适配 */
+@media (max-width: 1400px) {
+    .giant-chart {
+        min-height: 700px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .chart-grid-huge {
+        grid-template-columns: 1fr;
+    }
+
+    .container-huge {
+        width: 95%;
+        left: 0;
+        transform: none;
+    }
+}
 

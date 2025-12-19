@@ -854,12 +854,12 @@ title: Digital Tribes
         </div>
     </div>
 
-    <div class="container-wide">
-        <div class="chart-wrapper">
-            <iframe class="chart-content" src="{{ '/assets/plots/conflict_comparison.html' | relative_url }}"></iframe>
-            <div class="chart-caption">Figure 3.1 - Signal Shifts: From Peaceful Equilibrium to Conflict Shake-Up.</div>
-        </div>
-    </div>
+<!--    <div class="container-wide">-->
+<!--        <div class="chart-wrapper">-->
+<!--            <iframe class="chart-content" src="{{ '/assets/plots/conflict_comparison.html' | relative_url }}"></iframe>-->
+<!--            <div class="chart-caption">Figure 3.1 - Signal Shifts: From Peaceful Equilibrium to Conflict Shake-Up.</div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="container-text">
         <h3 class="sub-glow">Cross-Context Comparison: From Peaceful Equilibrium to Conflict Shake-Up</h3>
@@ -931,148 +931,324 @@ title: Digital Tribes
 
 <section id="rq4">
     <div class="container-text">
-        <div class="rq-header blue">
-            <span class="rq-label">Research Question 04</span>
+        <div class="rq-header blue"><span class="rq-label">Research Question 04</span>
             <h2 class="rq-title">Macro Perspective: Steady-State Structures and Conflict-Driven Reorganization in the
-                Reddit Galaxy</h2>
-        </div>
+                Reddit Galaxy</h2></div>
+        <p>So far, we have analyzed communication links at the micro level, examining signal complexity, logic, identity
+            markers, and emotional tone. However, a galaxy is not defined by individual signals alone—it is shaped by
+            the interplay of stars and clusters. At the macro level, we face a structural question: <strong>What
+                fundamentally defines the social architecture of the Reddit galaxy? When conflicts emerge, does this
+                architecture remain stable, or does it reorganize?</strong></p>
 
-        <p>Up until now, we’ve explored how different communication links behave at the micro-level, analyzing signal
-            complexity, logic, identity markers, and emotional tone. But a galaxy isn’t defined by individual signals
-            alone—it is the interplay of all its stars and clusters. At a macro scale, we face a structural question:
-            <strong>What fundamentally defines the social architecture of the Reddit galaxy? When conflicts erupt, does
-                this architecture remain resilient, or does it collapse and reorganize?</strong></p>
+        <p>Previous analyses were conducted on the <strong>global network</strong>, considering both positive and
+            negative interactions together. To test the robustness of the observed structures, we reconstructed the
+            galaxy under two extreme observational lenses: one network containing only <strong>positive links</strong>
+            (peace network) and another containing only <strong>negative links</strong> (conflict network). This
+            separation allows us to evaluate whether the earlier observed structures are genuine steady-state
+            configurations or artifacts of aggregation across fundamentally different interaction regimes.</p>
 
-        <p>To address this, we adopt a multi-dimensional LMM coefficient vector framework, which allows us to track the
-            stability and divergence of interaction patterns across different social contexts. This framework provides a
-            way to map the galaxy’s structural “gravity wells” and observe how they shift under conflict.</p>
+        <p>Our methodology involves the following steps:</p>
+        <ol style="line-height:1.8; padding-left:1.2rem;">
+            <li>Extract text and sentiment labels for each interaction from the raw Reddit data.</li>
+            <li>Construct two separate networks: a peace network (only positive interactions) and a conflict network
+                (only negative interactions).
+            </li>
+            <li>Compute 27 language features for each link, including readability, sentence length, pronoun usage,
+                emotional tone, and LIWC categories.
+            </li>
+            <li>Fit a linear mixed-effects model (LMM) to extract fixed-effect coefficients, producing high-dimensional
+                behavior vectors for each link.
+            </li>
+            <li>Compare peace and conflict contexts using Pearson correlations, Jaccard similarity, and feature drift
+                analysis to track structural stability and role shifts.
+            </li>
+        </ol>
+
+        <p>This approach allows us to track social structures at the “galaxy scale,” mapping gravitational wells of
+            clusters and observing how conflict perturbs or reshapes these orbits.</p>
 
         <h3 class="sub-glow">1. Initial Hypothesis: “Mirror-Constant” Structures</h3>
-        <p>In the exploratory Phase 0, we observed that the Reddit galaxy is dominated by positive interactions: roughly
-            8.35 positive links for every negative one. This led to an intuitive hypothesis:</p>
+        <p>In the exploratory Phase 0, we observed that positive interactions dominate: roughly 8.35 positive links per
+            negative one. This led to the following hypothesis:</p>
 
         <div class="insight-card" style="border-left-color: var(--accent-gold);">
-            <p class="insight-text" style="font-size: 1.1rem; font-style: normal;">
-                Positive interactions define the social skeleton of the galaxy. They determine who occupies the core,
-                who bridges clusters, and who orbits the periphery. Conflicts may add turbulence, but they should not
-                fundamentally reshape this skeleton—at most, they change the “color” of the network without altering its
-                structure.
-            </p>
-        </div>
-        <p>In other words, the galaxy’s structural backbone, formed by the majority of positive links, was expected to
-            remain <strong>mirror-constant</strong>, stable across both friendly and adversarial interactions.</p>
-
-        <h3 class="sub-glow">2. Technical Verification: Peace as the Galaxy’s “Anchor”</h3>
-        <p>To test this, we compared two perspectives: <strong>Global Perspective</strong> (including all interactions)
-            and <strong>Purely Positive Perspective</strong> (filtering out conflicts).</p>
-
-        <div class="info-card" style="background: rgba(0, 243, 255, 0.03); margin-bottom: 2rem;">
-            <span class="card-title" style="color: var(--accent-cyan);">Methodology & Observations</span>
-            <p class="card-desc">
-                We extracted the fixed-effect coefficients for 27 language features, producing high-dimensional behavior
-                vectors for each link. Computing Pearson correlation coefficients revealed <strong>near-perfect
-                alignment</strong>: peripheral links (Intra-Periphery) demonstrate correlations as high as
-                <strong>0.99</strong>.
+            <p class="insight-text" style="font-size: 1.05rem;">
+                We assume that positive interactions define the Reddit galaxy’s “gravitational skeleton,” determining
+                which communities occupy the core, which serve as cross-cluster bridges, and which orbit at the
+                periphery. Conflicts may induce local turbulence, but the overall skeletal structure should remain
+                stable.
             </p>
         </div>
 
-        <p>This implies that positive interactions are not just dominant in volume—they define the steady-state social
-            architecture of the Reddit galaxy. <strong>Peace acts as the galaxy’s gravitational anchor</strong>, holding
-            core and peripheral clusters in predictable orbits.</p>
-    </div>
+        <h3 class="sub-glow">2. Technical Verification: Peace as the Galaxy’s Anchor</h3>
+        <p>To test this, we compared the global network with the peace-only network:</p>
+        <ul style="line-height:1.8; padding-left:1.2rem;">
+            <li>Computed LMM fixed-effect coefficients for each link, resulting in 27-dimensional high-dimensional
+                behavior vectors.
+            </li>
+            <li>Calculated Pearson correlations between corresponding links in the peace and global networks.</li>
+            <li>Observed near-perfect alignment: peripheral links (Intra-Periphery) reached correlations up to 0.99,
+                with core links similarly aligned.
+            </li>
+        </ul>
 
-    <div class="container-text">
-        <h3 class="sub-glow">3. Structural Divergence: Conflict-Induced Logic Shifts</h3>
-        <p>When we shift to a purely negative perspective, the mirror-constant assumption breaks. Conflict does not
-            simply amplify existing patterns—it creates a new social gravity, one that reshapes the galaxy’s
-            landscape.</p>
-    </div>
+        <p>This confirms that positive interactions do not merely dominate in volume—they define the steady-state social
+            architecture. <strong>Peace acts as the galaxy’s gravitational anchor</strong>, holding core and peripheral
+            clusters in predictable orbits.</p>
 
-    <div class="container-wide">
+        <h3 class="sub-glow">3. Structural Drift: Conflict-Induced Logic Shifts</h3>
+        <p>Examining the conflict-only network reveals that the mirror-constant assumption breaks down. Conflict does
+            not just amplify existing patterns—it generates a new social gravity, reshaping the galaxy’s landscape.</p>
 
-        <div class="chart-wrapper">
-            <iframe class="chart-content"
-                    src="{{ '/assets/plots/RQ4/divergence_vector.html' | relative_url }}"></iframe>
-            <div class="chart-caption">Structural Drift: High-dimensional behavior vectors losing alignment under pure
-                conflict contexts.
+
+        <p>Correlations shrink significantly under conflict, with peripheral regions showing the largest divergence.
+            This indicates that edge clusters are the first to experience destabilization. <strong>Conflict warps the
+                underlying social skeleton</strong>, producing behaviors unseen under steady conditions.</p>
+
+        <h3 class="sub-glow">4. Role Drift & Structural Reorganization</h3>
+        <p>To analyze structural reorganization under conflict, we employed a combination of set theory and statistical
+            comparison:</p>
+        <ul style="line-height:1.8; padding-left:1.2rem;">
+            <li><strong>Jaccard Similarity:</strong> Measures the overlap of core members between peace and conflict
+                networks, quantifying role retention or migration.
+            </li>
+            <li><strong>Feature Drift Analysis:</strong> For nodes “relegated” from core to periphery, we track shifts
+                in language features (logic, pronouns, emotional tone, readability) before and after migration, testing
+                the hypothesis that high traffic does not guarantee structural influence.
+            </li>
+        </ul>
+
+        <div class="container-huge">
+            <div class="chart-grid-huge">
+                <div class="chart-wrapper">
+                    <iframe class="chart-content giant-chart"
+                            src="{{ '/assets/plots/RQ4/transition_flow_Positive.html' | relative_url }}"></iframe>
+                    <div class="chart-caption">
+                        Figure 4.1
+                    </div>
+                </div>
+
+                <div class="chart-wrapper">
+                    <iframe class="chart-content giant-chart"
+                            src="{{ '/assets/plots/RQ4/transition_flow_Negative.html' | relative_url }}"></iframe>
+                    <div class="chart-caption">
+                        Figure 4.2
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="container-text">
-        <p>Observations show that correlations shrink significantly under conflict. Peripheral regions (Intra-Periphery)
-            show the largest divergence, indicating that clusters at the edge of the galaxy are the first to experience
-            structural destabilization. <strong>Conflict warps the underlying social skeleton</strong>, producing
-            behaviors unseen under steady conditions.</p>
-    </div>
-
-    <div class="container-text">
-        <h3 class="sub-glow">4. Role Reorganization: Deceptiveness of High-Traffic Links</h3>
-        <p>Why do seemingly dominant core links lose influence in conflict? LMM intercept and coefficient shifts reveal
-            that <strong>high traffic does not guarantee structural power.</strong></p>
-    </div>
-
-    <div class="container-wide">
 
         <div class="card-grid">
             <div class="info-card">
                 <span class="card-title" style="color: var(--accent-blue);">Relegation</span>
-                <p class="card-desc">Core Cross-Strong links appear central in global models due to sheer interaction
-                    volume, but lose influence in specific contexts.</p>
+                <p class="card-desc">High-traffic core links appear central in global models but lose influence in
+                    conflict contexts.</p>
             </div>
             <div class="info-card">
                 <span class="card-title" style="color: var(--accent-purple);">Bubble Effect</span>
-                <p class="card-desc">Their influence depends on a majority of non-negative interactions—essentially a
-                    traffic bubble that bursts under conflict.</p>
+                <p class="card-desc">Their influence depends on mostly non-negative interactions—once conflict appears,
+                    the traffic “bubble” bursts.</p>
             </div>
             <div class="info-card">
                 <span class="card-title" style="color: var(--accent-gold);">Reshuffling</span>
-                <p class="card-desc">In a pure conflict context, previously peripheral connections rise, demonstrating
-                    structural role reshuffling.</p>
+                <p class="card-desc">In pure conflict, previously peripheral connections rise, demonstrating structural
+                    role reshuffling.</p>
             </div>
         </div>
-    </div>
 
-    <div class="container-text" style="text-align: center; margin-top: 5rem;">
-        <h3 class="sub-glow">5. Conflict vs. Peace: Macro Patterns</h3>
-    </div>
+        <h3 class="sub-glow" style="text-align: center; margin-top: 3rem;">5. Conflict vs. Peace: Macro Patterns</h3>
 
-    <div class="container-wide">
         <div class="dimensions-grid">
             <div class="info-card dimension-card">
                 <span class="card-title">Peace Defines the Rules</span>
-                <p class="card-desc">Positive interactions established the structural framework of clusters, cores, and
-                    bridges. This framework is remarkably resilient under normal conditions.</p>
+                <p class="card-desc">Positive interactions form the framework for clusters, cores, and bridges, which
+                    remains robust under normal conditions.</p>
             </div>
             <div class="info-card dimension-card">
-                <span class="card-title">Conflict Drives Divergence</span>
-                <p class="card-desc">Negative interactions trigger structural drift. Peripheral clusters destabilize
+                <span class="card-title">Conflict Drives Drift</span>
+                <p class="card-desc">Negative interactions trigger structural drift; peripheral clusters destabilize
                     first, and cross-cluster links may lose authority.</p>
             </div>
             <div class="info-card dimension-card">
                 <span class="card-title">Dynamic Role Shifts</span>
-                <p class="card-desc">High-traffic core links are powerful under peace but are vulnerable to conflict due
-                    to their reliance on positive interactions.</p>
+                <p class="card-desc">High-traffic core links are strong under peace but vulnerable in conflict due to
+                    their reliance on positive interactions.</p>
             </div>
             <div class="info-card dimension-card" style="border-top-color: var(--accent-red);">
                 <span class="card-title">Reshuffling</span>
-                <p class="card-desc">The conflict environment elevates peripheral and opportunistic clusters,
-                    challenging the established hierarchy.</p>
+                <p class="card-desc">Conflict elevates peripheral and opportunistic clusters, challenging the
+                    established hierarchy.</p>
             </div>
         </div>
-    </div>
 
-    <div class="container-text">
         <div class="insight-card">
-            <p class="insight-text">
-                <strong>Conclusion:</strong> The Reddit galaxy is a dynamic equilibrium system, where peace defines the
-                steady-state social order, and conflict drives localized reorganization. Influence in calm conditions
-                does not guarantee influence under pure antagonism—social gravity is context-sensitive, and roles can
-                invert quickly.
+            <p class="insight-text" style="font-size: 1.05rem;">
+                <strong>Conclusion:</strong> The Reddit galaxy is a dynamic equilibrium system. Peace defines the
+                steady-state social order, while conflict drives localized reorganization. Influence under calm
+                conditions does not guarantee influence under pure antagonism—social gravity is context-dependent, and
+                roles can invert quickly.
             </p>
         </div>
     </div>
+
 </section>
+
+<!--<section id="rq4">-->
+<!--    <div class="container-text">-->
+<!--        <div class="rq-header blue">-->
+<!--            <span class="rq-label">Research Question 04</span>-->
+<!--            <h2 class="rq-title">Macro Perspective: Steady-State Structures and Conflict-Driven Reorganization in the-->
+<!--                Reddit Galaxy</h2>-->
+<!--        </div>-->
+
+<!--        <p>Up until now, we’ve explored how different communication links behave at the micro-level, analyzing signal-->
+<!--            complexity, logic, identity markers, and emotional tone. But a galaxy isn’t defined by individual signals-->
+<!--            alone—it is the interplay of all its stars and clusters. At a macro scale, we face a structural question:-->
+<!--            <strong>What fundamentally defines the social architecture of the Reddit galaxy? When conflicts erupt, does-->
+<!--                this architecture remain resilient, or does it collapse and reorganize?</strong></p>-->
+
+<!--        <p>-->
+<!--            All analyses so far have been conducted on the <strong>global network</strong>, where all-->
+<!--            interactions—positive and negative—are jointly considered.-->
+<!--            In the next step, however, we deliberately reconstruct the galaxy under two extreme observational lenses:-->
+<!--            one network formed exclusively by <strong>positive links</strong>, and another formed exclusively by-->
+<!--            <strong>negative links</strong>.-->
+<!--            This separation allows us to examine whether the social architecture observed earlier is a genuine-->
+<!--            steady-state structure,-->
+<!--            or merely an artifact of aggregation across fundamentally different interaction regimes.-->
+<!--        </p>-->
+
+
+<!--        <p>To address this, we adopt a multi-dimensional LMM coefficient vector framework, which allows us to track the-->
+<!--            stability and divergence of interaction patterns across different social contexts. This framework provides a-->
+<!--            way to map the galaxy’s structural “gravity wells” and observe how they shift under conflict.</p>-->
+
+<!--        <h3 class="sub-glow">1. Initial Hypothesis: “Mirror-Constant” Structures</h3>-->
+<!--        <p>In the exploratory Phase 0, we observed that the Reddit galaxy is dominated by positive interactions: roughly-->
+<!--            8.35 positive links for every negative one. This led to an intuitive hypothesis:</p>-->
+
+<!--        <div class="insight-card" style="border-left-color: var(&#45;&#45;accent-gold);">-->
+<!--            <p class="insight-text" style="font-size: 1.1rem; font-style: normal;">-->
+<!--                Positive interactions define the social skeleton of the galaxy. They determine who occupies the core,-->
+<!--                who bridges clusters, and who orbits the periphery. Conflicts may add turbulence, but they should not-->
+<!--                fundamentally reshape this skeleton—at most, they change the “color” of the network without altering its-->
+<!--                structure.-->
+<!--            </p>-->
+<!--        </div>-->
+<!--        <p>In other words, the galaxy’s structural backbone, formed by the majority of positive links, was expected to-->
+<!--            remain <strong>mirror-constant</strong>, stable across both friendly and adversarial interactions.</p>-->
+
+<!--        <h3 class="sub-glow">2. Technical Verification: Peace as the Galaxy’s “Anchor”</h3>-->
+<!--        <p>To test this, we compared two perspectives: <strong>Global Perspective</strong> (including all interactions)-->
+<!--            and <strong>Purely Positive Perspective</strong> (filtering out conflicts).</p>-->
+
+<!--        <div class="info-card" style="background: rgba(0, 243, 255, 0.03); margin-bottom: 2rem;">-->
+<!--            <span class="card-title" style="color: var(&#45;&#45;accent-cyan);">Methodology & Observations</span>-->
+<!--            <p class="card-desc">-->
+<!--                We extracted the fixed-effect coefficients for 27 language features, producing high-dimensional behavior-->
+<!--                vectors for each link. Computing Pearson correlation coefficients revealed <strong>near-perfect-->
+<!--                alignment</strong>: peripheral links (Intra-Periphery) demonstrate correlations as high as-->
+<!--                <strong>0.99</strong>.-->
+<!--            </p>-->
+<!--        </div>-->
+
+<!--        <p>This implies that positive interactions are not just dominant in volume—they define the steady-state social-->
+<!--            architecture of the Reddit galaxy. <strong>Peace acts as the galaxy’s gravitational anchor</strong>, holding-->
+<!--            core and peripheral clusters in predictable orbits.</p>-->
+<!--    </div>-->
+
+<!--    <div class="container-text">-->
+<!--        <h3 class="sub-glow">3. Structural Divergence: Conflict-Induced Logic Shifts</h3>-->
+<!--        <p>When we shift to a purely negative perspective, the mirror-constant assumption breaks. Conflict does not-->
+<!--            simply amplify existing patterns—it creates a new social gravity, one that reshapes the galaxy’s-->
+<!--            landscape.</p>-->
+<!--    </div>-->
+
+<!--    <div class="container-wide">-->
+
+<!--        <div class="chart-wrapper">-->
+<!--            <iframe class="chart-content"-->
+<!--                    src="{{ '/assets/plots/RQ4/divergence_vector.html' | relative_url }}"></iframe>-->
+<!--            <div class="chart-caption">Structural Drift: High-dimensional behavior vectors losing alignment under pure-->
+<!--                conflict contexts.-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="container-text">-->
+<!--        <p>Observations show that correlations shrink significantly under conflict. Peripheral regions (Intra-Periphery)-->
+<!--            show the largest divergence, indicating that clusters at the edge of the galaxy are the first to experience-->
+<!--            structural destabilization. <strong>Conflict warps the underlying social skeleton</strong>, producing-->
+<!--            behaviors unseen under steady conditions.</p>-->
+<!--    </div>-->
+
+<!--    <div class="container-text">-->
+<!--        <h3 class="sub-glow">4. Role Reorganization: Deceptiveness of High-Traffic Links</h3>-->
+<!--        <p>Why do seemingly dominant core links lose influence in conflict? LMM intercept and coefficient shifts reveal-->
+<!--            that <strong>high traffic does not guarantee structural power.</strong></p>-->
+<!--    </div>-->
+
+<!--    <div class="container-wide">-->
+
+<!--        <div class="card-grid">-->
+<!--            <div class="info-card">-->
+<!--                <span class="card-title" style="color: var(&#45;&#45;accent-blue);">Relegation</span>-->
+<!--                <p class="card-desc">Core Cross-Strong links appear central in global models due to sheer interaction-->
+<!--                    volume, but lose influence in specific contexts.</p>-->
+<!--            </div>-->
+<!--            <div class="info-card">-->
+<!--                <span class="card-title" style="color: var(&#45;&#45;accent-purple);">Bubble Effect</span>-->
+<!--                <p class="card-desc">Their influence depends on a majority of non-negative interactions—essentially a-->
+<!--                    traffic bubble that bursts under conflict.</p>-->
+<!--            </div>-->
+<!--            <div class="info-card">-->
+<!--                <span class="card-title" style="color: var(&#45;&#45;accent-gold);">Reshuffling</span>-->
+<!--                <p class="card-desc">In a pure conflict context, previously peripheral connections rise, demonstrating-->
+<!--                    structural role reshuffling.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="container-text" style="text-align: center; margin-top: 5rem;">-->
+<!--        <h3 class="sub-glow">5. Conflict vs. Peace: Macro Patterns</h3>-->
+<!--    </div>-->
+
+<!--    <div class="container-wide">-->
+<!--        <div class="dimensions-grid">-->
+<!--            <div class="info-card dimension-card">-->
+<!--                <span class="card-title">Peace Defines the Rules</span>-->
+<!--                <p class="card-desc">Positive interactions established the structural framework of clusters, cores, and-->
+<!--                    bridges. This framework is remarkably resilient under normal conditions.</p>-->
+<!--            </div>-->
+<!--            <div class="info-card dimension-card">-->
+<!--                <span class="card-title">Conflict Drives Divergence</span>-->
+<!--                <p class="card-desc">Negative interactions trigger structural drift. Peripheral clusters destabilize-->
+<!--                    first, and cross-cluster links may lose authority.</p>-->
+<!--            </div>-->
+<!--            <div class="info-card dimension-card">-->
+<!--                <span class="card-title">Dynamic Role Shifts</span>-->
+<!--                <p class="card-desc">High-traffic core links are powerful under peace but are vulnerable to conflict due-->
+<!--                    to their reliance on positive interactions.</p>-->
+<!--            </div>-->
+<!--            <div class="info-card dimension-card" style="border-top-color: var(&#45;&#45;accent-red);">-->
+<!--                <span class="card-title">Reshuffling</span>-->
+<!--                <p class="card-desc">The conflict environment elevates peripheral and opportunistic clusters,-->
+<!--                    challenging the established hierarchy.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="container-text">-->
+<!--        <div class="insight-card">-->
+<!--            <p class="insight-text">-->
+<!--                <strong>Conclusion:</strong> The Reddit galaxy is a dynamic equilibrium system, where peace defines the-->
+<!--                steady-state social order, and conflict drives localized reorganization. Influence in calm conditions-->
+<!--                does not guarantee influence under pure antagonism—social gravity is context-sensitive, and roles can-->
+<!--                invert quickly.-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
 <script>
     // 进度条控制
