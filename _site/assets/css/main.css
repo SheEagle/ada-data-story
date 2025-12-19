@@ -1,323 +1,451 @@
+/* 文件路径: assets/css/main.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@200;400;600&family=JetBrains+Mono&display=swap');
+
 :root {
-    --bg-deep: #050505;
+    --bg-deep: #020408;
+    --bg-panel: rgba(10, 15, 25, 0.7);
     --accent-cyan: #00f3ff;
     --accent-purple: #bc13fe;
-    --text-main: #e0e0e0;
-    --text-muted: #9ca3af;
-    --font-head: 'Inter', system-ui, sans-serif;
-    --font-mono: 'Fira Code', monospace;
-    --max-text-width: 780px; /* 最佳阅读宽度 */
-    --max-chart-width: 1200px; /* 图表比文字宽，形成视觉节奏 */
+    --accent-blue: #3b82f6;
+    --accent-gold: #fbbf24;
+    --accent-red: #ff4d4d;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --font-header: 'Space Grotesk', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* =========================================
-   全局基础设置
-   ========================================= */
+/* --- 基础背景设置 --- */
 body {
     background-color: var(--bg-deep);
     color: var(--text-main);
-    font-family: var(--font-head);
+    font-family: var(--font-body);
     line-height: 1.7;
     margin: 0;
     overflow-x: hidden;
-    /* 背景：极淡的星空杂点 */
-    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: 0 0, 25px 25px;
+    scroll-behavior: smooth;
 }
 
-/* 链接样式 */
-a {
+/* 动态星空背景层 */
+.galaxy-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, #0a192f 0%, #020408 100%);
+    overflow: hidden;
+}
+
+.galaxy-bg::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 10vw 20vh 1px #fff, 50vw 40vh 1px #fff, 80vw 10vh 1px #fff,
+    20vw 70vh 1px #fff, 60vw 90vh 1px #fff, 90vw 60vh 1px #fff;
+    opacity: 0.3;
+    animation: stars-twinkle 5s infinite alternate;
+}
+
+@keyframes stars-twinkle {
+    from {
+        opacity: 0.1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+/* --- 布局容器 --- */
+section {
+    min-height: 80vh;
+    padding: 8rem 10% 4rem 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+    opacity: 0; /* 用于滚动显露动画 */
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container-text {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* --- 文本样式 --- */
+p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+}
+
+strong {
     color: var(--accent-cyan);
-    text-decoration: none;
-    transition: 0.3s;
+    font-weight: 600;
 }
 
-a:hover {
-    text-shadow: 0 0 10px var(--accent-cyan);
-}
-
-/* =========================================
-   1. HERO SECTION (封面/引言)
-   ========================================= */
-.hero-section {
-    min-height: 90vh; /* 占据第一屏 */
+/* --- 组件: Hero --- */
+.hero {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 5%;
-    /* 底部渐变遮罩 */
-    background: radial-gradient(circle at 70% 20%, rgba(188, 19, 254, 0.15) 0%, transparent 60%);
+    align-items: flex-start;
+    border-bottom: 1px solid var(--glass-border);
 }
 
-.hero-content {
-    max-width: 1000px;
-    margin: 0 auto; /* 容器居中 */
-    width: 100%;
-    text-align: left; /* 内容左对齐 */
-}
-
-.hero-tag {
+.hero-meta {
     font-family: var(--font-mono);
-    color: var(--accent-cyan);
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-    display: block;
+    color: var(--accent-purple);
     text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-purple);
 }
 
 .hero-title {
-    font-size: 4rem; /* 超大标题 */
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    background: linear-gradient(90deg, #fff, #aaa);
+    font-family: var(--font-header);
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
+    margin: 1rem 0;
+    font-weight: 700;
+    background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.4));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.hero-intro {
-    font-size: 1.4rem;
-    color: var(--text-muted);
+.hero-sub {
+    font-size: 1.6rem;
     max-width: 700px;
-    border-left: 3px solid var(--accent-purple);
-    padding-left: 2rem;
+    color: var(--text-muted);
+    font-weight: 200;
+    margin-top: 1rem;
 }
 
-/* =========================================
-   2. 通用内容区块 (文字流)
-   ========================================= */
-.content-block {
-    width: 100%;
-    padding: 2rem 5%;
-    box-sizing: border-box;
+/* --- 组件: RQ Header --- */
+.rq-header {
+    margin-bottom: 4rem;
+    position: relative;
 }
 
-.text-container {
-    max-width: var(--max-text-width);
-    margin: 0 auto; /* 区块在屏幕居中 */
-    text-align: left; /* 文字内容左对齐 */
+.rq-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    background: rgba(0, 243, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    display: inline-block;
 }
 
-/* 章节大标题 */
-.section-title {
-    font-size: 2.2rem;
+.rq-title {
+    font-family: var(--font-header);
+    font-size: 2.8rem;
+    line-height: 1.2;
     color: #fff;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* --- 组件: Info Cards (Profile卡片) --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 4rem 0;
+}
+
+.info-card {
+    background: var(--bg-panel);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 2.5rem;
+    border-radius: 16px;
+    transition: all 0.4s ease;
     position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 80px;
-    height: 3px;
-    background: var(--accent-cyan);
-    box-shadow: 0 0 10px var(--accent-cyan);
-}
-
-/* 正文段落 P */
-.text-container p {
-    font-size: 1.15rem;
-    margin-bottom: 1.8rem;
-    color: #cccccc;
-    font-weight: 300;
-}
-
-/* 强调文字 */
-.highlight-box {
-    background: rgba(188, 19, 254, 0.05);
-    border: 1px solid rgba(188, 19, 254, 0.3);
-    padding: 2rem;
-    margin: 3rem 0;
-    border-radius: 8px;
-}
-
-.highlight-box p {
-    margin-bottom: 0;
-    color: #eebbff;
-    font-size: 1.25rem;
-    font-style: italic;
-}
-
-/* =========================================
-   3. 图表展示区块 (宽屏视觉)
-   ========================================= */
-.chart-block {
-    width: 100%;
-    padding: 4rem 5%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5), transparent);
-}
-
-.chart-frame {
-    width: 100%;
-    max-width: var(--max-chart-width); /* 图表比文字宽 */
-    background: rgba(20, 20, 25, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
     overflow: hidden;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
 }
 
-/* 这里的比例控制让 iframe 自适应高度 */
-.chart-frame iframe {
-    width: 100%;
-    min-height: 600px; /* 默认高度，不够可调 */
-    border: none;
+.info-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-blue);
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.info-card.core::before {
+    background: var(--accent-blue);
+}
+
+.info-card.periphery::before {
+    background: var(--accent-gold);
+}
+
+.info-card.strong::before {
+    background: var(--accent-cyan);
+}
+
+.info-card.weak::before {
+    background: var(--accent-red);
+}
+
+.card-title {
+    font-family: var(--font-header);
+    font-size: 1.4rem;
     display: block;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+/* --- 组件: Insight Card --- */
+.insight-card {
+    background: linear-gradient(135deg, rgba(188, 19, 254, 0.15) 0%, transparent 100%);
+    border: 1px solid rgba(188, 19, 254, 0.3);
+    padding: 3rem;
+    border-radius: 20px;
+    margin: 5rem 0;
+    position: relative;
+}
+
+.insight-card::after {
+    content: "✦";
+    position: absolute;
+    top: -20px;
+    right: 30px;
+    font-size: 3rem;
+    color: var(--accent-purple);
+    opacity: 0.5;
+}
+
+.insight-text {
+    font-size: 1.5rem;
+    color: #fff;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* --- 组件: Chart/Image --- */
+.chart-wrapper {
+    background: #000;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    margin: 4rem 0;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.chart-content {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 12px 12px 0 0;
 }
 
 .chart-caption {
     padding: 1rem;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--accent-cyan);
+    font-size: 0.8rem;
+    color: var(--text-muted);
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* =========================================
-   移动端适配
-   ========================================= */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-intro {
-        font-size: 1.1rem;
-        padding-left: 1rem;
-    }
-
-    .text-container p {
-        font-size: 1rem;
-    }
-
-    .chart-frame iframe {
-        min-height: 400px;
-    }
-}
-
-:root {
-    /* 基础颜色 */
-    --bg-deep: #050505;
-    --accent-cyan: #00f3ff;
-    --accent-purple: #bc13fe;
-    --text-main: #eeeeee;
-    --text-muted: #999999;
-
-    /* 字体 */
-    --font-head: 'Inter', system-ui, sans-serif;
-    --font-mono: 'Fira Code', monospace; /* 适合数据显示 */
-
-    /* 【关键修改】 宽度设置 */
-    --max-text-width: 1000px; /* 增加文字宽度 (原780px) */
-    --max-chart-width: 1200px; /* 图表依然保持宽屏 */
-}
-
-body {
-    background-color: var(--bg-deep);
-    color: var(--text-main);
-    font-family: var(--font-head);
-    line-height: 1.6; /* 宽屏下行高稍微减小一点点，更紧凑 */
-    margin: 0;
-    overflow-x: hidden;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-}
-
-/* =========================================
-   RESEARCH QUESTION (RQ) 标题样式
-   ========================================= */
-.rq-box {
-    margin-top: 6rem; /* 距离上一段内容的间距 */
-    margin-bottom: 3rem; /* 距离正文的间距 */
-    padding-left: 2rem;
-    border-left: 5px solid var(--accent-cyan); /* 左侧亮条 */
-    position: relative;
-    /* 可选：给标题加一个极淡的背景，增加块感 */
-    background: linear-gradient(90deg, rgba(0, 243, 255, 0.05) 0%, transparent 80%);
-    padding: 2rem;
-    border-radius: 0 8px 8px 0;
-}
-
-.rq-label {
-    display: block;
-    font-family: var(--font-mono);
-    color: var(--accent-purple);
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 0.8rem;
-    text-transform: uppercase;
-}
-
-.rq-title {
-    font-size: 2.2rem; /* RQ 标题字号 */
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.3;
-    margin: 0;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-/* =========================================
-   正文与布局调整
-   ========================================= */
-.content-block {
-    width: 100%;
-    padding: 1rem 5%;
-    box-sizing: border-box;
-}
-
-.text-container {
-    max-width: var(--max-text-width); /* 使用新的更宽尺寸 */
-    margin: 0 auto;
-    text-align: left;
-}
-
-.text-container p {
-    font-size: 1.2rem; /* 宽屏下字体稍微调大，防止一行字太多看花眼 */
-    margin-bottom: 1.5rem;
-    color: #cccccc;
-    font-weight: 300;
-    text-align: justify; /* 宽屏建议两端对齐，边缘更整齐 */
-}
-
-/* 引用高亮框 */
-.insight-box {
-    border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.03);
-    padding: 2rem;
-    margin: 2rem 0;
-    border-left: 3px solid var(--accent-purple);
 }
 
-/* 图表容器 */
-.chart-frame {
-    width: 100%;
-    max-width: var(--max-chart-width);
-    margin: 4rem auto;
+/* 导航小点 */
+.side-nav {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.nav-dot.active {
+    background: var(--accent-cyan);
+    box-shadow: 0 0 15px var(--accent-cyan);
+    transform: scale(1.4);
+}
+
+/* 小标题的特殊发光效果 */
+.sub-glow {
+    font-family: var(--font-header);
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 4rem 0 1.5rem 0;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.sub-glow::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* 蓝色主题的RQ Header */
+.rq-header.blue {
+    border-left-color: var(--accent-blue);
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+}
+
+/* 列表符号微调 */
+.card-desc strong {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* 2*2 维度网格布局 */
+.dimensions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 强制 2 列 */
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* 针对移动端自动切换为 1 列 */
+@media (max-width: 992px) {
+    .dimensions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 维度卡片内部样式优化 */
+.dimension-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 400px;
+    background: rgba(15, 20, 30, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #000;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
-.chart-frame iframe {
+.card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.feature-tags {
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.feature-tags code {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dimension-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+}
+
+.dimension-card li {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.dimension-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-cyan);
+}
+
+/* 图表并排网格 */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 桌面端 1 排 2 列 */
+    gap: 25px; /* 图片间的间距 */
+    margin: 4rem 0;
+}
+
+/* 针对并排图表的 iframe 高度微调 */
+.chart-grid .chart-content {
+    min-height: 450px; /* 并排时高度可以稍微减小，保持比例协调 */
+}
+
+/* 响应式：在平板和手机上改为一排一张 */
+@media (max-width: 1024px) {
+    .chart-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+
+/* 确保图表包装器在容器中居中 */
+.chart-center-wrapper {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;
     width: 100%;
-    min-height: 600px;
-    border: none;
-    display: block;
+    margin: 3rem 0;
+}
+
+/* 限制图表最大宽度，防止在超宽屏上过度拉伸，同时保持居中 */
+.chart-center-wrapper .chart-wrapper {
+    width: 100%;
+    max-width: 1000px; /* 您可以根据图片比例调整此宽度 */
+    margin: 0 auto; /* 块级居中备选方案 */
+}
+
+/* 确保图表说明文字居中 */
+.chart-caption {
+    padding: 15px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--glass-border);
 }

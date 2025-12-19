@@ -3,20 +3,20 @@ layout: default
 title: Digital Tribes
 ---
 
-<section style="height:80vh; display:flex; flex-direction:column; justify-content:center; padding:0 5%;">
-    <div style="max-width:1000px; margin:0 auto; width:100%;">
-        <h1 style="font-size:4rem; margin:10px 0; line-height:1.1;">How We Talk<br>About Others</h1>
-        <p style="font-size:1.5rem; color:#888; max-width:800px;">
-            Linguistic Patterns within Social Networks of Reddit Communities
-        </p>
+<div class="galaxy-bg"></div>
+
+<section id="hero" class="hero">
+    <span class="hero-meta">Academic Inquiry</span>
+    <h1 class="hero-title">How We Talk<br>About Others</h1>
+    <div class="hero-sub">
+        Linguistic Patterns within Social Networks of Reddit Communities.
     </div>
 </section>
 
-<section class="content-block">
-    <div class="text-container reveal">
-
-        <div class="rq-box">
-            <span class="rq-label">Phase 01: General Analysis</span>
+<section id="phase0">
+    <div class="container-text">
+        <div class="rq-header">
+            <span class="rq-label">Phase 0: General Analysis</span>
             <h2 class="rq-title">Take a Look at Reddit’s Galaxy</h2>
         </div>
 
@@ -24,7 +24,6 @@ title: Digital Tribes
             planet. These worlds do not exist in isolation; they are tethered by "gravitational bridges"—hyperlinks that
             allow information and users to travel from one corner of the universe to another. To understand this cosmos,
             we first calibrated our instruments to capture the basic signals of inter-community interaction.</p>
-
 
         <p>Our initial scan revealed two distinct frequencies of communication: <strong>Title</strong> and
             <strong>Body</strong> mentions. The Title frequency is significantly more active, generating approximately
@@ -39,7 +38,27 @@ title: Digital Tribes
             outnumber negative ones by a staggering <strong>8.35 to 1</strong>. Furthermore, positive connections are
             expanding at a much faster rate (slope 2.39) than negative ones (slope 0.24), indicating that as the Reddit
             Galaxy grows, it is becoming increasingly defined by constructive alignment rather than friction.</p>
+    </div>
 
+    <div class="container-wide">
+        <div class="chart-grid">
+            <div class="chart-wrapper">
+                <iframe class="chart-content" src="{{ '/assets/plots/phase0/trend.png' | relative_url }}"></iframe>
+                <div class="chart-caption">
+                    Figure 0.1 - The Expansion of the Reddit Galaxy: Linear Growth ($R^2 = 0.87$).
+                </div>
+            </div>
+
+            <div class="chart-wrapper">
+                <iframe class="chart-content" src="{{ '/assets/plots/phase0/comparison.png' | relative_url }}"></iframe>
+                <div class="chart-caption">
+                    Figure 0.2 -
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-text">
         <p>Zooming out to view the entire topological map, we identified <strong>67,180 planets</strong> interconnected
             by <strong>339,643 bridges</strong>. On average, each planet maintains roughly 10 gravitational ties to
             others, creating a densely populated social space. However, the connectivity is not uniform. We discovered a
@@ -52,28 +71,21 @@ title: Digital Tribes
             through the system, moving from influential "super-giants" to the peripheral settlements of the outer
             rim.</p>
 
-        <div class="chart-frame">
-            <iframe src="{{ '/assets/plots/weekly_sentiment_growth.png' | relative_url }}"></iframe>
-            <div style="padding:10px; color:#666; font-size:0.9rem; text-align:center; font-family:var(--font-mono);">
-                FIG 1.1 - The Expansion of the Reddit Galaxy: Linear Growth and Sentiment Polarization.
-            </div>
-        </div>
+        <p>Add Image</p>
 
-        <div class="insight-box">
-            <p style="margin:0; font-size:1.2rem; color:#fff;">
+        <div class="insight-card">
+            <p class="insight-text">
                 <strong>Finding:</strong> The Reddit Galaxy is a cohesive, rapidly expanding system where positive
                 interactions act as the primary engine of growth, binding 97% of communities into a single
                 "Super-cluster."
             </p>
         </div>
-
     </div>
 </section>
 
-<section class="content-block">
-    <div class="text-container reveal">
-
-        <div class="rq-box">
+<section id="rq1">
+    <div class="container-text">
+        <div class="rq-header purple">
             <span class="rq-label">Research Question 01</span>
             <h2 class="rq-title">Based on community social attributes, what distinct communication patterns can we
                 define?</h2>
@@ -99,7 +111,29 @@ title: Digital Tribes
             identify cohesive “constellations” within it. Compared to traditional classification methods, Leiden is
             particularly effective at detecting groups that are structurally dense and interactionally cohesive, making
             these constellations a closer approximation of Reddit’s operative social topology.</p>
+    </div>
 
+    <div class="container-wide">
+        <div class="chart-grid">
+            <div class="chart-wrapper">
+                <iframe class="chart-content"
+                        src="{{ '/assets/plots/RQ1/cluster_graph_global.png' | relative_url }}"></iframe>
+                <div class="chart-caption">
+                    Figure 0.1
+                </div>
+            </div>
+
+            <div class="chart-wrapper">
+                <iframe class="chart-content"
+                        src="{{ '/assets/plots/RQ1/cluster_size_distribution_global.png' | relative_url }}"></iframe>
+                <div class="chart-caption">
+                    Figure 0.2 -
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-text">
         <p>Once this structural star map was established, a new challenge emerged: how to characterize the “social
             distance” between communities. A binary distinction between interactions occurring within the same
             constellation and those crossing constellation boundaries proved too coarse, as it could not account for why
@@ -107,125 +141,587 @@ title: Digital Tribes
             hostility.</p>
 
         <p>To address this, we further partitioned all interactions into four categories, which form the analytical
-            foundation of our subsequent analyses. Intra-Core interactions occur between the most tightly connected
-            communities within a constellation; these communities share a highly aligned discourse and normative
-            framework, and their exchanges tend to be more nuanced and internally coherent. Intra-Periphery interactions
-            also take place within the same constellation but involve more peripheral communities, where shared cultural
-            background exists alongside weaker ties, often creating conditions for internal friction.
-            Beyond constellation boundaries, we distinguish Cross-Strong interactions, which connect communities from
-            different constellations that nonetheless maintain stable, recurrent exchanges, typically supported by a
-            partial shared context. Finally, Cross-Weak interactions occur between communities with little or no prior
-            relationship, representing the greatest social distance and the highest likelihood of contextual mismatch
-            and emotionally charged communication.</p>
+            foundation of our subsequent analyses:</p>
+    </div>
 
-        <p>The purpose of this four-way classification is not to introduce additional labels, but to more precisely
-            examine how language and conflict vary with social distance. </p>
-
-        <div class="chart-frame">
-            <iframe src="{{ '/assets/plots/cluster_graph_global.png' | relative_url }}"></iframe>
-            <div style="padding:10px; color:#666; font-size:0.9rem; text-align:center; font-family:var(--font-mono);">
-                FIG 1.1 -
+    <div class="container-wide">
+        <div class="chart-center-wrapper">
+            <div class="chart-wrapper">
+                <iframe class="chart-content"
+                        src="{{ '/assets/plots/RQ1/link_type_distribution_global.png' | relative_url }}"></iframe>
+                <div class="chart-caption">
+                    Figure 1.2 - Distribution of Link Categories: Quantifying the four interaction modes within the
+                    Reddit Galaxy.
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="insight-box">
-            <p style="margin:0; font-size:1.2rem; color:#fff;">
-                <strong>Finding:</strong> We identified four distinct modes of communication.
+    <div class="container-wide">
+        <div class="dimensions-grid">
+
+            <div class="info-card core">
+                <div class="card-tag" style="color: var(--accent-blue);">PROFILE 01</div>
+                <span class="card-title">Intra-Core Interactions</span>
+                <p class="card-desc">
+                    Intra-Core interactions occur between the most tightly connected communities within a constellation;
+                    these communities share a highly aligned discourse and normative framework, and their exchanges tend
+                    to be more nuanced and internally coherent.
+                </p>
+            </div>
+
+            <div class="info-card periphery">
+                <div class="card-tag" style="color: var(--accent-gold);">PROFILE 02</div>
+                <span class="card-title">Intra-Periphery Interactions</span>
+                <p class="card-desc">
+                    Intra-Periphery interactions also take place within the same constellation but involve more
+                    peripheral communities, where shared cultural background exists alongside weaker ties, often
+                    creating conditions for internal friction.
+                </p>
+            </div>
+
+            <div class="info-card strong">
+                <div class="card-tag" style="color: var(--accent-cyan);">PROFILE 03</div>
+                <span class="card-title">Cross-Strong Interactions</span>
+                <p class="card-desc">
+                    Beyond constellation boundaries, we distinguish Cross-Strong interactions, which connect communities
+                    from different constellations that nonetheless maintain stable, recurrent exchanges, typically
+                    supported by a partial shared context.
+                </p>
+            </div>
+
+            <div class="info-card weak">
+                <div class="card-tag" style="color: var(--accent-red);">PROFILE 04</div>
+                <span class="card-title">Cross-Weak Interactions</span>
+                <p class="card-desc">
+                    Finally, Cross-Weak interactions occur between communities with little or no prior relationship,
+                    representing the greatest social distance and the highest likelihood of contextual mismatch and
+                    emotionally charged communication.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-text">
+        <div class="insight-card">
+            <p class="insight-text" style="font-style: normal;">
+                The purpose of this four-way classification is not to introduce additional labels, but to more precisely
+                examine how language and conflict vary with social distance.
             </p>
         </div>
-
     </div>
 </section>
 
-<section class="content-block">
-    <div class="text-container reveal">
-
-        <div class="rq-box" style="border-left-color: var(--accent-purple);"><span
-                class="rq-label">Research Question 02</span>
+<section id="rq2">
+    <div class="container-text">
+        <div class="rq-header blue">
+            <span class="rq-label">Research Question 02</span>
             <h2 class="rq-title">How do the social attributes of communication links—defined by intra-community roles
                 and cross-community connection strength—determine baseline linguistic patterns in a peaceful
                 context?</h2>
         </div>
 
-        <p>When we analyzed the complexity of language used between different groups, a striking pattern emerged. We
-            discovered that as communities engage with "outsiders," their language shifts dramatically.</p>
+        <p>In the previous stage, we conceptualized Reddit as a galaxy of tens of thousands of communities and
+            identified four fundamental interaction types: <strong>Intra-Core, Intra-Periphery, Cross-Strong, and
+                Cross-Weak</strong>.</p>
 
-        <p>This phenomenon, which we call "Tactical Simplicity," suggests that complex jargon is reserved for the
-            in-group, while simple, aggressive language is weaponized for the out-group.</p>
+        <p>With Research Question 02, we move beyond describing the structure itself and ask a more focused question:
+            <strong>Once major confounding factors are removed, how does social distance shape language use?</strong>
+        </p>
 
-        <div class="chart-frame">
-            <iframe src="{{ '/assets/plots/complexity_plot.html' | relative_url }}"></iframe>
+        <p>This question seems straightforward but is methodologically delicate. Raw data cannot directly answer it, as
+            they are heavily influenced by covariates. Without proper control, any patterns observed might reflect noise
+            rather than genuine effects. The goal here is not simply to “discover patterns” but to systematically
+            calibrate the data and determine which linguistic differences are truly driven by social distance.</p>
+
+        <h3 class="sub-glow">First Calibration: Controlling Conflict Rate</h3>
+        <p>The first source of distortion is the uneven distribution of conflict across interaction types.</p>
+        <p>Conflict is not evenly spread in the Reddit galaxy. Cross-Strong interactions show a much higher frequency of
+            antagonistic language than internal community interactions. By contrast, Intra-Core and Intra-Periphery
+            interactions are generally more restrained. Analyzing all messages together would allow high-conflict
+            language to mask the structural properties of everyday communication.</p>
+        <div class="container-wide">
+            <div class="chart-wrapper">
+                <iframe class="chart-content"
+                        src="{{ '/assets/plots/RQ2/conflict.png' | relative_url }}"></iframe>
+                <div class="chart-caption">
+                </div>
+            </div>
+        </div>
+        <p>To address this, we divide the corpus into peaceful and conflictual contexts. This is not to diminish the
+            importance of conflict but to ensure that structural language patterns reflect social distance rather than
+            emotional escalation. In this analysis, we focus first on the peaceful context, where language choices
+            reliably reflect communicative expectations and audience perception.</p>
+
+        <h3 class="sub-glow">Second Calibration: Controlling Source Clusters</h3>
+        <p>Even within peaceful interactions, a second confound exists: the Source Cluster.</p>
+        <p>Each cluster in the Reddit galaxy consists of communities with similar topics, norms, and stylistic habits.
+            These inherent preferences influence language. Some clusters favor long sentences, abstract concepts, and
+            extended reasoning; others prefer short, direct, and pragmatic communication. If a specific interaction type
+            is dominated by certain clusters, cluster-specific style could be misattributed to social distance.</p>
+        <p>To remove this bias, we apply a <strong>Linear Mixed-Effects Model (LMM)</strong>. Each message’s source
+            cluster is treated as a random effect, absorbing cluster-level stylistic differences. The remaining fixed
+            effects therefore more reliably reflect the influence of interaction type itself. Effectively, the LMM
+            allows us to observe language in the Reddit galaxy after subtracting local cultural coloration.</p>
+    </div>
+
+    <div class="container-wide">
+        <div class="dimensions-header" style="text-align: center; margin-bottom: 3rem;">
+            <h3 class="sub-glow">Language Structure in a Stable Galaxy: Four Dimensions</h3>
+            <p style="max-width: 800px; margin: 1rem auto; font-size: 1rem; opacity: 0.8;">
+                After both calibrations, we can treat the Reddit galaxy as operating in a stable state. Language now
+                reflects social distance’s structural influence rather than conflict or cluster culture.
+            </p>
         </div>
 
+        <div class="dimensions-grid">
+
+            <div class="info-card dimension-card">
+                <div class="card-tag" style="color: var(--accent-cyan);">DIMENSION 01</div>
+                <span class="card-title">Complexity: Signal Resolution and Information Density</span>
+                <div class="feature-tags">
+                    <code>readability_index</code> <code>avg_words_per_sentence</code> <code>avg_word_length</code>
+                    <code>frac_upper</code>
+                </div>
+                <div class="card-desc">
+                    <strong>Observations:</strong>
+                    <ul>
+                        <li><strong>Intra-Core:</strong> High readability_index and long sentences indicate dense,
+                            precise communication—like a high-resolution signal in a stable orbit.
+                        </li>
+                        <li><strong>Intra-Periphery:</strong> Shorter sentences and high frac_upper suggest coarser,
+                            pulse-like communication emphasizing visual cues over structural complexity.
+                        </li>
+                        <li><strong>Cross-Strong:</strong> Complexity remains moderate, optimized for cross-community
+                            clarity.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card dimension-card">
+                <div class="card-tag" style="color: var(--accent-blue);">DIMENSION 02</div>
+                <span class="card-title">Logical Style: Organization and Alignment</span>
+                <div class="feature-tags">
+                    <code>LIWC_Funct</code> <code>LIWC_CogMech</code> <code>LIWC_Article</code> <code>LIWC_Prep</code>
+                    <code>LIWC_Certain</code>
+                </div>
+                <div class="card-desc">
+                    <strong>Observations:</strong>
+                    <ul>
+                        <li><strong>Cross-Strong:</strong> High proportions of functional words, articles, and
+                            prepositions indicate structured, aligned communication designed to avoid misinterpretation
+                            across clusters.
+                        </li>
+                        <li><strong>Intra-Core & Intra-Periphery:</strong> Lower LIWC_CogMech and LIWC_Certain suggest
+                            that some reasoning is implicit, embedded in shared knowledge.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card dimension-card">
+                <div class="card-tag" style="color: var(--accent-purple);">DIMENSION 03</div>
+                <span class="card-title">Identity Expression: Pronouns as Orbital Markers</span>
+                <div class="feature-tags">
+                    <code>LIWC_I</code> <code>LIWC_We</code> <code>LIWC_They</code> <code>LIWC_Excl</code> <code>LIWC_Social</code>
+                </div>
+                <div class="card-desc">
+                    <strong>Observations:</strong>
+                    <ul>
+                        <li><strong>Intra-Periphery:</strong> High LIWC_We and LIWC_Excl reflect reinforcement of group
+                            boundaries, stabilizing identity in less stable regions.
+                        </li>
+                        <li><strong>Intra-Core:</strong> High LIWC_I and low LIWC_They indicate internalized identity
+                            and confidence.
+                        </li>
+                        <li><strong>Cross-community:</strong> Elevated LIWC_They shows outward orientation, highlighting
+                            communication aimed at external audiences.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card dimension-card">
+                <div class="card-tag" style="color: var(--accent-red);">DIMENSION 04</div>
+                <span class="card-title">Emotional Temperature: Signal Energy</span>
+                <div class="feature-tags">
+                    <code>vader_compound</code> <code>vader_neg</code> <code>LIWC_Anger</code> <code>LIWC_Swear</code>
+                    <code>LIWC_Affect</code>
+                </div>
+                <div class="card-desc">
+                    <strong>Observations:</strong>
+                    <ul>
+                        <li><strong>Intra-Core:</strong> High vader_compound with low LIWC_Anger and LIWC_Swear forms a
+                            stable, high-energy zone—strong engagement without destructive conflict.
+                        </li>
+                        <li><strong>Cross-Strong:</strong> Lower emotional values reflect deliberate moderation to
+                            reduce misinterpretation risk.
+                        </li>
+                        <li><strong>Cross-community:</strong> LIWC_Swear remains higher than internal interactions,
+                            indicating baseline friction due to social distance.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-wide">
+        <div class="chart-wrapper">
+            <iframe class="chart-content" src="{{ '/assets/plots/complexity_plot.html' | relative_url }}"></iframe>
+            <div class="chart-caption">Analysis Map: Visualizing linguistic shifts across calibrated social distances.
+            </div>
+        </div>
+    </div>
+
+    <div class="container-text">
+        <h3 class="sub-glow" style="text-align: center; margin-bottom: 3rem;">Four Communication Profiles in the
+            Galaxy</h3>
+    </div>
+
+    <div class="container-wide">
+        <div class="card-grid">
+            <div class="info-card core">
+                <span class="card-title">Intra-Core</span>
+                <p class="card-desc">High readability, long sentences, implicit logic, elevated LIWC_I, high affect with
+                    low anger → <strong>Stable core orbit</strong></p>
+            </div>
+            <div class="info-card periphery">
+                <span class="card-title">Intra-Periphery</span>
+                <p class="card-desc">Short sentences, high frac_upper, weakly explicit logic, high LIWC_We and exclusion
+                    markers, more volatile emotion → <strong>Near-core unstable belt</strong></p>
+            </div>
+            <div class="info-card strong">
+                <span class="card-title">Cross-Strong</span>
+                <p class="card-desc">Moderate complexity, structured grammar, high LIWC_They, low emotional fluctuation
+                    → <strong>Stable interstellar transfer path</strong></p>
+            </div>
+            <div class="info-card weak">
+                <span class="card-title">Cross-Weak</span>
+                <p class="card-desc">Dispersed features, unstructured communication, rapidly shifting identity and
+                    emotion → <strong>High-uncertainty long-range traversal</strong></p>
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="content-block">
-    <div class="text-container reveal">
-
-        <div class="rq-box" style="border-left-color: var(--accent-purple);"><span
-                class="rq-label">Research Question 03</span>
+<section id="rq3">
+    <div class="container-text">
+        <div class="rq-header purple">
+            <span class="rq-label">Research Question 03</span>
             <h2 class="rq-title">To what extent does the transition from a peaceful to an antagonistic context trigger
                 differential linguistic adaptations across distinct link types</h2>
         </div>
 
-        <p>When we analyzed the complexity of language used between different groups, a striking pattern emerged. We
-            discovered that as communities engage with "outsiders," their language shifts dramatically.</p>
+        <p>If the Reddit galaxy under peaceful conditions revealed an elegant equilibrium shaped by stable orbits,
+            conflict acts as a sudden gravitational disturbance. Using the LMM model on conflict-context data, we
+            observed that antagonism does not merely amplify emotions—it fundamentally reshapes the structure of signals
+            across the galaxy.</p>
 
-        <p>This phenomenon, which we call "Tactical Simplicity," suggests that complex jargon is reserved for the
-            in-group, while simple, aggressive language is weaponized for the out-group.</p>
+        <p>We focus on Cross-Strong links—the connections that, even during disputes, attempt to maintain a form of
+            “diplomatic stability”—to track how social distance distorts communication under conflict.</p>
 
-        <div class="chart-frame">
-            <iframe src="{{ '/assets/plots/complexity_plot.html' | relative_url }}"></iframe>
+        <h3 class="sub-glow" style="margin-top: 4rem;">Language Structure Under Conflict: Four Dimensions</h3>
+    </div>
+
+    <div class="container-wide">
+        <div class="dimensions-grid">
+
+            <div class="info-card">
+                <div class="card-tag" style="color: var(--accent-cyan);">DIMENSION 01</div>
+                <span class="card-title">Complexity: Sentence Structure and Signal Density</span>
+                <div class="card-desc">
+                    <ul>
+                        <li><strong>Intra-Core:</strong> Previously complex and high-resolution signals simplify,
+                            switching to direct, less layered messages.
+                        </li>
+                        <li><strong>Intra-Periphery:</strong> Shorter sentences and higher capitalization highlight
+                            emphasis to ensure signals stand out amid noise.
+                        </li>
+                        <li><strong>Cross-Strong:</strong> Maintains medium complexity, balancing readability for
+                            cross-cluster understanding.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="card-tag" style="color: var(--accent-blue);">DIMENSION 02</div>
+                <span class="card-title">Logical Style: Organization and Alignment</span>
+                <div class="card-desc">
+                    <ul>
+                        <li><strong>Cross-Strong:</strong> High proportions of functional words, articles, and
+                            prepositions indicate structured, aligned communication designed to prevent
+                            misinterpretation.
+                        </li>
+                        <li><strong>Intra-Core:</strong> Increased use of certainty words signals assertive and
+                            position-driven messaging.
+                        </li>
+                        <li><strong>Intra-Periphery:</strong> Reduced cognitive processing words show reasoning is less
+                            explicit, reflecting raw, emotionally-driven discourse.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="card-tag" style="color: var(--accent-purple);">DIMENSION 03</div>
+                <span class="card-title">Identity Expression: Pronoun Usage</span>
+                <div class="card-desc">
+                    <ul>
+                        <li><strong>Intra-Core:</strong> Strong increases in “I,” “We,” and “They” show conflict has
+                            mobilized identity, turning discussion into a defense of self and group.
+                        </li>
+                        <li><strong>Cross-Strong:</strong> Elevated “They” usage keeps attention focused on external
+                            clusters, sustaining inter-cluster orientation.
+                        </li>
+                        <li><strong>Intra-Periphery:</strong> Pronoun changes are less pronounced, indicating weaker
+                            identity-driven mobilization.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card" style="border-top: 3px solid var(--accent-red);">
+                <div class="card-tag" style="color: var(--accent-red);">DIMENSION 04</div>
+                <span class="card-title">Emotional Energy: Intensity and Disruption</span>
+                <div class="card-desc">
+                    <ul>
+                        <li><strong>Intra-Periphery:</strong> Swearing (+72.10%) and anger (+32.62%) highlight raw,
+                            emotion-driven outbursts.
+                        </li>
+                        <li><strong>Intra-Core:</strong> Swearing also rises (+19.32%), revealing that even the galaxy’s
+                            core can erupt when internal conflict emerges.
+                        </li>
+                        <li><strong>Cross-Strong:</strong> Emotional indicators remain low, showing rational debate
+                            persists despite surrounding turbulence.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
+    </div>
 
+    <div class="container-wide">
+        <div class="chart-wrapper">
+            <iframe class="chart-content" src="{{ '/assets/plots/conflict_comparison.html' | relative_url }}"></iframe>
+            <div class="chart-caption">Figure 3.1 - Signal Shifts: From Peaceful Equilibrium to Conflict Shake-Up.</div>
+        </div>
+    </div>
+
+    <div class="container-text">
+        <h3 class="sub-glow">Cross-Context Comparison: From Peaceful Equilibrium to Conflict Shake-Up</h3>
+        <p>Three major shifts emerge when comparing conflict (RQ3) to peaceful (RQ2) galaxy states:</p>
+
+        <div class="info-card" style="margin-bottom: 3rem; background: rgba(255, 77, 77, 0.05);">
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent-gold); font-size: 1.2rem;">Mask Removal:</strong><br>
+                    Intra-Periphery shifts from restrained to explosive expression; swearing and anger spike,
+                    demonstrating that peripheral regions are least bound by social norms.
+                </li>
+                <li style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent-purple); font-size: 1.2rem;">Identity Weaponization:</strong><br>
+                    Intra-Core intensifies pronoun use; the closest clusters turn conflict into a defense of self and
+                    faction.
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong style="color: var(--accent-cyan); font-size: 1.2rem;">Diplomatic Resilience:</strong><br>
+                    Cross-Strong links remain the most logical and structured, acting as a stabilizing “diplomatic
+                    shield” in the galaxy.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container-text" style="text-align: center;">
+        <h3 class="sub-glow">Conflict-Era Communication Profiles</h3>
+    </div>
+
+    <div class="container-wide">
+        <div class="dimensions-grid">
+            <div class="info-card core">
+                <span class="card-title">Intra-Core (Core Defenders)</span>
+                <p class="card-desc">Higher certainty words and explosive pronoun use → <strong>Conflict Nature:
+                    Identity Defense</strong></p>
+            </div>
+            <div class="info-card periphery">
+                <span class="card-title">Intra-Periphery (Peripheral Outbursts)</span>
+                <p class="card-desc">Extremely high capitalization and swearing, lower logical markers → <strong>Conflict
+                    Nature: Emotion Release</strong></p>
+            </div>
+            <div class="info-card strong">
+                <span class="card-title">Cross-Strong (Diplomatic Envoys)</span>
+                <p class="card-desc">Preserves logic and structure, minimal pronoun volatility → <strong>Conflict
+                    Nature: Rational Debate</strong></p>
+            </div>
+            <div class="info-card weak">
+                <span class="card-title">Cross-Weak (Occasional Friction)</span>
+                <p class="card-desc">Dispersed signals, inconsistent structure → <strong>Conflict Nature: Context
+                    Misalignment</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-text">
+        <div class="insight-card">
+            <p class="insight-text">
+                <strong>Key Insight:</strong> The LMM calibration confirms that conflict does not erase social traits—it
+                amplifies them. Closest clusters fight for identity, the farthest for logic, and peripheral clusters for
+                raw emotion. The galaxy’s conflict map reveals a gradient from rational negotiation to unfiltered
+                outburst, showing how social distance dictates the form and intensity of conflict in the Reddit galaxy.
+            </p>
+        </div>
     </div>
 </section>
 
-<section class="content-block">
-    <div class="text-container reveal">
 
-        <div class="rq-box" style="border-left-color: var(--accent-purple);"><span
-                class="rq-label">Research Question 04</span>
-            <h2 class="rq-title">From a macro perspective, to what degree is the steady-state of social structure
-                determined by positive interactions, and how does conflict-induced structural divergence lead to the
-                reshuffling of established social roles?</h2>
+<section id="rq4">
+    <div class="container-text">
+        <div class="rq-header blue">
+            <span class="rq-label">Research Question 04</span>
+            <h2 class="rq-title">Macro Perspective: Steady-State Structures and Conflict-Driven Reorganization in the
+                Reddit Galaxy</h2>
         </div>
 
-        <p>When we analyzed the complexity of language used between different groups, a striking pattern emerged. We
-            discovered that as communities engage with "outsiders," their language shifts dramatically.</p>
+        <p>Up until now, we’ve explored how different communication links behave at the micro-level, analyzing signal
+            complexity, logic, identity markers, and emotional tone. But a galaxy isn’t defined by individual signals
+            alone—it is the interplay of all its stars and clusters. At a macro scale, we face a structural question:
+            <strong>What fundamentally defines the social architecture of the Reddit galaxy? When conflicts erupt, does
+                this architecture remain resilient, or does it collapse and reorganize?</strong></p>
 
-        <p>This phenomenon, which we call "Tactical Simplicity," suggests that complex jargon is reserved for the
-            in-group, while simple, aggressive language is weaponized for the out-group.</p>
+        <p>To address this, we adopt a multi-dimensional LMM coefficient vector framework, which allows us to track the
+            stability and divergence of interaction patterns across different social contexts. This framework provides a
+            way to map the galaxy’s structural “gravity wells” and observe how they shift under conflict.</p>
 
-        <div class="chart-frame">
-            <iframe src="{{ '/assets/plots/complexity_plot.html' | relative_url }}"></iframe>
+        <h3 class="sub-glow">1. Initial Hypothesis: “Mirror-Constant” Structures</h3>
+        <p>In the exploratory Phase 0, we observed that the Reddit galaxy is dominated by positive interactions: roughly
+            8.35 positive links for every negative one. This led to an intuitive hypothesis:</p>
+
+        <div class="insight-card" style="border-left-color: var(--accent-gold);">
+            <p class="insight-text" style="font-size: 1.1rem; font-style: normal;">
+                Positive interactions define the social skeleton of the galaxy. They determine who occupies the core,
+                who bridges clusters, and who orbits the periphery. Conflicts may add turbulence, but they should not
+                fundamentally reshape this skeleton—at most, they change the “color” of the network without altering its
+                structure.
+            </p>
+        </div>
+        <p>In other words, the galaxy’s structural backbone, formed by the majority of positive links, was expected to
+            remain <strong>mirror-constant</strong>, stable across both friendly and adversarial interactions.</p>
+
+        <h3 class="sub-glow">2. Technical Verification: Peace as the Galaxy’s “Anchor”</h3>
+        <p>To test this, we compared two perspectives: <strong>Global Perspective</strong> (including all interactions)
+            and <strong>Purely Positive Perspective</strong> (filtering out conflicts).</p>
+
+        <div class="info-card" style="background: rgba(0, 243, 255, 0.03); margin-bottom: 2rem;">
+            <span class="card-title" style="color: var(--accent-cyan);">Methodology & Observations</span>
+            <p class="card-desc">
+                We extracted the fixed-effect coefficients for 27 language features, producing high-dimensional behavior
+                vectors for each link. Computing Pearson correlation coefficients revealed <strong>near-perfect
+                alignment</strong>: peripheral links (Intra-Periphery) demonstrate correlations as high as
+                <strong>0.99</strong>.
+            </p>
         </div>
 
+        <p>This implies that positive interactions are not just dominant in volume—they define the steady-state social
+            architecture of the Reddit galaxy. <strong>Peace acts as the galaxy’s gravitational anchor</strong>, holding
+            core and peripheral clusters in predictable orbits.</p>
+    </div>
+
+    <div class="container-text">
+        <h3 class="sub-glow">3. Structural Divergence: Conflict-Induced Logic Shifts</h3>
+        <p>When we shift to a purely negative perspective, the mirror-constant assumption breaks. Conflict does not
+            simply amplify existing patterns—it creates a new social gravity, one that reshapes the galaxy’s
+            landscape.</p>
+    </div>
+
+    <div class="container-wide">
+
+        <div class="chart-wrapper">
+            <iframe class="chart-content"
+                    src="{{ '/assets/plots/RQ4/divergence_vector.html' | relative_url }}"></iframe>
+            <div class="chart-caption">Structural Drift: High-dimensional behavior vectors losing alignment under pure
+                conflict contexts.
+            </div>
+        </div>
+    </div>
+
+    <div class="container-text">
+        <p>Observations show that correlations shrink significantly under conflict. Peripheral regions (Intra-Periphery)
+            show the largest divergence, indicating that clusters at the edge of the galaxy are the first to experience
+            structural destabilization. <strong>Conflict warps the underlying social skeleton</strong>, producing
+            behaviors unseen under steady conditions.</p>
+    </div>
+
+    <div class="container-text">
+        <h3 class="sub-glow">4. Role Reorganization: Deceptiveness of High-Traffic Links</h3>
+        <p>Why do seemingly dominant core links lose influence in conflict? LMM intercept and coefficient shifts reveal
+            that <strong>high traffic does not guarantee structural power.</strong></p>
+    </div>
+
+    <div class="container-wide">
+
+        <div class="card-grid">
+            <div class="info-card">
+                <span class="card-title" style="color: var(--accent-blue);">Relegation</span>
+                <p class="card-desc">Core Cross-Strong links appear central in global models due to sheer interaction
+                    volume, but lose influence in specific contexts.</p>
+            </div>
+            <div class="info-card">
+                <span class="card-title" style="color: var(--accent-purple);">Bubble Effect</span>
+                <p class="card-desc">Their influence depends on a majority of non-negative interactions—essentially a
+                    traffic bubble that bursts under conflict.</p>
+            </div>
+            <div class="info-card">
+                <span class="card-title" style="color: var(--accent-gold);">Reshuffling</span>
+                <p class="card-desc">In a pure conflict context, previously peripheral connections rise, demonstrating
+                    structural role reshuffling.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-text" style="text-align: center; margin-top: 5rem;">
+        <h3 class="sub-glow">5. Conflict vs. Peace: Macro Patterns</h3>
+    </div>
+
+    <div class="container-wide">
+        <div class="dimensions-grid">
+            <div class="info-card dimension-card">
+                <span class="card-title">Peace Defines the Rules</span>
+                <p class="card-desc">Positive interactions established the structural framework of clusters, cores, and
+                    bridges. This framework is remarkably resilient under normal conditions.</p>
+            </div>
+            <div class="info-card dimension-card">
+                <span class="card-title">Conflict Drives Divergence</span>
+                <p class="card-desc">Negative interactions trigger structural drift. Peripheral clusters destabilize
+                    first, and cross-cluster links may lose authority.</p>
+            </div>
+            <div class="info-card dimension-card">
+                <span class="card-title">Dynamic Role Shifts</span>
+                <p class="card-desc">High-traffic core links are powerful under peace but are vulnerable to conflict due
+                    to their reliance on positive interactions.</p>
+            </div>
+            <div class="info-card dimension-card" style="border-top-color: var(--accent-red);">
+                <span class="card-title">Reshuffling</span>
+                <p class="card-desc">The conflict environment elevates peripheral and opportunistic clusters,
+                    challenging the established hierarchy.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-text">
+        <div class="insight-card">
+            <p class="insight-text">
+                <strong>Conclusion:</strong> The Reddit galaxy is a dynamic equilibrium system, where peace defines the
+                steady-state social order, and conflict drives localized reorganization. Influence in calm conditions
+                does not guarantee influence under pure antagonism—social gravity is context-sensitive, and roles can
+                invert quickly.
+            </p>
+        </div>
     </div>
 </section>
 
-<section class="content-block">
-    <div class="text-container reveal">
-
-        <div class="rq-box" style="border-left-color: var(--accent-purple);"><span
-                class="rq-label">Research Question 05</span>
-            <h2 class="rq-title">Across the long-term evolution of the social network, do the linguistic patterns and
-                structural stabilities defined by social distance remain consistent, or do they exhibit specific
-                evolutionary trends?</h2>
-        </div>
-
-        <p>When we analyzed the complexity of language used between different groups, a striking pattern emerged. We
-            discovered that as communities engage with "outsiders," their language shifts dramatically.</p>
-
-        <p>This phenomenon, which we call "Tactical Simplicity," suggests that complex jargon is reserved for the
-            in-group, while simple, aggressive language is weaponized for the out-group.</p>
-
-        <div class="chart-frame">
-            <iframe src="{{ '/assets/plots/complexity_plot.html' | relative_url }}"></iframe>
-        </div>
-
-    </div>
-</section>
-
-<div style="height: 20vh;"></div>

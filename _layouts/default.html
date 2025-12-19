@@ -14,18 +14,97 @@
 </head>
 <body>
 
-<!--<nav class="top-nav">-->
-<!--    <span class="logo">VarianceVanguards</span>-->
-<!--    <a href="https://github.com/你的用户名/你的仓库" target="_blank" class="github-link">GitHub Repo ↗</a>-->
-<!--</nav>-->
+<nav class="side-nav">
+    <a href="#hero" class="nav-dot active" title="Top"></a>
+    <a href="#phase0" class="nav-dot" title="Phase 0"></a>
+    <a href="#rq1" class="nav-dot" title="RQ 1"></a>
+    <a href="#rq2" class="nav-dot" title="RQ 2"></a>
+    <a href="#rq3" class="nav-dot" title="RQ 3"></a>
+    <a href="#rq4" class="nav-dot" title="RQ 4"></a>
+</nav>
 
-<main>
+<main class="galaxy-wrapper">
     {{ content }}
 </main>
 
-<!--<footer>-->
-<!--    <p>© 2025 EPFL ADA Project. Built with Data & Passion.</p>-->
-<!--</footer>-->
+<script>
+    // 简单的滚动监听
+    const navDots = document.querySelectorAll('.nav-dot');
+    const sections = document.querySelectorAll('section');
 
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (scrollY >= sectionTop - 300) {
+                current = section.getAttribute('id');
+            }
+        });
+        navDots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.getAttribute('href').includes(current)) {
+                dot.classList.add('active');
+            }
+        });
+    });
+
+    // 增强版滚动监听与元素显露
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        // 1. 显露动画 (Intersection Observer)
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {threshold: 0.15});
+
+        sections.forEach(section => revealObserver.observe(section));
+
+        // 2. 导航点高亮
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('href').includes(current)) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.05, // 只要露出一丁点就触发
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        sections.forEach(section => revealObserver.observe(section));
+
+        // 调试用：如果 3 秒后还没显示，强制全部显示（防止由于高度计算问题导致的卡死）
+        setTimeout(() => {
+            sections.forEach(s => s.classList.add('is-visible'));
+        }, 3000);
+    });
+</script>
 </body>
 </html>
