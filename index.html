@@ -21,7 +21,7 @@ title: Digital Tribes
 </section>
 
 
-<section id="phase0">
+<section id="title">
     <div class="celestial-body planet-gas"
          style="width: 300px; height: 300px; top: 10%; right: 5%; animation: float-slow 120s infinite linear;"></div>
     <div class="celestial-body planet-ice" style="width: 150px; height: 150px; bottom: 10%; left: 5%;"></div>
@@ -31,30 +31,52 @@ title: Digital Tribes
             <h2 class="rq-title">Take a Look at Reddit’s Galaxy</h2>
         </div>
 
-        <p>Welcome to the Reddit Galaxy. In this vast digital expanse, every <strong>Subreddit</strong> acts as a unique
-            planet. These worlds do not exist in isolation; they are tethered by "gravitational bridges"—hyperlinks that
-            allow information and users to travel from one corner of the universe to another. To understand this cosmos,
-            we first calibrated our instruments to capture the basic signals of inter-community interaction.</p>
+        <p>Welcome to the Galaxy of Reddit. In this vast digital expanse, every planet is called a <strong>Subreddit</strong> 
+            pooling together likeminded thinkers from across the galaxy. These planets do not exist in isolation. 
+            They are socially connected through their inhabitants, called <strong>users</strong> constantly debating.
+            These users are complete information haulers, during theyr visits to other planets they send reports to 
+            theyr current home planet <strong>mentioning</strong> things that caught theyr attention. And these reports can be 
+            quite emotional having positive/neutral or negative outlook on things. In other words having different <strong>sentiment</strong>. 
+            This inborn behaviour alows information flow across the galaxy and socialy <strong>links</strong> planets closer togehter.
+            We, the geeky inhabitants of planet EPFL, are fascinated by these referential migration patterns and want to understand how information spreads through this galaxy. To observe 
+            them, we calibrated our instruments to spy on these traveling user reports. (This involves no privacy 
+            breach. In this universe, all reports are anonymous unless users deliberately reveal their identities).
 
-        <p>Our initial scan revealed two distinct frequencies of communication: <strong>Title</strong> and
-            <strong>Body</strong> mentions. The Title frequency is significantly more active, generating approximately
-            572,000 links across 54,075 unique planets—nearly double the volume and 1.5 times the variety found in Body
-            mentions (287,000 links). Interestingly, these two frequencies never overlap; every signal is a unique
-            star-bridge, suggesting that most interstellar dialogue begins with a high-impact "broadcast" in the title
-            rather than within the deeper "crust" of the post body.</p>
+        <p> Our initial scan revealed two distinct styles of user reports. Some users are careful, embedding the planets 
+            names deep within the <strong>body</strong> of their report. Others are careless, broadcasting the planet 
+            they are talking about in the <strong>title</strong> for all to see. Since tracking all the reports is over our limits, we called 
+            for help from a scholarly planet known as Stanford, which provided historical Galaxy report records from 
+            2014 to 2017 from what they call the <strong>Reddit Hyperlink Network</strong> program.
+            Using analytical tools granted by the galaxy’s overseers, ADA, we explored these traveling reports and 
+            uncovered unexpected and sometimes unsettling information pathways. 
+            <br>
+            <br>
+            <strong>This is the story of how we became the Variance Vanguards of the subreddit galaxy.</strong>
+            
+        <p><em>To keep both explorers and scientists satisfied, we switch to precise terminology 
+            for the analysis that follows, returning to the narrative when interpreting what we observe in cursive.</em>
 
-        <p>As we tracked this galaxy over a 2.5-year period (2014–2017), we observed a steady, linear expansion ($R^2 =
-            0.87$). This is not a chaotic growth, but a rhythmic pulse. Perhaps most encouragingly, the "spectral
-            analysis" of these links shows a galaxy dominated by light: <strong>Positive sentiment</strong> links
-            outnumber negative ones by a staggering <strong>8.35 to 1</strong>. Furthermore, positive connections are
-            expanding at a much faster rate (slope 2.39) than negative ones (slope 0.24), indicating that as the Reddit
-            Galaxy grows, it is becoming increasingly defined by constructive alignment rather than friction.</p>
+            
+        <h2 class="rq-title">An Expanding Reddit Universe</h2>
+
+
+        <p> Over a 2.5-year period Reddit Hyperlink Network dataset tracks we managed to observe approximately 
+            860 000 mentions, with title citations taking two thirds of total links totaling 572 000 across 54 075 unique subredits.
+            In this 2.5-year period weekly posts mentioning other subredits grew in a steady pace with growth 
+            following a strong linear trend (<em>R</em><sup>2</sup> = 0.87) (Figure <a href="#linear_exp">0.1</a>), 
+            most of the observed growth being positive or neutral sentiment mentions. With positive/neutral sentiment outnumbering 
+            the negative by 8.35 to 1. Furthermore, linear regression reveals a substantially steeper growth rate for positive and 
+            neutral mentions (slope = 2.39) than for negative mentions (slope = 0.24) (Figure <a href="#sentiment_slope">0.2</a>).
+        </p>
+
+        <p><em>That’s a nice universe expansion metric! The Reddit universe is growing faster than its negativity.</em></p>
+
     </div>
 
     <div class="container-wide">
         <div class="chart-grid">
 
-            <div class="chart-wrapper">
+            <div class="chart-wrapper" id="linear_exp">
                 <iframe
                         class="chart-content"
                         src="{{ '/assets/plots/phase0/trend.html' | relative_url }}"
@@ -66,7 +88,7 @@ title: Digital Tribes
                 </div>
             </div>
 
-            <div class="chart-wrapper">
+            <div class="chart-wrapper" id="sentiment_slope">
                 <iframe class="chart-content" src="{{ '/assets/plots/phase0/sentiment_trend.html' | relative_url }}"
                         style="border:none; width:100%; height:500px;"
                         allowfullscreen></iframe>
@@ -78,23 +100,29 @@ title: Digital Tribes
     </div>
 
     <div class="container-text">
-        <p>Zooming out to view the entire topological map, we identified <strong>67,180 planets</strong> interconnected
-            by <strong>339,643 bridges</strong>. On average, each planet has roughly 10 gravitational ties to
-            others, creating a densely populated social space. However, the connectivity is not uniform. We discovered a
-            <strong>"Great Super-cluster"</strong>—a massive, weakly connected structure encompassing over 97% (65,648)
-            of all known planets. Outside this main civilization, about 711 tiny "Islands" float in deep space,
-            consisting of only a handful of planets that remain disconnected from the galactic hub.</p>
+        <p> Connectivity across Reddit is highly uneven and does not reach all nodes. Most subreddits belong to one large
+            weakly connected cluster of 65 648 nodes, while 711 smaller clusters remain isolated from the main graph. 
+            However, strong connectivity is much more limited. Only 21 432 nodes form a single strongly connected cluster, leaving 
+            45 563 nodes weakly attached through mostly one-way connections. 
 
-        <p>This directed network reveals a clear hierarchy: while the galaxy is physically massive and largely
-            reachable, the flow of influence is often one-way. This directional gravity shapes how information cascades
-            through the system, moving from influential "super-giants" to the peripheral settlements of the outer
-            rim.</p>
-
-        <p>Add Image</p>
+        <p><em>After a short warm-up with the data, reality sets in. This universe is big and not complitely wired. A few crowded planets
+            constantly receive reports about each other, while many others gets explored less. Large parts of the galaxy are not talked about.
+            <br>
+            <br>
+            Maybe they are boring?
+            <br>
+            <br>
+            Chasing every quiet corner would stretch our efforts thin. So we do the sensible thing, we focus on the largest social hub, where
+            reports reach all the planets at least once. If there is a coherent 
+            story about how Reddit talks about itself, this is where it should speak the loudest.
+            <br>
+            <br>
+            We must hurry, the universe is expanding, and we need to make sense of it before it outgrows us.            
+            </em></p>
 
         <div class="insight-card">
             <p class="insight-text">
-                <strong>Finding:</strong> The Reddit Galaxy is a cohesive, rapidly expanding system where positive
+                <strong>Fun Fact:</strong> The Reddit Galaxy is a cohesive, rapidly expanding system where positive
                 interactions act as the primary engine of growth, binding 97% of communities into a single
                 "Super-cluster."
             </p>
