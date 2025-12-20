@@ -42,7 +42,7 @@
 </section>
 
 
-<section id="title">
+<section id="phase0">
     <div class="celestial-body planet-gas"
          style="width: 300px; height: 300px; top: 10%; right: 5%; animation: float-slow 120s infinite linear;"></div>
     <div class="celestial-body planet-ice" style="width: 150px; height: 150px; bottom: 10%; left: 5%;"></div>
@@ -55,7 +55,8 @@
         <p>Welcome to the Galaxy of Reddit. In this vast digital expanse, every planet is called a
             <strong>Subreddit</strong>
             pooling together likeminded thinkers from across the galaxy. These planets do not exist in isolation.
-            They are socially connected through their inhabitants, called <strong>users</strong> constantly debating.
+            They are socially connected through their inhabitants, called <strong>users</strong> constantly debating and
+            communicating.
             These users are complete information haulers, during theyr visits to other planets they send reports to
             theyr current home planet <strong>mentioning</strong> things that caught theyr attention. And these reports
             can be
@@ -161,16 +162,16 @@
             - Quicly, just make something up, we will ajust as we go.
             <br>
             <br>
-            We must hurry, the universe is expanding, and we need to make sense of it before it outgrows us.            
-            </em></p>
+            We must hurry, the universe is expanding, and we need to make sense of it before it outgrows us.
+        </em></p>
 
         <figure style="text-align:center; margin:2rem 0;">
-        <img src="/ada-data-story/assets/plots/phase0/questions.png"
-            alt="Original research proposal questions"
-            style="width:100%; max-width:900px;">
-        <figcaption style="opacity:0.7;">
-            Research questions
-        </figcaption>
+            <img src="/ada-data-story/assets/plots/phase0/questions.png"
+                 alt="Original research proposal questions"
+                 style="width:100%; max-width:900px;">
+            <figcaption style="opacity:0.7;">
+                Research questions
+            </figcaption>
         </figure>
 
 
@@ -205,9 +206,10 @@
             Community aggregation
         </h3>
 
-        <p style = "margin-bottom: 0">
-            To agregate thousands of subredits into communities and analyticaly meaningful structures. we used 
-            three widely used community detection algorithms - Leiden, Infomap, FastGreedy. To evaluate theyr performance we used:
+        <p style="margin-bottom: 0">
+            To agregate thousands of subredits into communities and analyticaly meaningful structures. we used
+            three widely used community detection algorithms - Leiden, Infomap, FastGreedy. To evaluate theyr
+            performance we used:
         </p>
 
         <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 2rem; list-style-type: none; padding-left: 0;">
@@ -265,25 +267,26 @@
         <p>
             While <strong>FastGreedy</strong> achieves the highest modularity score, its optimization favors dense
             internal grouping at the cost of slightly higher boundary leakage. <strong>Infomap</strong>, in contrast,
-            fragments the galaxy into over three thousand micro-clusters, producing a structure that is overly fragmented.
+            fragments the galaxy into over three thousand micro-clusters, producing a structure that is overly
+            fragmented.
         </p>
 
         <p>
             The <strong>Leiden algorithm</strong> offers the most balanced results. With the lowest
-            average conductance (0.198), it identifies 85 clusters while maintaining adequate coverage of 
+            average conductance (0.198), it identifies 85 clusters while maintaining adequate coverage of
             overall interactions. For this reason we use it in further analyses as main clustering algorithm.
-         </p>
+        </p>
         <p><em>
-        Wait we can cluster based on interactions?
-        <br>
-        Those users are really puting in the work to report about other planets.
+            Wait we can cluster based on interactions?
+            <br>
+            Those users are really putting in the work to report about other planets.
         </em>
     </div>
 
 
     <div class="chart-wrapper">
         <iframe class="chart-content"
-                src="/ada-data-story/assets/plots/RQ1/viz_clustering_global.html"></iframe>
+                src="/ada-data-story/assets/plots/RQ1/viz_clustering_global(1).html"></iframe>
         <div class="chart-caption">
             Fig. 0.1 – Global view of the Reddit galaxy: social star clusters identified using the Leiden
             algorithm.
@@ -293,37 +296,42 @@
 
     <div class="container-text">
         <h3 style="color: var(--accent-purple);">A Two-Stage Classification of Social Distance</h3>
-        
+
         <p><em>
-        How can we decribe social distance?
+            How can we describe social distance?
         </em>
 
         <p>
-            As we aim to characterize how tone and emotions change with social distance, 
-            we subdivide the detected clusters in two stages. First, we define social distance 
+            As we aim to characterize how tone and emotions change with social distance,
+            we subdivide the detected clusters in two stages. First, we define social distance
             within clusters, and then across clusters.
         </p>
 
         <ul style="line-height: 1.8; margin-bottom: 2rem;">
             <li>
                 <strong>Stage 1: Intra-cluster role differentiation</strong><br>
-                Within each cluster, nodes are ranked by their within-cluster weighted degree (strength). 
+                Within each cluster, nodes are ranked by their within-cluster weighted degree (strength).
                 Nodes in the top 30% are labeled as <strong>Core</strong>, while the remaining 70% are labeled as
                 <strong>Periphery</strong>.
-                This distinction captures whether a mention/edge originates from a structurally central, highly connected 
+                This distinction captures whether a mention/edge originates from a structurally central, highly
+                connected
                 position within the cluster or from a more weakly connected, peripheral one.
             </li>
             <li>
                 <strong>Stage 2: Cross-cluster link strength</strong><br>
-                For interactions across clusters, cross-cluster interaction intensity is quantified directly by edge weights.
-                We compute the median weight of all cross-cluster links and apply an 50/50 split. Links above the 
-                median are classified as <strong>Strong</strong>, and those below as <strong>Weak</strong>, 
+                For interactions across clusters, cross-cluster interaction intensity is quantified directly by edge
+                weights.
+                We compute the median weight of all cross-cluster links and apply an 50/50 split. Links above the
+                median are classified as <strong>Strong</strong>, and those below as <strong>Weak</strong>,
                 yielding a relative separation between higher and lower intensity cross-cluster connections.
             </li>
 
 
             <p><em>
-            Distribution of reports does not fall in equal proportions, that core planetary cluster is really socialy tightly conected.                Top 30% of most conected together planets really really send alot of reports about each other.
+                Distribution of reports does not fall in equal proportions, that core planetary cluster is really
+                socially tightly connected. Top 30% of most connected together planets really really send a lot of
+                reports
+                about each other.
             </em>
         </ul>
     </div>
@@ -332,9 +340,9 @@
         <div class="chart-center-wrapper">
             <div class="chart-wrapper">
                 <iframe class="chart-content"
-                        src="/ada-data-story/assets/plots/RQ1/link_type_distribution_global.png"></iframe>
+                        src="/ada-data-story/assets/plots/RQ1/dist_global.html"></iframe>
                 <div class="chart-caption">
-                    Fig. 1.2 – Distribution of interaction types across 850,000 observed links.
+                    Fig. 1.2 – Distribution of interaction types.
                 </div>
             </div>
         </div>
@@ -343,8 +351,8 @@
     <div class="container-text">
         <div class="insight-card">
             <p class="insight-text" style="font-style: normal;">
-                <strong>Fun Fact:</strong> References in the Reddit 
-                mostly occur between the same subreddits, repeatedly linking to each other.
+                <strong>Fun Fact:</strong> References in the Reddit
+                mostly occur between the same clusters, repeatedly linking to each other.
             </p>
         </div>
     </div>
@@ -363,8 +371,8 @@
         </div>
 
         <p>In the previous stage, we defined four types of links: <strong>Intra-Core, Intra-Periphery, Cross-Strong, and
-            Cross-Weak</strong>. But before we move further with our analysis, we need to take in to account sentiment
-            type and cross-cluster diferences.</p>
+            Cross-Weak</strong>. But before we move further with our analysis, we need to take into account sentiment
+            type and cross-cluster differences.</p>
         <p>
         </p>
 
@@ -387,12 +395,12 @@
 
         <h3 class="sub-glow">Sentiment stratification</h3>
         <p>
-            Negative references are not evenly distributed across subreddits. Cross-strong links contain a 
-            disproportionately high share of negative references, while intra-periphery links contain the 
-            fewest; cross-weak and intra-core links show similar levels. Pooling all references would 
-            therefore let negative links disproportionately drive the aggregate results. To control for 
+            Negative references are not evenly distributed across subreddits. Cross-strong links contain a
+            disproportionately high share of negative references, while intra-periphery links contain the
+            fewest; cross-weak and intra-core links show similar levels. Pooling all references would
+            therefore let negative links disproportionately drive the aggregate results. To control for
             this bias, we analyze negative and positive or neutral references separately.
-    
+
         </p>
         <div class="container-wide">
             <div class="chart-wrapper">
@@ -405,15 +413,17 @@
         </div>
 
         <h3 class="sub-glow">Controling for cluster specific diferences</h3>
-        <p> 
+        <p>
 
             Each cluster in the Reddit galaxy consists of communities with similar topics, norms, and stylistic habits.
             These inherent preferences influence language. Some clusters favor long sentences, abstract concepts, and
             extended reasoning; others prefer short, direct, and pragmatic communication. If a specific interaction type
             is dominated by certain clusters, cluster-specific style could be misattributed to social distance.
-            To limit this bias, we use a Linear Mixed-Effects Model (LMM). Interaction type is modeled 
-            as a fixed effect, using cross-strong links as the reference category. This reduces the influence of cluster-specific 
-            language patterns and allows the fixed effects to capture relative differences associated with interaction type.
+            To limit this bias, we use a Linear Mixed-Effects Model (LMM). Interaction type is modeled
+            as a fixed effect, using cross-strong links as the reference category. This reduces the influence of
+            cluster-specific
+            language patterns and allows the fixed effects to capture relative differences associated with interaction
+            type.
         </p>
     </div>
 
@@ -889,75 +899,90 @@
         <div class="rq-header blue"><span class="rq-label">Research Question 04</span>
             <h2 class="rq-title">Macro Perspective: Steady-State Structures and Conflict-Driven Reorganization in the
                 Reddit Galaxy</h2></div>
-        <p>So far, we have analyzed communication links at the micro level, examining signal complexity, logic, identity
-            markers, and emotional tone. However, a galaxy is not defined by individual signals alone—it is shaped by
-            the interplay of stars and clusters. At the macro level, we face a structural question: <strong>What
-                fundamentally defines the social architecture of the Reddit galaxy? When conflicts emerge, does this
-                architecture remain stable, or does it reorganize?</strong></p>
+        <p>
+            So far, we have examined Reddit interactions at the micro level, focusing on signal complexity, logical
+            style, identity markers, and emotional tone. However, a galaxy is not defined by individual signals alone.
+            Its structure emerges from the collective motion of stars and clusters. At the macro level, we therefore
+            ask a structural question:
+            <strong>
+                What defines the social architecture of the Reddit galaxy, and what happens to this architecture when
+                conflict emerges?
+            </strong>
+        </p>
 
-        <p>Previous analyses were conducted on the <strong>global network</strong>, considering both positive and
-            negative interactions together. To test the robustness of the observed structures, we reconstructed the
-            galaxy under two extreme observational lenses: one network containing only <strong>positive links</strong>
-            (peace network) and another containing only <strong>negative links</strong> (conflict network).</p>
+        <p>
+            All previous analyses were conducted on the <strong>global network</strong>, where positive and negative
+            interactions were jointly aggregated. This perspective implicitly assumes that conflict behaves as a local
+            disturbance within an otherwise stable system. To test this assumption, we deliberately reconstruct the
+            galaxy under two extreme observational lenses:
+            a <strong>peace network</strong> containing only positive interactions, and a
+            <strong>conflict network</strong> containing only negative interactions.
+        </p>
 
-        <p>First, we conducted a short network analysis of these 3 networks.</p>
+        <p>
+            Our analysis follows a clear, step-by-step pipeline:
+        </p>
 
-        <p>The network audit reveals that the **Peace** sub-network serves as the galaxy’s structural anchor, mirroring
-            the **Global** skeleton with near-total connectivity (**99.92% LWCC**). In contrast, the **Conflict**
-            network behaves like a dense nebula; despite its smaller footprint, its density is nearly four times higher,
-            yet it suffers from a sharp drop in reciprocity (**0.0675**) and deeper negative assortativity
-            (**-0.1604**). This confirms that while peace facilitates a stable, mutual dialogue that defines the social
-            order, conflict manifests as concentrated, one-sided "firepower coverage" that triggers structural drift
-            across dissimilar clusters.</p>
+        <ol style="line-height:1.8; padding-left:1.2rem;">
+            <li>Extract interaction texts and sentiment labels from the raw Reddit dataset.</li>
+            <li>Split the global interaction graph into a peace network (positive links only) and a conflict network
+                (negative links only).
+            </li>
+            <li>Compute <strong>27 linguistic features</strong> for each interaction, including readability metrics,
+                sentence structure, pronoun usage, emotional tone, and LIWC categories.
+            </li>
+            <li>Fit <strong>linear mixed-effects models (LMMs)</strong> to estimate fixed-effect coefficients, producing
+                high-dimensional behavioral vectors for each interaction type.
+            </li>
+            <li>Compare structures across contexts using <strong>Pearson correlation</strong>,
+                <strong>Jaccard similarity</strong>, and <strong>feature drift analysis</strong>.
+            </li>
+        </ol>
+
+        <p>
+            This pipeline allows us to observe the Reddit galaxy at scale: identifying its stable gravitational
+            skeleton, and tracking how conflict perturbs or reorganizes existing orbits.
+        </p>
+
+        <p>The clustering results for the three networks are shown below.</p>
+
+        <div class="chart-wrapper">
+            <iframe class="chart-content"
+                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_positive(1).html"></iframe>
+            <div class="chart-caption">Figure 4.1 Positive Network Clustering</div>
+        </div>
+
+        <div class="chart-wrapper">
+            <iframe class="chart-content"
+                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_negative(1).html"></iframe>
+            <div class="chart-caption">Figure 4.2 Negative Network Clustering</div>
+        </div>
+
+        <p>
+            We then perform a network-level audit to compare their global structural properties.
+        </p>
 
         <div class="container-wide">
             <div class="chart-wrapper" style="margin-bottom: 3rem;">
                 <iframe class="chart-content" style="height: 600px; border: none;"
                         src="/ada-data-story/assets/plots/RQ4/network_radar_fingerprint.html"></iframe>
-
                 <div class="chart-caption">
-                    Figure 4.1 - Structural Fingerprints: While Peace mirrors the Global skeleton, Conflict exhibits a
-                    4x increase in Density and a crash in Reciprocity (0.0675), indicating targeted, non-mutual
-                    aggression.
+                    Figure 4.3 Network structure fingerprints
                 </div>
             </div>
         </div>
 
-        <p>Our methodology involves the following steps:</p>
-        <ol style="line-height:1.8; padding-left:1.2rem;">
-            <li>Extract text and sentiment labels for each interaction from the raw Reddit data.</li>
-            <li>Construct two separate networks: a peace network (only positive interactions) and a conflict network
-                (only negative interactions).
-            </li>
-            <li>Compute 27 language features for each link, including readability, sentence length, pronoun usage,
-                emotional tone, and LIWC categories.
-            </li>
-            <li>Fit a linear mixed-effects model (LMM) to extract fixed-effect coefficients, producing high-dimensional
-                behavior vectors for each link.
-            </li>
-            <li>Compare peace and conflict contexts using Pearson correlations, Jaccard similarity, and feature drift
-                analysis to track structural stability and role shifts.
-            </li>
-        </ol>
+        <p>
+            The audit shows that the <strong>Peace</strong> network acts as the galaxy’s structural anchor, closely
+            mirroring the <strong>Global</strong> network with near-total connectivity
+            (<strong>99.92% LWCC</strong>). In contrast, the <strong>Conflict</strong> network resembles a dense nebula:
+            despite its smaller footprint, its density is almost four times higher, while reciprocity drops sharply
+            (<strong>0.0675</strong>) and assortativity becomes more negative
+            (<strong>-0.1604</strong>).
+            Peace sustains stable, reciprocal dialogue, whereas conflict concentrates asymmetric “firepower” across
+            dissimilar clusters.
+        </p>
 
-        <div class="chart-wrapper">
-            <iframe class="chart-content"
-                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_positive.html"></iframe>
-            <div class="chart-caption">
-                Figure 4.2
-            </div>
-        </div>
-
-        <div class="chart-wrapper">
-            <iframe class="chart-content"
-                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_negative.html"></iframe>
-            <div class="chart-caption">
-                Figure 4.3
-            </div>
-        </div>
-
-        <p>This approach allows us to track social structures at the “galaxy scale,” mapping gravitational wells of
-            clusters and observing how conflict perturbs or reshapes these orbits.</p>
 
         <h3 class="sub-glow">1. Initial Hypothesis: “Mirror-Constant” Structures</h3>
         <p>In the exploratory Phase 0, we observed that positive interactions dominate: roughly 8.35 positive links per
@@ -988,7 +1013,7 @@
             <iframe class="chart-content"
                     src="/ada-data-story/assets/plots/RQ4/feature_isomorphism_peace.html"></iframe>
             <div class="chart-caption">
-                Figure 4.4
+                Figure 4.4 Feature Isomorphism: Global vs. Peace
             </div>
         </div>
 
@@ -1004,7 +1029,7 @@
             <iframe class="chart-content"
                     src="/ada-data-story/assets/plots/RQ4/feature_isomorphism_Negative.html"></iframe>
             <div class="chart-caption">
-                Figure 4.5
+                Figure 4.5 Feature Isomorphism: Global vs. Conflict
             </div>
         </div>
 
@@ -1032,7 +1057,7 @@
                     <iframe class="chart-content"
                             src="/ada-data-story/assets/plots/RQ4/transition_flow_Positive.html"></iframe>
                     <div class="chart-caption">
-                        Figure 4.1
+                        Figure 4.6 Role Transition Flow (Peace Network)
                     </div>
                 </div>
 
@@ -1040,7 +1065,7 @@
                     <iframe class="chart-content"
                             src="/ada-data-story/assets/plots/RQ4/transition_flow_Negative.html"></iframe>
                     <div class="chart-caption">
-                        Figure 4.2
+                        Figure 4.7 Role Transition Flow (Conflict Network)
                     </div>
                 </div>
             </div>
