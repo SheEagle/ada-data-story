@@ -109,7 +109,7 @@ title: Digital Tribes
             constantly receive reports about each other, while many others gets explored less. Large parts of the galaxy are not talked about.
             <br>
             <br>
-            Maybe they are boring?
+            - Maybe they are boring?
             <br>
             <br>
             Chasing every quiet corner would stretch our efforts thin. So we do the sensible thing, we focus on the largest social hub, where
@@ -117,8 +117,25 @@ title: Digital Tribes
             story about how Reddit talks about itself, this is where it should speak the loudest.
             <br>
             <br>
+            - Wait, the administartion of ADA requested a reaserch questions before granting theyr tools and knowladge?
+            <br>
+            - How can we know what to write if we don't know what tools they will let us use?
+            <br>
+            - Quicly, just make something up, we will ajust as we go.
+            <br>
+            <br>
             We must hurry, the universe is expanding, and we need to make sense of it before it outgrows us.            
             </em></p>
+
+        <figure style="text-align:center; margin:2rem 0;">
+        <img src="{{ '/assets/plots/phase0/questions.png' | relative_url }}"
+            alt="Original research proposal questions"
+            style="width:100%; max-width:900px;">
+        <figcaption style="opacity:0.7;">
+            Research questions
+        </figcaption>
+        </figure>
+
 
         <div class="insight-card">
             <p class="insight-text">
@@ -147,46 +164,16 @@ title: Digital Tribes
                 define?</h2>
         </div>
 
-        <p>
-            At the early stage of exploring Reddit as a large-scale data galaxy, we initially wanted to perform a
-            clustering on subreddits based on embeddings on user overlap, assuming that if
-            two “planets” (subreddits) shared a substantial number of active users, they should naturally appear close
-            to each other on the social map.
-
-            This assumption, however, quickly revealed two critical technical limitations.
-        </p>
-
-        <ul style="line-height: 1.8; margin-bottom: 2rem;">
-            <li><strong>Structural Isolation:</strong> User overlap reflects shared interests rather than actual
-                interaction. Many communities share a large user base yet rarely engage with one another structurally,
-                which artificially pulls together what are effectively parallel worlds.
-            </li>
-            <li><strong>Sparsity &amp; Incompleteness:</strong> This embedding approach covers only a subset of
-                communities, leaving large portions of the ecosystem unmapped.
-            </li>
-        </ul>
-
-        <p>
-            This realization led us to shift focus from surface-level content similarity to a deeper structural layer:
-            the <strong>hyperlink-based interaction network</strong>.
-            Each mention in a link represents a concrete point of contact between communities.
-            By modeling these links, we wish to construct an inter-community network and identified clusters within it.
-            Each cluster is treated as a <strong>“star cluster”</strong>: a group of communities with closely aligned
-            norms, topics, and interaction patterns.
-        </p>
-
         <h3 style="color: var(--accent-purple); font-size: 1.5rem; margin-top: 2rem;">
-            Algorithmic Competition: Identifying the Optimal Gravitational Field
+            Community aggregation
         </h3>
 
-        <p>
-            To partition tens of thousands of communities into coherent and analytically meaningful structures, we
-            subjected three widely used community detection algorithms to a systematic stress test. Rather than relying
-            on a single metric, we evaluated their performance through three complementary, physically inspired
-            indicators that capture different aspects of structural quality within the Reddit galaxy.
+        <p style = "margin-bottom: 0">
+            To agregate thousands of subredits into communities and analyticaly meaningful structures. we used 
+            three widely used community detection algorithms - Leiden, Infomap, FastGreedy. To evaluate theyr performance we used:
         </p>
 
-        <ul style="line-height: 1.8; margin-bottom: 2rem; list-style-type: none; padding-left: 0;">
+        <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 2rem; list-style-type: none; padding-left: 0;">
             <li>
                 🔸 <strong>Modularity:</strong> Measures how tightly interactions are concentrated within clusters,
                 reflecting the strength of internal gravitational binding.
@@ -241,19 +228,19 @@ title: Digital Tribes
         <p>
             While <strong>FastGreedy</strong> achieves the highest modularity score, its optimization favors dense
             internal grouping at the cost of slightly higher boundary leakage. <strong>Infomap</strong>, in contrast,
-            fragments the galaxy into over three thousand micro-clusters, producing a structure that is overly granular
-            and difficult to interpret at a systemic level.
+            fragments the galaxy into over three thousand micro-clusters, producing a structure that is overly fragmented.
         </p>
 
         <p>
             The <strong>Leiden algorithm</strong> offers the most balanced results. With the lowest
-            average conductance (0.198), it identifies 85 well-formed clusters that are both cohesive and interpretable,
-            while maintaining adequate coverage of overall interactions. This balance between internal coherence and
-            boundary clarity makes Leiden the most suitable foundation for modeling the large-scale social structure of
-            the Reddit galaxy. Accordingly, we adopt Leiden as the baseline algorithm for defining cluster-level
-            dynamics in all subsequent analyses.
-        </p>
-
+            average conductance (0.198), it identifies 85 clusters while maintaining adequate coverage of 
+            overall interactions. For this reason we use it in further analyses as main clustering algorithm.
+         </p>
+        <p><em>
+        Wait we can cluster based on interactions?
+        <br>
+        Those users are really puting in the work to report about other planets.
+        </em>
     </div>
 
 
@@ -269,38 +256,38 @@ title: Digital Tribes
 
     <div class="container-text">
         <h3 style="color: var(--accent-purple);">A Two-Stage Classification of Social Distance</h3>
+        
+        <p><em>
+        How can we decribe social distance?
+        </em>
 
         <p>
-            Once this structural map was established, a new challenge emerged:
-            how can we precisely describe “social distance” between communities?
-            A simple distinction between “within-cluster” and “cross-cluster” interactions is too coarse.
-            It cannot explain why some cross-cluster exchanges remain measured and cooperative, while others escalate
-            rapidly.
-        </p>
-
-        <p>
-            To address this, we designed a <strong>two-stage classification framework</strong> that separates
-            interactions along two independent dimensions:
-            the status of the source community and the intensity of the connection.
+            As we aim to characterize how tone and emotions change with social distance, 
+            we subdivide the detected clusters in two stages. First, we define social distance 
+            within clusters, and then across clusters.
         </p>
 
         <ul style="line-height: 1.8; margin-bottom: 2rem;">
             <li>
                 <strong>Stage 1: Intra-cluster role differentiation</strong><br>
-                Based on centrality within each star cluster, communities are classified as <strong>Core(Top 30%
-                active)</strong> or
-                <strong>Periphery(The rest 70%)</strong>.
-                This distinction captures whether a signal originates from a dominant, well-established position or from
-                a more marginal one.
+                Within each cluster, nodes are ranked by their within-cluster weighted degree (strength). 
+                Nodes in the top 30% are labeled as <strong>Core</strong>, while the remaining 70% are labeled as
+                <strong>Periphery</strong>.
+                This distinction captures whether a mention/edge originates from a structurally central, highly connected 
+                position within the cluster or from a more weakly connected, peripheral one.
             </li>
             <li>
                 <strong>Stage 2: Cross-cluster link strength</strong><br>
-                For cross-cluster interactions, we compute the median interaction strength and apply a balanced <strong>50/50
-                split</strong>.
-                Links above the median are classified as <strong>Strong</strong>, representing stable and recurring
-                cross-cluster ties;
-                those below the median are labeled <strong>Weak</strong>, reflecting infrequent or incidental contact.
+                For interactions across clusters, cross-cluster interaction intensity is quantified directly by edge weights.
+                We compute the median weight of all cross-cluster links and apply an 50/50 split. Links above the 
+                median are classified as <strong>Strong</strong>, and those below as <strong>Weak</strong>, 
+                yielding a relative separation between higher and lower intensity cross-cluster connections.
             </li>
+
+
+            <p><em>
+            Distribution of reports does not fall in equal proportions, that core planetary cluster is really socialy tightly conected.                Top 30% of most conected together planets really really send alot of reports about each other.
+            </em>
         </ul>
     </div>
 
@@ -316,57 +303,11 @@ title: Digital Tribes
         </div>
     </div>
 
-    <div class="container-wide">
-        <div class="dimensions-grid">
-            <div class="info-card core">
-                <div class="card-tag" style="color: var(--accent-blue);">508,841 links (59.3%)</div>
-                <span class="card-title">Intra-Core</span>
-                <p class="card-desc">
-                    The dense center of the galaxy.
-                    Most interactions occur within culturally unified core regions, where communication is
-                    high-bandwidth and high-trust.
-                    These links form the backbone of everyday social order.
-                </p>
-            </div>
-
-            <div class="info-card weak">
-                <div class="card-tag" style="color: var(--accent-red);">155,383 links (18.1%)</div>
-                <span class="card-title">Cross-Weak</span>
-                <p class="card-desc">
-                    Low-frequency cross-cluster encounters.
-                    These links often lack shared context and are more prone to misunderstanding or misalignment.
-                </p>
-            </div>
-
-            <div class="info-card strong">
-                <div class="card-tag" style="color: var(--accent-cyan);">149,144 links (17.4%)</div>
-                <span class="card-title">Cross-Strong</span>
-                <p class="card-desc">
-                    Stable and recurring cross-cluster connections.
-                    These links support sustained interaction across cultural boundaries and play a key role in
-                    maintaining inter-cluster order.
-                </p>
-            </div>
-
-            <div class="info-card periphery">
-                <div class="card-tag" style="color: var(--accent-gold);">44,155 links (5.2%)</div>
-                <span class="card-title">Intra-Periphery</span>
-                <p class="card-desc">
-                    Sparse interactions among peripheral communities within the same cluster.
-                    Notably, cross-cluster interaction is more common than communication among peripheral neighbors.
-                </p>
-            </div>
-        </div>
-    </div>
-
     <div class="container-text">
         <div class="insight-card">
             <p class="insight-text" style="font-style: normal;">
-                This “galactic census” shows that Reddit is far from a flat or uniform space.
-                Social gravity organizes it into a system <strong>anchored by dense cores and connected by cross-cluster
-                bridges</strong>.
-                This structural baseline motivates our next question:
-                <strong>does a community’s position in the galaxy fundamentally shape how it speaks?</strong>
+                <strong>Fun Fact:</strong> References in the Reddit 
+                mostly occur between the same subreddits, repeatedly linking to each other.
             </p>
         </div>
     </div>
@@ -384,20 +325,14 @@ title: Digital Tribes
                 context?</h2>
         </div>
 
-        <p>In the previous stage, we conceptualized Reddit as a galaxy of tens of thousands of communities and
-            identified four interaction types: <strong>Intra-Core, Intra-Periphery, Cross-Strong, and
-                Cross-Weak</strong>.</p>
-
-        <p>In this section, we move beyond describing the structure itself and ask a more focused question:
-            <strong>Once major confounding factors are removed, how does social distance shape language use?</strong>
+        <p>In the previous stage, we defined four types of links: <strong>Intra-Core, Intra-Periphery, Cross-Strong, and
+            Cross-Weak</strong>. But before we move further with our analysis, we need to take in to account sentiment
+            type and cross-cluster diferences.</p>
+        <p>
         </p>
 
-        <p>This question seems straightforward but is methodologically delicate. Raw data cannot directly answer it, as
-            they are heavily influenced by covariates. Without proper control, any patterns observed might reflect noise
-            rather than genuine effects. The goal here is not simply to “discover patterns” but to systematically
-            calibrate the data and determine which linguistic differences are truly driven by social distance.</p>
 
-        <div style="background: rgba(0, 195, 255, 0.1); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 4px;">
+        <!-- <div style="background: rgba(0, 195, 255, 0.1); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 4px;">
             <h4 style="color: var(--accent-cyan); margin-top: 0;">📋 Core Terminology</h4>
             <p style="margin-bottom: 0;">To ensure analytical clarity, we divide interaction contexts into two
                 categories based on the sentiment of links:</p>
@@ -410,15 +345,18 @@ title: Digital Tribes
                     representing periods of instability or disturbance.
                 </li>
             </ul>
-        </div>
+        </div> -->
 
 
-        <h3 class="sub-glow">First Calibration: Controlling Conflict Rate</h3>
-        <p>The first confounding variable is the uneven distribution of conflict across interaction types.</p>
-        <p>Conflict is not evenly spread in the Reddit galaxy. Cross-Strong interactions show a much higher frequency of
-            antagonistic language than internal community interactions. By contrast, Intra-Core and Intra-Periphery
-            interactions are generally more restrained. Analyzing all messages together would allow high-conflict
-            language to mask the structural properties of everyday communication.</p>
+        <h3 class="sub-glow">Sentiment stratification</h3>
+        <p>
+            Negative references are not evenly distributed across subreddits. Cross-strong links contain a 
+            disproportionately high share of negative references, while intra-periphery links contain the 
+            fewest; cross-weak and intra-core links show similar levels. Pooling all references would 
+            therefore let negative links disproportionately drive the aggregate results. To control for 
+            this bias, we analyze negative and positive or neutral references separately.
+    
+        </p>
         <div class="container-wide">
             <div class="chart-wrapper">
                 <iframe class="chart-content"
@@ -428,20 +366,18 @@ title: Digital Tribes
                 </div>
             </div>
         </div>
-        <p>To address this, we divide the corpus into peaceful and conflictual contexts. In this analysis, we focus
-            first on the peaceful context, where language choices
-            reliably reflect communicative expectations and audience perception.</p>
 
-        <h3 class="sub-glow">Second Calibration: Controlling Source Clusters</h3>
-        <p>Even within peaceful interactions, a second confound exists: the Source Cluster.</p>
-        <p>Each cluster in the Reddit galaxy consists of communities with similar topics, norms, and stylistic habits.
+        <h3 class="sub-glow">Controling for cluster specific diferences</h3>
+        <p> 
+
+            Each cluster in the Reddit galaxy consists of communities with similar topics, norms, and stylistic habits.
             These inherent preferences influence language. Some clusters favor long sentences, abstract concepts, and
             extended reasoning; others prefer short, direct, and pragmatic communication. If a specific interaction type
-            is dominated by certain clusters, cluster-specific style could be misattributed to social distance.</p>
-        <p>To remove this bias, we apply a <strong>Linear Mixed-Effects Model (LMM)</strong>. Each message’s source
-            cluster is treated as a random effect, absorbing cluster-level stylistic differences. The remaining fixed
-            effects therefore more reliably reflect the influence of interaction type itself. Effectively, the LMM
-            allows us to observe language in the Reddit galaxy after subtracting local cultural coloration.</p>
+            is dominated by certain clusters, cluster-specific style could be misattributed to social distance.
+            To limit this bias, we use a Linear Mixed-Effects Model (LMM). Interaction type is modeled 
+            as a fixed effect, using cross-strong links as the reference category. This reduces the influence of cluster-specific 
+            language patterns and allows the fixed effects to capture relative differences associated with interaction type.
+        </p>
     </div>
 
     <div class="container-wide">
