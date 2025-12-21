@@ -33,9 +33,9 @@
 
 <section id="hero" class="hero">
     <div class="hero-content">
-        <h1 class="hero-title">How We Talk<br>About Others</h1>
+        <h1 class="hero-title">How Communities Interact</h1>
         <div class="hero-sub">
-            Decoding linguistic Patterns within Social Networks of Reddit Communities
+            Decoding linguistic patterns within Reddit Social Network Communities
         </div>
         <a href="#phase0" class="btn-explore">Start Exploring Reddit's Galaxy</a>
     </div>
@@ -52,56 +52,60 @@
             <h2 class="rq-title">Take a Look at Reddit’s Galaxy</h2>
         </div>
 
-        <p>Welcome to the Galaxy of Reddit. In this vast digital expanse, every planet is called a
-            <strong>Subreddit</strong>
-            pooling together likeminded thinkers from across the galaxy. These planets do not exist in isolation.
+        <p>Welcome to the Galaxy of Reddit - a massive social networking platform, known for its vast communities
+            (subreddits) on discussions,
+            news, expert advice, entertainment (memes, stories), and various niche topics. In Reddit's vast digital
+            expanse, every planet (
+            <strong>Subreddit</strong>)
+            pools together likeminded thinkers from across the galaxy. These planets do not exist in isolation.
             They are socially connected through their inhabitants, called <strong>users</strong> constantly debating and
             communicating.
-            These users are complete information haulers, during theyr visits to other planets they send reports to
-            theyr current home planet <strong>mentioning</strong> things that caught theyr attention. And these reports
-            can be
-            quite emotional having positive/neutral or negative outlook on things. In other words having different
-            <strong>sentiment</strong>.
-            This inborn behaviour alows information flow across the galaxy and socialy <strong>links</strong> planets
-            closer togehter.
-            We, the geeky inhabitants of planet EPFL, are fascinated by these referential migration patterns and want to
-            understand how information spreads through this galaxy. To observe
-            them, we calibrated our instruments to spy on these traveling user reports. (This involves no privacy
-            breach. In this universe, all reports are anonymous unless users deliberately reveal their identities).
+            Discussions on Reddit forums can take various forms and encompass all kinds of emotion (positive, negative,
+            angry, appreciative, etc.).
+            When one subreddit references another subreddit (by adding a link to a post/conversation in the target
+            subreddit), there is information
+            flow between communities as they interact. Some subreddits interact more frequently than others - making the
+            planets
+            knit together closely through social interaction.
+            We, the geeky inhabitants of planet r/EPFL, are fascinated by these information exchange patterns and want
+            to
+            understand how the linguistic style of communication varies for different links within Reddit's online
+            galaxy. To observe
+            them, we calibrated our instruments to spy on these intra-planet links!
 
-        <p> Our initial scan revealed two distinct styles of user reports. Some users are careful, embedding the planets
-            names deep within the <strong>body</strong> of their report. Others are careless, broadcasting the planet
-            they are talking about in the <strong>title</strong> for all to see. Since tracking all the reports is over
-            our limits, we called
-            for help from a scholarly planet known as Stanford, which provided historical Galaxy report records from
-            2014 to 2017 from what they call the <strong>Reddit Hyperlink Network</strong> program.
-            Using analytical tools granted by the galaxy’s overseers, ADA, we explored these traveling reports and
-            uncovered unexpected and sometimes unsettling information pathways.
+        <p> Our initial scan revealed two distinct styles of intra-community links. Some users embed the links to other
+            communities' posts
+            deep within the <strong>body</strong> of the post, while others mention it in the <strong>title</strong>
+            itself.
+            Stanford's <strong>Reddit Hyperlink Network</strong> record all such hyperlinks from
+            2014 to 2017. Using analytical tools granted by the galaxy’s data analysis overseers, ADA, we explored these
+            hyperlinks and
+            uncovered interesting (and sometimes unexpected) information pathways.
             <br>
             <br>
-            <strong>This is the story of how we became the Variance Vanguards of the subreddit galaxy.</strong>
-
-        <p><em>To keep both explorers and scientists satisfied, we switch to precise terminology
-            for the analysis that follows, returning to the narrative when interpreting what we observe in cursive.</em>
 
 
-        <h2 class="rq-title">An Expanding Reddit Universe</h2>
+        <h2 class="rq-title">An Expanding the Reddit Universe</h2>
 
 
-        <p> Over a 2.5-year period Reddit Hyperlink Network dataset tracks we managed to observe approximately
-            860 000 mentions, with title citations taking two thirds of total links totaling 572 000 across 54 075
-            unique subredits.
-            In this 2.5-year period weekly posts mentioning other subredits grew in a steady pace with growth
+        <p> The Reddit Hyperlink Network dataset (https://snap.stanford.edu/data/soc-RedditHyperlinks.html) contains
+            approximately
+            860 000 hyperlinks from one community to another, over a period of 2.5 years,
+            with title citations forming two thirds of the total 572 000 links across 54 075
+            unique subreddits in the dataset.
+            In this 2.5-year period, the weekly number of posts with mentioning other subreddits grew in a steady pace,
             following a strong linear trend (<em>R</em><sup>2</sup> = 0.87) (Figure <a href="#linear_exp">0.1</a>),
-            most of the observed growth being positive or neutral sentiment mentions. With positive/neutral sentiment
-            outnumbering
-            the negative by 8.35 to 1. Furthermore, linear regression reveals a substantially steeper growth rate for
+            most of the posts encompassing positive or neutral sentiment. (The ratio of positive/neutral sentiment
+            to negative was 8.35 to 1!)
+
+            Furthermore, linear regression reveals a substantially steeper growth rate for
             positive and
             neutral mentions (slope = 2.39) than for negative mentions (slope = 0.24) (Figure <a
                     href="#sentiment_slope">0.2</a>).
         </p>
 
-        <p><em>That’s a nice universe expansion metric! The Reddit universe is growing faster than its negativity.</em>
+        <p><em>That’s a nice universe expansion metric! Neutral or positive inter-community exchange is growing
+            faster than its negativity.</em>
         </p>
 
     </div>
@@ -133,36 +137,32 @@
     </div>
 
     <div class="container-text">
-        <p> Connectivity across Reddit is highly uneven and does not reach all nodes. Most subreddits belong to one
-            large
-            weakly connected cluster of 65 648 nodes, while 711 smaller clusters remain isolated from the main graph.
+        <p> We model the Reddit Hyperlink Network as a vast graph structure spanning all the subreddits and hyperlinks
+            between them over 2.5 years.
+            Each subreddit is a node, and each hyperlink is a directed edge from one node to another. The first step in
+            our analysis is
+            clustering the nodes, or subreddits, using the Leiden Algorithm which ensures a high modularity of
+            approximately 0.42 (meaning nodes inside
+            the same cluster have more links with each other than with nodes in other clusters) and low conductance
+            (meaning
+            there are fewer links going out of each cluster compared to the number of links inside it). The clustering
+            results suggest that
+            connectivity across Reddit is highly uneven and does not reach all nodes. Most subreddits belong to one
+            large weakly connected cluster of 65 648 nodes, while 711 smaller clusters remain isolated from the main
+            graph.
             However, strong connectivity is much more limited. Only 21 432 nodes form a single strongly connected
             cluster, leaving
             45 563 nodes weakly attached through mostly one-way connections.
 
-        <p><em>After a short warm-up with the data, reality sets in. This universe is big and not complitely wired. A
-            few crowded planets
-            constantly receive reports about each other, while many others gets explored less. Large parts of the galaxy
-            are not talked about.
+        <p><em>The universe is big and not completely connected - A few crowded planets
+            constantly receive exchange information, while many others are explored less. Large parts of the galaxy
+            are not talked about. Chasing every quiet corner would stretch our energy thin. So we decide to focus on the
+            largest social hub, where every planet is interacted with at least once. Links within this large central
+            cluster of communities must be representative
+            of the primary linguistic style used in inter-community links.
+
             <br>
-            <br>
-            - Maybe they are boring?
-            <br>
-            <br>
-            Chasing every quiet corner would stretch our efforts thin. So we do the sensible thing, we focus on the
-            largest social hub, where
-            reports reach all the planets at least once. If there is a coherent
-            story about how Reddit talks about itself, this is where it should speak the loudest.
-            <br>
-            <br>
-            - Wait, the administartion of ADA requested a reaserch questions before granting theyr tools and knowladge?
-            <br>
-            - How can we know what to write if we don't know what tools they will let us use?
-            <br>
-            - Quicly, just make something up, we will ajust as we go.
-            <br>
-            <br>
-            We must hurry, the universe is expanding, and we need to make sense of it before it outgrows us.
+            We must hurry, the universe is expanding, and we need to make sense of it before it outgrows us!
         </em></p>
 
         <figure style="text-align:center; margin:2rem 0;">
@@ -197,7 +197,7 @@
 
     <div class="container-text">
         <div class="rq-header purple">
-            <span class="rq-label">Mapping the Galaxy: From Content Islands to Gravitational Clusters</span>
+            <span class="rq-label">Research Question 01</span>
             <h2 class="rq-title">Based on community social attributes, what distinct communication patterns can we
                 define?</h2>
         </div>
@@ -207,8 +207,8 @@
         </h3>
 
         <p style="margin-bottom: 0">
-            To agregate thousands of subredits into communities and analyticaly meaningful structures. we used
-            three widely used community detection algorithms - Leiden, Infomap, FastGreedy. To evaluate theyr
+            To agregate thousands of subreddits into communities and analytically meaningful structures, we used
+            three widely used community detection algorithms - Leiden, Infomap, FastGreedy. To evaluate their
             performance we used:
         </p>
 
@@ -277,9 +277,9 @@
             overall interactions. For this reason we use it in further analyses as main clustering algorithm.
         </p>
         <p><em>
-            Wait we can cluster based on interactions?
-            <br>
-            Those users are really putting in the work to report about other planets.
+            Thus, we cluster communities based on how frequently they interact with or mention other subreddits! We call
+            this
+            clustering based on "social distance".
         </em>
     </div>
 
@@ -298,40 +298,48 @@
         <h3 style="color: var(--accent-purple);">A Two-Stage Classification of Social Distance</h3>
 
         <p><em>
-            How can we describe social distance?
+            How can we describe different types of links based on social distance?
         </em>
 
         <p>
-            As we aim to characterize how tone and emotions change with social distance,
+            As we aim to characterize how tone and sentiment of communication changes with social distance between
+            communities,
             we subdivide the detected clusters in two stages. First, we define social distance
-            within clusters, and then across clusters.
+            within clusters (intra-cluster links), and then across clusters (inter-cluster links).
         </p>
 
         <ul style="line-height: 1.8; margin-bottom: 2rem;">
             <li>
                 <strong>Stage 1: Intra-cluster role differentiation</strong><br>
                 Within each cluster, nodes are ranked by their within-cluster weighted degree (strength).
-                Nodes in the top 30% are labeled as <strong>Core</strong>, while the remaining 70% are labeled as
-                <strong>Periphery</strong>.
+                Nodes in the top 30% are labeled as <strong>Core</strong> communities (driving maximum information
+                exchange),
+                while the remaining 70% are labeled as
+                <strong>Periphery</strong> nodes.
+                A link is classified as an Intra-Core or Intra-Periphery link if it originates from a Core node or a
+                Periphery node respectively,
+                and is directed to any other node within the same cluster.
                 This distinction captures whether a mention/edge originates from a structurally central, highly
-                connected
-                position within the cluster or from a more weakly connected, peripheral one.
+                connected position within the cluster or from a more weakly connected, peripheral one.
             </li>
             <li>
                 <strong>Stage 2: Cross-cluster link strength</strong><br>
                 For interactions across clusters, cross-cluster interaction intensity is quantified directly by edge
                 weights.
-                We compute the median weight of all cross-cluster links and apply an 50/50 split. Links above the
-                median are classified as <strong>Strong</strong>, and those below as <strong>Weak</strong>,
-                yielding a relative separation between higher and lower intensity cross-cluster connections.
+                We compute the median weight of all cross-cluster links and apply a 50/50 split. Links above the
+                median are classified as <strong>Strong</strong> links, and those below as <strong>Weak</strong> links,
+                yielding a relative separation between higher and lower intensity cross-cluster connections. For
+                example, a link from
+                a node in cluster A to a node in cluster B is classified as Cross-Strong or Cross-Weak if the social
+                distance between
+                clusters A and B is short and long respectively.
             </li>
 
 
             <p><em>
-                Distribution of reports does not fall in equal proportions, that core planetary cluster is really
-                socially tightly connected. Top 30% of most connected together planets really really send a lot of
-                reports
-                about each other.
+                The distribution of links is not equal across all subreddits. We observe that most links fall in the
+                'Intra-Core' category,
+                indicating that most referential information excahange happens within core communities in clusters.
             </em>
         </ul>
     </div>
@@ -351,8 +359,8 @@
     <div class="container-text">
         <div class="insight-card">
             <p class="insight-text" style="font-style: normal;">
-                <strong>Fun Fact:</strong> References in the Reddit
-                mostly occur between the same clusters, repeatedly linking to each other.
+                <strong>Fun Fact:</strong> References in the Reddit Galaxy
+                mostly occur between nodes in the same cluster, which are tight-knit based on interaction frequency.
             </p>
         </div>
     </div>
@@ -365,9 +373,8 @@
     <div class="container-text">
         <div class="rq-header blue">
             <span class="rq-label">Research Question 02</span>
-            <h2 class="rq-title">How do the social attributes of communication links determine baseline linguistic
-                patterns in a peaceful
-                context?</h2>
+            <h2 class="rq-title">How do the linguistic attributes of links determine communication
+                patterns in the context of positive/neutral sentiment links?</h2>
         </div>
 
         <p>In the previous stage, we defined four types of links: <strong>Intra-Core, Intra-Periphery, Cross-Strong, and
@@ -395,11 +402,16 @@
 
         <h3 class="sub-glow">Sentiment stratification</h3>
         <p>
-            Negative references are not evenly distributed across subreddits. Cross-strong links contain a
-            disproportionately high share of negative references, while intra-periphery links contain the
-            fewest; cross-weak and intra-core links show similar levels. Pooling all references would
-            therefore let negative links disproportionately drive the aggregate results. To control for
-            this bias, we analyze negative and positive or neutral references separately.
+            Reddit hyperlinks can be of positive/neutral sentiment or negative sentiment.
+            Negative references are not evenly distributed across subreddits. For example, Cross-strong links contain a
+            disproportionately high number of negative references, while intra-periphery links contain the
+            fewest; cross-weak and intra-core links show similar levels of positive/neutral and negative links.
+            Pooling all references would therefore let negative links disproportionately drive the aggregate results. To
+            control for
+            this bias, we analyze negative and positive/neutral references separately by creating separate graph
+            structures with links of
+            a certain sentiment only, and repeating the process of clustering and link-type classification for each
+            graph.
 
         </p>
         <div class="container-wide">
@@ -416,13 +428,17 @@
         <p>
 
             Each cluster in the Reddit galaxy consists of communities with similar topics, norms, and stylistic habits.
-            These inherent preferences influence language. Some clusters favor long sentences, abstract concepts, and
-            extended reasoning; others prefer short, direct, and pragmatic communication. If a specific interaction type
+            These inherent preferences influence language. Posts from some clusters might favor long sentences, abstract
+            concepts, and
+            extended reasoning; others might prefer short, direct, and pragmatic communication. If a specific
+            interaction type
             is dominated by certain clusters, cluster-specific style could be misattributed to social distance.
             To limit this bias, we use a Linear Mixed-Effects Model (LMM). Interaction type is modeled
-            as a fixed effect, using cross-strong links as the reference category. This reduces the influence of
+            as a fixed effect, using Cross-Strong links as the reference category, or baseline with which we will
+            compare
+            the values for all other link types. This reduces the influence of
             cluster-specific
-            language patterns and allows the fixed effects to capture relative differences associated with interaction
+            language patterns and allows the fixed effects to capture relative differences associated with link
             type.
         </p>
     </div>
@@ -431,36 +447,44 @@
         <div class="dimensions-header" style="text-align: center; margin-bottom: 3rem;">
             <h3 class="sub-glow">Language Structure in a Stable Galaxy: Four Dimensions</h3>
             <p style="max-width: 800px; margin: 1rem auto; font-size: 1rem; opacity: 0.8;">
-                After both calibrations, we can treat the Reddit galaxy as operating in a stable state. Language now
-                reflects social attributes’ structural influence rather than conflict or cluster culture.
+                Our findings lead us to deduce that the interactions within the Reddit galaxy resemble a stable-state
+                information system.
+                The following findings are found based on the linguistic attributes used in links which have a
+                neutral/positive sentiment.
+                Language plays a role in determining the structural influence and social attributes of communities.
             </p>
         </div>
 
-        <!-- Dimension 01 -->
         <div class="dimension-row"
-             style="display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap;">
+             style="display: flex; align-items: flex-start; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; text-align: left;">
             <div class="dimension-text" style="flex: 1; min-width: 400px;">
                 <div class="info-card dimension-card" style="margin: 0; height: 100%;">
                     <div class="card-tag" style="color: var(--accent-cyan);">DIMENSION 01</div>
                     <span class="card-title" style="font-size: 1.8rem; display: block; margin-bottom: 1rem;">
-                    Complexity: Signal Resolution and Information Density
-                </span>
+                Complexity: Signal Resolution and Information Density
+            </span>
                     <div class="feature-tags" style="margin-bottom: 1.5rem;">
-                        <code>readability</code> <code>avg_words_per_sentence</code> <code>avg_word_length</code> <code>frac_upper</code>
+                        <code>readability</code> <code>avg_words_per_sentence</code> <code>avg_word_length</code>
+                        <code>frac_upper</code>
                     </div>
                     <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
                         <strong>Key observations:</strong>
-                        <ul style="padding-left: 1.2rem;">
-                            <li><strong>Intra-Core:</strong> Shows the highest syntactic complexity and longest
-                                sentences. Within stable core orbits, users rely on high-resolution signals for dense
-                                and precise discussion.
+                        <ul style="padding-left: 1.2rem; text-align: left;">
+                            <li><strong>Intra-Core:</strong> Core members tend to write slightly longer sentences
+                                with higher readability (+<strong>3.7%</strong>), which may indicate they share more
+                                detailed information within their immediate community.
                             </li>
-                            <li><strong>Intra-Periphery:</strong> Uses shorter sentences with a markedly higher share of
-                                capitalization, suggesting a reliance on visual emphasis to compensate for weaker
-                                contextual grounding.
+                            <li><strong>Intra-Periphery:</strong> Peripheral members often use shorter sentences
+                                with much more capitalization (+<strong>25.5%</strong>), which may indicate reliance
+                                on visual emphasis to stand out within their community.
                             </li>
-                            <li><strong>Cross-Strong:</strong> Maintains moderate complexity, balancing clarity and
-                                accessibility in cross-cluster communication.
+                            <li><strong>Cross-Strong:</strong> Messages between nearby clusters show moderate
+                                complexity, which may indicate efforts to balance clarity and accessibility when
+                                reaching other communities.
+                            </li>
+                            <li><strong>Cross-Weak:</strong> Messages between distant clusters are slightly simpler,
+                                which may indicate that social distance limits the ability to convey complex
+                                information.
                             </li>
                         </ul>
                     </div>
@@ -473,14 +497,24 @@
             </div>
         </div>
 
+
+        <div class="insight-card">
+            <p class="insight-text">
+                <strong>Fun Fact:</strong> Core members act as the central
+                communicators sending precise signals, while peripheral and cross-cluster communications adjust
+                sentence complexity depending on social distance and visibility needs.
+            </p>
+        </div>
+        <!-- Dimension 02: Logical Style -->
+        <!-- Dimension 02 -->
         <!-- Dimension 02 -->
         <div class="dimension-row"
-             style="display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; flex-direction: row-reverse;">
+             style="display: flex; align-items: flex-start; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; flex-direction: row-reverse; text-align: left;">
             <div class="dimension-text" style="flex: 1; min-width: 400px;">
                 <div class="info-card dimension-card" style="margin: 0; height: 100%;">
                     <div class="card-tag" style="color: var(--accent-blue);">DIMENSION 02</div>
                     <span class="card-title" style="font-size: 1.8rem; display: block; margin-bottom: 1rem;">
-                    Logical Style: Alignment and Defensive Clarity
+                    Logical Style: Alignment and Clarity
                 </span>
                     <div class="feature-tags" style="margin-bottom: 1.5rem;">
                         <code>LIWC_Funct</code> <code>LIWC_CogMech</code> <code>LIWC_Article</code>
@@ -488,13 +522,19 @@
                     </div>
                     <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
                         <strong>Key observations:</strong>
-                        <ul style="padding-left: 1.2rem;">
-                            <li><strong>Cross-Strong:</strong> Displays elevated use of function words, articles, and
-                                prepositions, reflecting carefully aligned and defensive communication across cultural
-                                boundaries.
+                        <ul style="padding-left: 1.2rem; text-align: left;">
+                            <li><strong>Cross-Strong:</strong> Shows elevated use of function words and
+                                prepositions, which may indicate careful alignment and clarity when
+                                communicating across clusters.
                             </li>
-                            <li><strong>Intra-Cluster:</strong> Logical reasoning markers are less explicit, as shared
-                                norms allow much of the reasoning to remain implicit.
+                            <li><strong>Intra-Core:</strong> Logical markers are moderately used, suggesting that
+                                reasoning is often implicit within the core's shared norms.
+                            </li>
+                            <li><strong>Intra-Periphery:</strong> Shows slightly reduced function words, which may
+                                reflect simpler and more direct communication within the periphery.
+                            </li>
+                            <li><strong>Cross-Weak:</strong> Displays lower linguistic markers, suggesting that
+                                distance reduces syntactic and logical alignment.
                             </li>
                         </ul>
                     </div>
@@ -507,10 +547,17 @@
             </div>
         </div>
 
+        <div class="insight-card">
+            <p class="insight-text">
+                <strong>Fun Fact:</strong> Messages crossing clusters
+                require extra linguistic structure, while messages within communities rely more on
+                shared understanding. Greater social distance tends to simplify logical expression.
+            </p>
+        </div>
 
-        <!-- Dimension 03 -->
+        <!-- Dimension 03: Identity Expression -->
         <div class="dimension-row"
-             style="display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap;">
+             style="display: flex; align-items: flex-start; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; text-align: left;">
             <div class="dimension-text" style="flex: 1; min-width: 400px;">
                 <div class="info-card dimension-card" style="margin: 0; height: 100%;">
                     <div class="card-tag" style="color: var(--accent-purple);">DIMENSION 03</div>
@@ -522,15 +569,16 @@
                     </div>
                     <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
                         <strong>Key observations:</strong>
-                        <ul style="padding-left: 1.2rem;">
-                            <li><strong>Intra-Periphery:</strong> Peaks in “we” usage, indicating stronger boundary
-                                reinforcement as peripheral members seek collective validation.
+                        <ul style="padding-left: 1.2rem; text-align: left;">
+                            <li><strong>Intra-Core:</strong> Core members use “I” more frequently
+                                (+<strong>6.0%</strong>), indicating confident self-expression within the community.
                             </li>
-                            <li><strong>Intra-Core:</strong> Shows confident and frequent use of “I,” reflecting
-                                internalized identity that requires less explicit group signaling.
+                            <li><strong>Intra-Periphery:</strong> Peripheral members show a peak in “we” usage
+                                (+<strong>14.9%</strong>), which may indicate stronger collective identity to gain
+                                recognition.
                             </li>
-                            <li><strong>Cross-community:</strong> Increased use of “they,” marking a clear outward shift
-                                in perspective.
+                            <li><strong>Cross-Strong and Cross-Weak:</strong> Higher use of “they” suggests
+                                attention to out-groups and external clusters.
                             </li>
                         </ul>
                     </div>
@@ -543,10 +591,17 @@
             </div>
         </div>
 
+        <div class="insight-card">
+            <p class="insight-text">
+                <strong>Fun Fact:</strong> Core members are confident
+                expressing themselves, while peripheral members rely on collective language to reinforce
+                their identity. Cross-cluster communication emphasizes external perspective.
+            </p>
+        </div>
 
-        <!-- Dimension 04 -->
+        <!-- Dimension 04: Emotional Temperature -->
         <div class="dimension-row"
-             style="display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; flex-direction: row-reverse;">
+             style="display: flex; align-items: flex-start; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; flex-direction: row-reverse; text-align: left;">
             <div class="dimension-text" style="flex: 1; min-width: 400px;">
                 <div class="info-card dimension-card" style="margin: 0; height: 100%;">
                     <div class="card-tag" style="color: var(--accent-red);">DIMENSION 04</div>
@@ -558,15 +613,21 @@
                     </div>
                     <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
                         <strong>Key observations:</strong>
-                        <ul style="padding-left: 1.2rem;">
-                            <li><strong>Intra-Core:</strong> Forms a highly stable and positive emotional zone, with
-                                strong positive sentiment and minimal profanity.
+                        <ul style="padding-left: 1.2rem; text-align: left;">
+                            <li><strong>Intra-Core:</strong> Core members show a high positive sentiment
+                                (+<strong>45.2%</strong>)
+                                with low profanity (-<strong>7.2%</strong>), suggesting a stable and positive
+                                emotional climate.
                             </li>
-                            <li><strong>Cross-Strong:</strong> Shows restrained emotional variance, reflecting
+                            <li><strong>Intra-Periphery:</strong> Peripheral members have moderately positive
+                                sentiment (+<strong>20.3%</strong>) but higher profanity (-<strong>16.8%</strong>),
+                                which may indicate higher emotional intensity and efforts to be noticed.
+                            </li>
+                            <li><strong>Cross-Strong:</strong> Displays restrained emotional variance, reflecting
                                 deliberate moderation to maintain cross-cluster stability.
                             </li>
-                            <li><strong>Cross-cluster:</strong> Retain higher baseline profanity than internal
-                                links, indicating persistent friction introduced by social distance.
+                            <li><strong>Cross-Weak:</strong> Maintains lower positive sentiment and slightly higher
+                                aggression, suggesting that social distance introduces friction in communication.
                             </li>
                         </ul>
                     </div>
@@ -577,6 +638,14 @@
                 <iframe class="chart-content" style="width: 100%; height: 500px; border: none;"
                         src="/ada-data-story/assets/plots/RQ2/lmm_sentiment_and_affect.html"></iframe>
             </div>
+        </div>
+
+        <div class="insight-card">
+            <p class="insight-text">
+                <strong>Fun Fact:</strong> Core members maintain calm
+                and positivity, while peripheral members show more expressive language to stand out.
+                Cross-cluster messages are moderated, but friction grows with social distance.
+            </p>
         </div>
     </div>
 
@@ -604,14 +673,14 @@
 
             <div class="info-card strong" style="margin: 0; padding: 2rem; border-top: 4px solid var(--accent-cyan);">
                 <span class="card-title">Cross-Strong</span>
-                <p class="card-desc">Moderate complexity, structured defensive grammar, low emotional fluctuation.
-                    <br><strong>→ Stable Interstellar Transfer Path</strong></p>
+                <p class="card-desc">Moderate complexity, structured grammar, low emotional fluctuation.
+                    <br><strong>→ Stable Cross-Cluster Transfer Paths</strong></p>
             </div>
 
             <div class="info-card weak" style="margin: 0; padding: 2rem; border-top: 4px solid var(--accent-red);">
                 <span class="card-title">Cross-Weak</span>
-                <p class="card-desc">Dispersed features, unstructured communication, rapidly shifting identity.
-                    <br><strong>→ High-Uncertainty Long-Range Traversal</strong></p>
+                <p class="card-desc">Dispersed features, unstructured communication style, rapidly shifting identity.
+                    <br><strong>→ High-Uncertainty Long-Range Paths</strong></p>
             </div>
 
         </div>
@@ -626,14 +695,17 @@
     <div class="container-text">
         <div class="rq-header purple">
             <span class="rq-label">Research Question 03</span>
-            <h2 class="rq-title">To what extent does the transition from a peaceful to an conflict context trigger
-                differential linguistic adaptations across distinct link types</h2>
+            <h2 class="rq-title">To what extent does the transition from a positive/neutral context to a negative
+                context trigger
+                differential linguistic styles across different link types?</h2>
         </div>
 
-        <p>If the Reddit galaxy under peaceful conditions revealed an elegant equilibrium shaped by stable orbits,
-            conflict acts as a sudden gravitational disturbance. Using the LMM model on conflict-context data, we
-            observed that antagonism does not merely amplify emotions—it fundamentally reshapes the structure of signals
-            across the galaxy.</p>
+        <p>If the Reddit galaxy under peaceful (positive/neutral) conditions revealed an elegant equilibrium shaped by
+            stable orbits,
+            conflict (negative links) acts as a sudden gravitational disturbance. Using the LMM model on
+            conflict-context data, we
+            observe that antagonism does not merely amplify emotions, but reshapes the structure of the entire
+            galaxy.</p>
 
     </div>
 
@@ -643,7 +715,7 @@
             <p style="max-width: 800px; margin: 1rem auto; font-size: 1rem; opacity: 0.8;">
                 Having established a stable baseline, we now introduce disturbance. By isolating links classified as
                 <strong>negative</strong>, we observe how language shifts when the Reddit galaxy briefly exits
-                equilibrium.
+                equilibrium. The clusters are remodelled now only on the negative links.
                 Conflict is rare, but its linguistic signature is sharp.
             </p>
         </div>
@@ -663,23 +735,22 @@
                     <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
                         <p>
                             During conflict, linguistic signals across the galaxy undergo visible compression.
-                            Messages become shorter, denser, and less layered.
+                            Messages become shorter and denser.
                         </p>
                         <ul style="padding-left: 1.2rem;">
                             <li><strong>Intra-Core:</strong> Previously complex and high-resolution language simplifies,
-                                shifting toward direct and assertive statements.
+                                shifting toward more direct and assertive communication style.
                             </li>
                             <li><strong>Intra-Periphery:</strong> Sentences shorten further, while capitalization
                                 increases,
-                                suggesting visual emphasis compensates for weaker contextual grounding.
+                                suggesting that visual emphasis compensates for weaker contextual grounding.
                             </li>
                             <li><strong>Cross-Strong:</strong> Maintains moderate complexity, preserving readability to
                                 prevent misinterpretation across cluster boundaries.
                             </li>
                         </ul>
                         <p>
-                            Conflict does not amplify expressive richness; instead, it collapses language into faster,
-                            lower-bandwidth signals.
+                            Linguistic style in 'conflict' links showcase shorter, faster, more direct signals.
                         </p>
                     </div>
                 </div>
@@ -710,19 +781,21 @@
                         </p>
                         <ul style="padding-left: 1.2rem;">
                             <li><strong>Cross-Strong:</strong> High usage of function words and prepositions reflects
-                                carefully structured, defensive alignment aimed at minimizing ambiguity.
+                                carefully structured text aimed at minimizing ambiguity.
                             </li>
                             <li><strong>Intra-Core:</strong> Increased certainty markers signal assertive,
                                 position-driven discourse rather than exploratory reasoning.
                             </li>
                             <li><strong>Intra-Periphery:</strong> Reduced cognitive processing words suggest arguments
                                 are
-                                less elaborated and more emotionally reactive.
+                                less rationally elaborate, and more emotionally reactive.
                             </li>
                         </ul>
                         <p>
-                            Logical clarity survives conflict primarily at inter-cluster bridges, where misunderstanding
-                            carries the highest cost.
+                            Logical clarity is seen in conflict edges primarily at the inter-cluster bridges. This
+                            intuitively makes sense because the chances of misunderstanding might be greater at these
+                            cross-cluster
+                            bridges due to the lack of a shared context/history.
                         </p>
                     </div>
                 </div>
@@ -741,15 +814,15 @@
                 <div class="info-card dimension-card" style="margin: 0; height: 100%;">
                     <div class="card-tag" style="color: var(--accent-purple);">DIMENSION 03</div>
                     <span class="card-title" style="font-size: 1.8rem; display: block; margin-bottom: 1rem;">
-                    Identity Mobilization: Pronouns as Defensive Orbits
+                    Identity Expression: Pronouns as Orbital Markers
                 </span>
                     <div class="feature-tags" style="margin-bottom: 1.5rem;">
                         <code>LIWC_I</code> <code>LIWC_We</code> <code>LIWC_They</code>
                     </div>
                     <div class="card-desc" style="font-size: 1.05rem; line-height: 1.8;">
                         <p>
-                            Conflict activates identity signals, pulling language into tighter and more polarized
-                            orbits.
+                            Conflict activates identity ("I, we") signals, pulling language into more self-oriented
+                            styles.
                         </p>
                         <ul style="padding-left: 1.2rem;">
                             <li><strong>Intra-Core:</strong> Sharp increases in “I,” “we,” and “they” indicate that
@@ -757,15 +830,13 @@
                                 transforms into explicit self- and group-defense.
                             </li>
                             <li><strong>Cross-Strong:</strong> Elevated “they” usage keeps attention fixed on external
-                                clusters, sustaining inter-group orientation.
+                                clusters, reinforcing the inter-group orientation.
                             </li>
                             <li><strong>Intra-Periphery:</strong> Pronoun shifts are weaker, suggesting limited capacity
                                 for large-scale identity mobilization.
                             </li>
                         </ul>
-                        <p>
-                            Identity becomes most visible where structural stakes are highest.
-                        </p>
+
                     </div>
                 </div>
             </div>
@@ -805,7 +876,7 @@
                             </li>
                         </ul>
                         <p>
-                            Conflict manifests as localized flares rather than a system-wide emotional meltdown.
+                            Conflict manifests as localized flares rather than a system-wide emotional reaction.
                         </p>
                     </div>
                 </div>
@@ -1227,8 +1298,6 @@
         });
     });
 </script>
-
-
 
 </main>
 
