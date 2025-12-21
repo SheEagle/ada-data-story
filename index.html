@@ -12,7 +12,7 @@ title: Digital Tribes
 
 <section id="hero" class="hero">
     <div class="hero-content">
-        <h1 class="hero-title">How Communities Interact</h1>
+        <h1 class="hero-title">How We Talk About Others</h1>
         <div class="hero-sub">
             Decoding linguistic patterns within Reddit Social Network Communities
         </div>
@@ -272,56 +272,108 @@ title: Digital Tribes
         </div>
     </div>
 
-
     <div class="container-text">
-        <h3 style="color: var(--accent-purple);">A Two-Stage Classification of Social Distance</h3>
+        <h3 style="color: var(--accent-purple);">A Two-Stage Classification Framework for Community Reference Links</h3>
 
         <p><em>
-            How can we describe different types of links based on social distance?
-        </em>
+            How can we define four specific groups of reference links based on community status and connection strength?
+        </em></p>
 
         <p>
-            As we aim to characterize how tone and sentiment of communication changes with social distance between
-            communities,
-            we subdivide the detected clusters in two stages. First, we define social distance
-            within clusters (intra-cluster links), and then across clusters (inter-cluster links).
+            To analyze communication behavior, we use a two-stage classification framework. This system categorizes all
+            links into four distinct groups—Intra-Core, Intra-Periphery, Cross-Strong, and Cross-Weak—based on the
+            sender’s social role and the social distance between the communities.
         </p>
 
-        <ul style="line-height: 1.8; margin-bottom: 2rem;">
-            <li>
-                <strong>Stage 1: Intra-cluster role differentiation</strong><br>
-                Within each cluster, nodes are ranked by their within-cluster weighted degree (strength).
-                Nodes in the top 30% are labeled as <strong>Core</strong> communities (driving maximum information
-                exchange),
-                while the remaining 70% are labeled as
-                <strong>Periphery</strong> nodes.
-                A link is classified as an Intra-Core or Intra-Periphery link if it originates from a Core node or a
-                Periphery node respectively,
-                and is directed to any other node within the same cluster.
-                This distinction captures whether a mention/edge originates from a structurally central, highly
-                connected position within the cluster or from a more weakly connected, peripheral one.
-            </li>
-            <li>
-                <strong>Stage 2: Cross-cluster link strength</strong><br>
-                For interactions across clusters, cross-cluster interaction intensity is quantified directly by edge
-                weights.
-                We compute the median weight of all cross-cluster links and apply a 50/50 split. Links above the
-                median are classified as <strong>Strong</strong> links, and those below as <strong>Weak</strong> links,
-                yielding a relative separation between higher and lower intensity cross-cluster connections. For
-                example, a link from
-                a node in cluster A to a node in cluster B is classified as Cross-Strong or Cross-Weak if the social
-                distance between
-                clusters A and B is short and long respectively.
+        <ul style="line-height: 1.8; margin-bottom: 2rem; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 2rem;">
+                <strong style="color: var(--accent-purple);">Stage 1: Within-cluster Link Classification
+                </strong><br>
+                Within each community cluster, communities are ranked by <strong>weighted degree (total connection
+                strength)</strong> to identify their influence levels:
+                <ul style="margin-top: 0.5rem;">
+                    <li><strong>Core Communities:</strong> The top 30% most active hubs, serving as discussion centers
+                        within the cluster.
+                    </li>
+                    <li><strong>Peripheral Communities:</strong> The remaining 70%, positioned at the social periphery.
+                    </li>
+                </ul>
+                Based on this, we define the first two groups:
+                <br>• <strong>Intra-Core:</strong> Links initiated by core communities targeting other members within
+                the same cluster.
+                <br>• <strong>Intra-Periphery:</strong> Links initiated by peripheral communities targeting other
+                members within the same cluster.
             </li>
 
-
-            <p><em>
-                The distribution of links is not equal across all subreddits. We observe that most links fall in the
-                'Intra-Core' category,
-                indicating that most referential information excahange happens within core communities in clusters.
-            </em>
+            <li>
+                <strong style="color: var(--accent-purple);">Stage 2: Cross-Cluster Link Classification
+                </strong><br>
+                For references spanning different clusters, <strong>tie strength</strong> is measured via interaction
+                frequency (edge weight). Using the median as a threshold, we define the remaining two groups:
+                <ul style="margin-top: 0.5rem;">
+                    <li><strong>Cross-Strong:</strong> Cross-cluster links with interaction frequency above the median,
+                        indicating close connections between the groups.
+                    </li>
+                    <li><strong>Cross-Weak:</strong> Cross-cluster links with interaction frequency below the median,
+                        representing occasional “bridge” interactions between otherwise separate social domains.
+                    </li>
+                </ul>
+            </li>
         </ul>
+
+
     </div>
+
+
+    <!--    <div class="container-text">-->
+    <!--        <h3 style="color: var(&#45;&#45;accent-purple);">A Two-Stage Classification of Social Distance</h3>-->
+
+    <!--        <p><em>-->
+    <!--            How can we describe different types of links based on social distance?-->
+    <!--        </em>-->
+
+    <!--        <p>-->
+    <!--            As we aim to characterize how tone and sentiment of communication changes with social distance between-->
+    <!--            communities,-->
+    <!--            we subdivide the detected clusters in two stages. First, we define social distance-->
+    <!--            within clusters (intra-cluster links), and then across clusters (inter-cluster links).-->
+    <!--        </p>-->
+
+    <!--        <ul style="line-height: 1.8; margin-bottom: 2rem;">-->
+    <!--            <li>-->
+    <!--                <strong>Stage 1: Intra-cluster role differentiation</strong><br>-->
+    <!--                Within each cluster, nodes are ranked by their within-cluster weighted degree (strength).-->
+    <!--                Nodes in the top 30% are labeled as <strong>Core</strong> communities (driving maximum information-->
+    <!--                exchange),-->
+    <!--                while the remaining 70% are labeled as-->
+    <!--                <strong>Periphery</strong> nodes.-->
+    <!--                A link is classified as an Intra-Core or Intra-Periphery link if it originates from a Core node or a-->
+    <!--                Periphery node respectively,-->
+    <!--                and is directed to any other node within the same cluster.-->
+    <!--                This distinction captures whether a mention/edge originates from a structurally central, highly-->
+    <!--                connected position within the cluster or from a more weakly connected, peripheral one.-->
+    <!--            </li>-->
+    <!--            <li>-->
+    <!--                <strong>Stage 2: Cross-cluster link strength</strong><br>-->
+    <!--                For interactions across clusters, cross-cluster interaction intensity is quantified directly by edge-->
+    <!--                weights.-->
+    <!--                We compute the median weight of all cross-cluster links and apply a 50/50 split. Links above the-->
+    <!--                median are classified as <strong>Strong</strong> links, and those below as <strong>Weak</strong> links,-->
+    <!--                yielding a relative separation between higher and lower intensity cross-cluster connections. For-->
+    <!--                example, a link from-->
+    <!--                a node in cluster A to a node in cluster B is classified as Cross-Strong or Cross-Weak if the social-->
+    <!--                distance between-->
+    <!--                clusters A and B is short and long respectively.-->
+    <!--            </li>-->
+
+
+    <!--            <p><em>-->
+    <!--                The distribution of links is not equal across all subreddits. We observe that most links fall in the-->
+    <!--                'Intra-Core' category,-->
+    <!--                indicating that most referential information excahange happens within core communities in clusters.-->
+    <!--            </em>-->
+    <!--        </ul>-->
+    <!--    </div>-->
 
     <div class="container-wide">
         <div class="chart-center-wrapper">
@@ -338,11 +390,15 @@ title: Digital Tribes
     <div class="container-text">
         <div class="insight-card">
             <p class="insight-text" style="font-style: normal;">
-                <strong>Fun Fact:</strong> References in the Reddit Galaxy
-                mostly occur between nodes in the same cluster, which are tight-knit based on interaction frequency.
+                <strong>Fun Fact:</strong> Data show that 59% of reference links are initiated by highly influential
+                core members. This means that the majority of discussions on the platform are propelled by a small
+                set of core communities, while interactions from peripheral communities or across different domains
+                are much less frequent.
+
             </p>
         </div>
     </div>
+
 </section>
 
 
@@ -352,8 +408,8 @@ title: Digital Tribes
     <div class="container-text">
         <div class="rq-header blue">
             <span class="rq-label">Research Question 02</span>
-            <h2 class="rq-title">How do the linguistic attributes of links determine communication
-                patterns in the context of positive/neutral sentiment links?</h2>
+            <h2 class="rq-title">How does social roles and social distance within the Reddit 'ecosystem' influence
+                the linguistic patterns and emotional tone of interactions in a peaceful context?</h2>
         </div>
 
         <p>In the previous stage, we defined four types of links: <strong>Intra-Core, Intra-Periphery, Cross-Strong, and
@@ -362,7 +418,7 @@ title: Digital Tribes
         <p>
         </p>
 
-        <h3 class="sub-glow">Sentiment stratification</h3>
+        <h3 class="sub-glow">Controlling conflict rate</h3>
         <p>
             Reddit hyperlinks can be of positive/neutral sentiment or negative sentiment.
             Negative references are not evenly distributed across subreddits. For example, Cross-strong links contain a
@@ -386,7 +442,7 @@ title: Digital Tribes
             </div>
         </div>
 
-        <h3 class="sub-glow">Controling for cluster specific diferences</h3>
+        <h3 class="sub-glow">Controlling cluster specific differences</h3>
         <p>
 
             Each cluster in the Reddit galaxy consists of communities with similar topics, norms, and stylistic habits.
@@ -960,32 +1016,6 @@ title: Digital Tribes
             </ul>
         </div>
     </div>
-
-
-    <!--    <div class="container-text">-->
-    <!--        <h3 class="sub-glow">Cross-Context Comparison: From Peaceful Equilibrium to Conflict Shake-Up</h3>-->
-    <!--        <p>Three major shifts emerge when comparing conflict (RQ3) to peaceful (RQ2) galaxy states:</p>-->
-
-    <!--        <div class="info-card" style="margin-bottom: 3rem; background: rgba(255, 77, 77, 0.05);">-->
-    <!--            <ul style="list-style: none; padding: 0;">-->
-    <!--                <li style="margin-bottom: 1.5rem;">-->
-    <!--                    <strong style="color: var(&#45;&#45;accent-gold); font-size: 1.2rem;">Mask Removal:</strong><br>-->
-    <!--                    Intra-Periphery shifts from restrained to explosive expression; swearing and anger spike,-->
-    <!--                    demonstrating that peripheral regions are least bound by social norms.-->
-    <!--                </li>-->
-    <!--                <li style="margin-bottom: 1.5rem;">-->
-    <!--                    <strong style="color: var(&#45;&#45;accent-purple); font-size: 1.2rem;">Identity Weaponization:</strong><br>-->
-    <!--                    Intra-Core intensifies pronoun use; the closest clusters turn conflict into a defense of self and-->
-    <!--                    faction.-->
-    <!--                </li>-->
-    <!--                <li style="margin-bottom: 1rem;">-->
-    <!--                    <strong style="color: var(&#45;&#45;accent-cyan); font-size: 1.2rem;">Diplomatic Resilience:</strong><br>-->
-    <!--                    Cross-Strong links remain the most logical and structured, acting as a stabilizing “diplomatic-->
-    <!--                    shield” in the galaxy.-->
-    <!--                </li>-->
-    <!--            </ul>-->
-    <!--        </div>-->
-    <!--    </div>-->
 
     <div class="container-text" style="text-align: center;">
         <h3 class="sub-glow">Conflict-Era Communication Profiles</h3>
