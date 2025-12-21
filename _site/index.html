@@ -52,7 +52,7 @@
             <h2 class="rq-title">Take a Look at Reddit’s Galaxy</h2>
         </div>
 
-        <p>Welcome to the Galaxy of Reddit - a massive social networking platform, known for its vast communities
+        <p>Welcome to the Galaxy of Reddit : a massive social networking platform, known for its vast communities
             (subreddits) on discussions,
             news, expert advice, entertainment (memes, stories), and various niche topics. In Reddit's vast digital
             expanse, every planet (
@@ -88,21 +88,45 @@
         <h2 class="rq-title">The Expanding Reddit Universe</h2>
 
 
-        <p> The Reddit Hyperlink Network dataset (https://snap.stanford.edu/data/soc-RedditHyperlinks.html) contains
-            approximately
-            860 000 hyperlinks from one community to another, over a period of 2.5 years,
-            with title citations forming two thirds of the total 572 000 links across 54 075
-            unique subreddits in the dataset.
-            In this 2.5-year period, the weekly number of posts with mentioning other subreddits grew in a steady pace,
-            following a strong linear trend (<em>R</em><sup>2</sup> = 0.87) (Figure <a href="#linear_exp">0.1</a>),
-            most of the posts encompassing positive or neutral sentiment. (The ratio of positive/neutral sentiment
-            to negative was 8.35 to 1!)
+        <p>
+            The
+            <a href="https://snap.stanford.edu/data/soc-RedditHyperlinks.html"
+               target="_blank"
+               class="my-link">
+                Reddit Hyperlink Network dataset
+            </a>
+            contains approximately
+            <strong>860,000 hyperlinks</strong>
+            from one community to another, over a period of
+            <strong>2.5 years</strong>,
+            with title citations forming
+            <strong>two thirds of the total 572,000 links</strong>
+            across
+            <strong>54,075 unique subreddits</strong>
+            in the dataset.
 
-            Furthermore, linear regression reveals a substantially steeper growth rate for
-            positive and
-            neutral mentions (slope = 2.39) than for negative mentions (slope = 0.24) (Figure <a
-                    href="#sentiment_slope">0.2</a>).
+            In this 2.5-year period, the
+            weekly number of posts mentioning other subreddits grew at a steady pace,
+            following a
+            strong linear trend
+            (<em>R</em><sup>2</sup> = <strong>0.87</strong>)
+            (Figure
+            <a href="#linear_exp" class="my-link">0.1</a>),
+            with most posts encompassing
+            positive or neutral sentiment.
+            (The ratio of positive/neutral sentiment to negative was
+            <strong>8.35 : 1</strong>!)
+
+            Furthermore, linear regression reveals a
+            substantially steeper growth rate
+            for positive and neutral mentions
+            (<strong>slope = 2.39</strong>)
+            than for negative mentions
+            (<strong>slope = 0.24</strong>)
+            (Figure
+            <a href="#sentiment_slope" class="my-link">0.2</a>).
         </p>
+
 
         <p><em>That’s a nice universe expansion metric! Neutral or positive inter-community exchange is growing
             faster than its negativity.</em>
@@ -121,7 +145,7 @@
                         allowfullscreen>
                 </iframe>
                 <div class="chart-caption">
-                    Figure 0.1 - The Expansion of the Reddit Galaxy: Linear Growth ($R^2 = 0.87$).
+                    Figure 0.1 - The Expansion of the Reddit Galaxy: Linear Growth with (<em>R</em><sup>2</sup> = 0.87).
                 </div>
             </div>
 
@@ -130,40 +154,46 @@
                         style="border:none; width:100%; height:500px;"
                         allowfullscreen></iframe>
                 <div class="chart-caption">
-                    Figure 0.2 -
+                    Figure 0.2 - Growth comparison between positive/neutral mentions (slope = 2.39) and negative
+                    mentions (slope = 0.24).
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container-text">
-        <p> We model the Reddit Hyperlink Network as a vast graph structure spanning all the subreddits and hyperlinks
-            between them over 2.5 years.
-            Each subreddit is a node, and each hyperlink is a directed edge from one node to another. The first step in
-            our analysis is
-            clustering the nodes, or subreddits, using the Leiden Algorithm which ensures a high modularity of
-            approximately 0.42 (meaning nodes inside
-            the same cluster have more links with each other than with nodes in other clusters) and low conductance
-            (meaning
-            there are fewer links going out of each cluster compared to the number of links inside it). The clustering
-            results suggest that
-            connectivity across Reddit is highly uneven and does not reach all nodes. Most subreddits belong to one
-            large weakly connected cluster of 65 648 nodes, while 711 smaller clusters remain isolated from the main
-            graph.
-            However, strong connectivity is much more limited. Only 21 432 nodes form a single strongly connected
+        <p>
+            We model the Reddit Hyperlink Network as a vast graph structure spanning all the subreddits and hyperlinks
+            between them over <strong>2.5 years</strong>.
+            Each subreddit is a node, and each hyperlink is a directed edge from one node to another. Our initial
+            clustering analysis
+            (details provided later) suggests that connectivity across Reddit is highly uneven and does not reach
+            all nodes. Most subreddits belong to one large weakly connected cluster of <strong>65,648 nodes</strong>,
+            while <strong>711 smaller
+            clusters</strong> remain
+            isolated from the main graph.
+            However, strong connectivity is much more limited. Only <strong>21,432 nodes</strong> form a single strongly
+            connected
             cluster, leaving
-            45 563 nodes weakly attached through mostly one-way connections.
+            <strong>45,563 nodes</strong> weakly attached through mostly one-way connections.
+        </p>
 
-        <p><em>The universe is big and not completely connected - A few crowded planets
-            constantly receive exchange information, while many others are explored less. Large parts of the galaxy
-            are not talked about. Chasing every quiet corner would stretch our energy thin. So we decide to focus on the
-            largest social hub, where every planet is interacted with at least once. Links within this large central
-            cluster of communities must be representative
-            of the primary linguistic style used in inter-community links.
 
-            <br>
-            We must hurry, the universe is expanding, and we need to make sense of it before it outgrows us!
+        <p><em>
+            The universe is big and not completely connected : A few crowded planets
+            constantly receive exchange information, while many others are explored less.
+            Large parts of the galaxy are not talked about. Chasing every quiet corner would
+            stretch our energy thin. So we decide to focus on the largest social hub, where
+            every planet is interacted with at least once. Links within this large central
+            cluster of communities must be representative of the primary linguistic style
+            used in inter-community links.
         </em></p>
+
+        <p><em>
+            We must hurry, the universe is expanding, and we need to make sense of it before
+            it outgrows us!
+        </em></p>
+
 
         <figure style="text-align:center; margin:2rem 0;">
             <img src="/ada-data-story/assets/plots/phase0/questions.png"
@@ -207,8 +237,11 @@
         </h3>
 
         <p style="margin-bottom: 0">
-            To agregate thousands of subreddits into communities and analytically meaningful structures, we used
-            three widely used community detection algorithms - Leiden, Infomap, FastGreedy. To evaluate their
+            Since social networks are known to exhibit community structures, hence to better understand the dynamics
+            of communication between subreddits, we first need to identify and aggregate them into larger communities
+            based on their interaction patterns.
+            For this, we used
+            three widely used community detection algorithms : Leiden, Infomap, FastGreedy. To evaluate their
             performance we used:
         </p>
 
@@ -219,11 +252,11 @@
             </li>
             <li>
                 🔸 <strong>Conductance:</strong> Captures how much interaction “leaks” across cluster boundaries; lower
-                values indicate sharper, more stable borders between star systems.
+                values indicate sharpercommunity structure, more stable borders between star systems.
             </li>
             <li>
                 🔸 <strong>Coverage:</strong> Indicates the proportion of total interactions in the galaxy that are
-                captured by the detected clusters.
+                internal to the clusters.
             </li>
         </ul>
 
@@ -267,7 +300,7 @@
         <p>
             While <strong>FastGreedy</strong> achieves the highest modularity score, its optimization favors dense
             internal grouping at the cost of slightly higher boundary leakage. <strong>Infomap</strong>, in contrast,
-            fragments the galaxy into over three thousand micro-clusters, producing a structure that is overly
+            fragments the galaxy into over three thousand micro clusters, producing a structure that is overly
             fragmented.
         </p>
 
@@ -286,30 +319,61 @@
 
     <div class="chart-wrapper">
         <iframe class="chart-content"
-                src="/ada-data-story/assets/plots/RQ1/viz_clustering_global(1).html"></iframe>
+                src="/ada-data-story/assets/plots/RQ1/viz_clustering_global_new.html"></iframe>
         <div class="chart-caption">
-            Fig. 0.1 – Global view of the Reddit galaxy: social star clusters identified using the Leiden
-            algorithm.
+            Fig. 1.1 – Global view of the Reddit galaxy: Social star clusters identified using the Leiden
+            algorithm. Red (warm) color represents high net outflow of mentions from a community, while blue (cool)
+            color
+            represents high net inflow.
         </div>
     </div>
 
     <div class="container-text">
-        <h3 style="color: var(--accent-purple);">A Two-Stage Classification Framework for Community Reference Links</h3>
+        <h3 style="color: var(--accent-purple);">A Two Stage Classification Framework for Community Reference Links</h3>
 
         <p><em>
-            How can we define four specific groups of reference links based on community status and connection strength?
+            <!-- How can we define four specific groups of reference links based on community status and connection strength? -->
+            How do we categorize the mentions (links) based on the subreddit role and their social distance?
         </em></p>
 
         <ul style="line-height: 1.8; margin-bottom: 2rem; list-style-type: none; padding-left: 0;">
             <li style="margin-bottom: 2rem;">
+
                 <strong style="color: var(--accent-purple);">Stage 1: Within-cluster Link Classification
                 </strong><br>
+
                 Within each community cluster, communities are ranked by <strong>weighted degree (total connection
+
                 strength)</strong> to identify their influence levels:
+
+                <ul style="margin-top: 0.5rem;">
+
+                    <li><strong>Core Communities:</strong> The top 30% most active hubs, serving as discussion centers
+
+                        within the cluster.
+
+                    </li>
+
+                    <li><strong>Peripheral Communities:</strong> The remaining 70%, positioned at the social periphery.
+
+                    </li>
+
                 </ul>
-                <br>• <strong>Intra-Core:</strong> core Communities, the top 30% most conected subreddits.
-                
-                <br>• <strong>Intra-Periphery:</strong> the remaining 70%, positioned at the social periphery.
+
+                Based on this, we define the first two groups:
+
+                <ul style="margin-top: 0.5rem;">
+
+                    <li><strong>Intra-Core:</strong> Links initiated by core communities targeting other members within
+                        the same cluster.
+                    </li>
+
+                    <li><strong>Intra-Periphery:</strong> Links initiated by peripheral communities targeting other
+                        members within the same cluster.
+                    </li>
+
+                </ul>
+
             </li>
 
             <li>
@@ -334,21 +398,26 @@
             <ul style="margin-top: 0.5rem;">
                 <li><strong>Intra-Core</strong> links (edges) originating from core nodes (top 30%) within clusters
                 </li>
-                <li><strong>Intra-weak</strong> links (edges) originating from peripheral nodes (bottom 70%) within clusters
+                <li><strong>Intra-weak</strong> links (edges) originating from peripheral nodes (bottom 70%) within
+                    clusters
                 </li>
-                <li><strong>Cross-Strong</strong> links (edges) between clusters with edge weights above the cross-cluster median
+                <li><strong>Cross-Strong</strong> links (edges) between clusters with edge weights above the
+                    cross-cluster median
                 </li>
-                <li><strong>Cross-Weak</strong> links (edges) between clusters with edge weights below the cross-cluster median
+                <li><strong>Cross-Weak</strong> links (edges) between clusters with edge weights below the cross-cluster
+                    median
                 </li>
             </ul>
         </div>
-            <p><em>
-            Distribution of reports does not fall in equal proportions, that core planetary cluster is really socialy tightly conected.                Top 30% of most conected together planets really really send alot of reports about each other.
-            </em>
+        <em>
+            Distribution of reports does not fall in equal proportions, that core planetary cluster is really socialy
+            tightly connected. Top 30% of most connected together planets really really send alot of reports about each
+            other.
+        </em>
         </ul>
     </div>
 
-</div>
+    </div>
 
 
     <!--    <div class="container-text">-->
@@ -407,7 +476,7 @@
                 <iframe class="chart-content"
                         src="/ada-data-story/assets/plots/RQ1/dist_global.html"></iframe>
                 <div class="chart-caption">
-                    Fig. 1.2 – Distribution of interaction types.
+                    Fig. 1.2 – Distribution of link types.
                 </div>
             </div>
         </div>
@@ -463,7 +532,7 @@
                 <iframe class="chart-content"
                         src="/ada-data-story/assets/plots/RQ2/conflict_rate_comparison.html"></iframe>
                 <div class="chart-caption">
-                    FIG 2.1
+                    Fig 2.1 Conflict Rate Comparison in 4 Groups.
                 </div>
             </div>
         </div>
@@ -1121,13 +1190,13 @@
 
         <div class="chart-wrapper">
             <iframe class="chart-content"
-                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_positive(1).html"></iframe>
+                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_positive_new.html"></iframe>
             <div class="chart-caption">Figure 4.1 Positive Network Clustering</div>
         </div>
 
         <div class="chart-wrapper">
             <iframe class="chart-content"
-                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_negative(1).html"></iframe>
+                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_negative_new.html"></iframe>
             <div class="chart-caption">Figure 4.2 Negative Network Clustering</div>
         </div>
 
@@ -1138,24 +1207,30 @@
         <div class="container-wide">
             <div class="chart-wrapper" style="margin-bottom: 3rem;">
                 <iframe class="chart-content" style="height: 600px; border: none;"
-                        src="/ada-data-story/assets/plots/RQ4/network_radar_fingerprint.html"></iframe>
+                        src="/ada-data-story/assets/plots/RQ4/topo_radar.html"></iframe>
                 <div class="chart-caption">
-                    Figure 4.3 Network structure fingerprints
+                    Figure 4.3 Network structure comparison
                 </div>
             </div>
         </div>
 
         <p>
-            The audit shows that the <strong>Peace</strong> network acts as the galaxy’s structural anchor, closely
-            mirroring the <strong>Global</strong> network with near-total connectivity
-            (<strong>99.92% LWCC</strong>). In contrast, the <strong>Conflict</strong> network resembles a dense nebula:
-            despite its smaller footprint, its density is almost four times higher, while reciprocity drops sharply
-            (<strong>0.0675</strong>) and assortativity becomes more negative
-            (<strong>-0.1604</strong>).
-            Peace sustains stable, reciprocal dialogue, whereas conflict concentrates asymmetric “firepower” across
+            The audit shows that the <strong>Positive</strong> network acts as the galaxy’s structural anchor, closely
+            mirroring the <strong>Global</strong> network with high <strong>Density</strong>,
+            <strong>Reciprocity</strong>
+            and <strong>Average Degree</strong>. In contrast, the <strong>Negative</strong> network is macroscopically
+            fragmented with few connections per cluster (low <strong>Density</strong> and <strong>Average
+            Degree</strong>)
+            and structurally separated (lowest <strong>Assortativity</strong>), indicating that conflict does not
+            involve
+            the whole community and may follow rigid hierarchical lines. However, the highest <strong>Average
+            Clustering</strong>
+            in the Negative network reveals that while conflict is not widespread, it is concentrated in small, tight
+            circles of communities who interact heavily with each other.
+            In short, peace sustains stable, reciprocal dialogue, whereas conflict concentrates asymmetric “firepower”
+            across
             dissimilar clusters.
         </p>
-
 
         <h3 class="sub-glow">1. Initial Hypothesis: “Mirror-Constant” Structures</h3>
         <p>In the exploratory Phase 0, we observed that positive interactions dominate: roughly 8.35 positive links per
@@ -1459,7 +1534,6 @@
         });
     });
 </script>
-
 </main>
 
 <script>
