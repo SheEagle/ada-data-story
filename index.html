@@ -1118,16 +1118,17 @@ title: Digital Tribes
 <section id="rq4">
     <div class="container-text">
         <div class="rq-header blue"><span class="rq-label">Research Question 04</span>
-            <h2 class="rq-title">Macro Perspective: Steady-State Structures and Conflict-Driven Reorganization in the
-                Reddit Galaxy</h2></div>
+            <h2 class="rq-title">How does the global network architecture differ when constructed using only positive versus 
+                only negative links, and does conflict based network drive a reshuffling of community 
+                centrality and influence?</h2></div>
         <p>
-            So far, we have examined Reddit interactions at the micro level, focusing on signal complexity, logical
-            style, identity markers, and emotional tone. However, a galaxy is not defined by individual signals alone.
+            So far, we have examined Reddit interactions at the micro level, focusing on language complexity, logical
+            style, identity expression, and emotional tone. However, a galaxy is not defined by individual signals alone.
             Its structure emerges from the collective motion of stars and clusters. At the macro level, we therefore
             ask a structural question:
             <strong>
                 What defines the social architecture of the Reddit galaxy, and what happens to this architecture when
-                conflict emerges?
+                we only use conflict links?
             </strong>
         </p>
 
@@ -1135,7 +1136,7 @@ title: Digital Tribes
             All previous analyses were conducted on the <strong>global network</strong>, where positive and negative
             interactions were jointly aggregated. This perspective implicitly assumes that conflict behaves as a local
             disturbance within an otherwise stable system. To test this assumption, we deliberately reconstruct the
-            galaxy under two extreme observational lenses:
+            galaxy under two different observational lenses:
             a <strong>peace network</strong> containing only positive interactions, and a
             <strong>conflict network</strong> containing only negative interactions.
         </p>
@@ -1152,8 +1153,8 @@ title: Digital Tribes
             <li>Compute <strong>27 linguistic features</strong> for each interaction, including readability metrics,
                 sentence structure, pronoun usage, emotional tone, and LIWC categories.
             </li>
-            <li>Fit <strong>linear mixed-effects models (LMMs)</strong> to estimate fixed-effect coefficients, producing
-                high-dimensional behavioral vectors for each interaction type.
+            <li>Fit <strong>linear mixed-effects models (LMMs)</strong> to estimate fixed effect coefficients, producing
+                high dimensional behavioral vectors for each interaction type.
             </li>
             <li>Compare structures across contexts using <strong>Pearson correlation</strong>,
                 <strong>Jaccard similarity</strong>, and <strong>feature drift analysis</strong>.
@@ -1165,7 +1166,7 @@ title: Digital Tribes
             skeleton, and tracking how conflict perturbs or reorganizes existing orbits.
         </p>
 
-        <p>The clustering results for the three networks are shown below.</p>
+        <p>The cluster visualization for the these different networks are shown below.</p>
 
         <div class="chart-wrapper">
             <iframe class="chart-content"
@@ -1180,7 +1181,7 @@ title: Digital Tribes
         </div>
 
         <p>
-            We then perform a network-level audit to compare their global structural properties.
+            We then perform a network level audit to compare their global structural properties.
         </p>
 
         <div class="container-wide">
@@ -1211,20 +1212,20 @@ title: Digital Tribes
             dissimilar clusters.
         </p>
 
-        <h3 class="sub-glow">1. Initial Hypothesis: “Mirror-Constant” Structures</h3>
+        <!-- <h3 class="sub-glow">1. Initial Hypothesis: “Mirror-Constant” Structures</h3>
         <p>In the exploratory Phase 0, we observed that positive interactions dominate: roughly 8.35 positive links per
             negative one. This led to the following hypothesis:</p>
 
         <div class="insight-card" style="border-left-color: var(--accent-gold);">
             <p class="insight-text" style="font-size: 1.05rem;">
                 We assume that positive interactions define the Reddit galaxy’s “gravitational skeleton,” determining
-                which communities occupy the core, which serve as cross-cluster bridges, and which orbit at the
+                which subreddits occupy the core, which serve as cross-cluster bridges, and which orbit at the
                 periphery. Conflicts may induce local turbulence, but the overall skeletal structure should remain
                 stable.
             </p>
-        </div>
+        </div> -->
 
-        <h3 class="sub-glow">2. Technical Verification: Peace as the Galaxy’s Anchor</h3>
+        <!-- <h3 class="sub-glow">2. Technical Verification: Peace as the Galaxy’s Anchor</h3>
         <p>To test this, we compared the global network with the peace-only network:</p>
         <ul style="line-height:1.8; padding-left:1.2rem;">
             <li>Computed LMM fixed-effect coefficients for each link, resulting in 27-dimensional high-dimensional
@@ -1246,11 +1247,40 @@ title: Digital Tribes
 
         <p>This confirms that positive interactions do not merely dominate in volume—they define the steady-state social
             architecture. <strong>Peace acts as the galaxy’s gravitational anchor</strong>, holding core and peripheral
+            clusters in predictable orbits.</p> -->
+
+        <h3 class="sub-glow">1. Peace Network as the Galaxy’s Anchor</h3>
+        <p> Earlier we observed that positive interactions dominate: roughly 8.35 positive links per
+            negative one. This leads us to think that positive interactions define the Reddit galaxy’s “gravitational 
+            skeleton,” determining
+            which subreddits occupy the core, which serve as cross-cluster bridges, and which orbit at the
+            periphery. Conflicts may induce local turbulence, but the overall skeletal structure should remain
+            stable. To rigorously test this, we compared the global network with the peace-only network:</p>
+        <ul style="line-height:1.8; padding-left:1.2rem;">
+            <li>Computed LMM fixed-effect coefficients for each link, resulting in 27-dimensional high-dimensional
+                behavior vectors.
+            </li>
+            <li>Calculated Pearson correlations between corresponding links in the peace and global networks.</li>
+            <li>Observed near-perfect alignment: peripheral links (Intra-Periphery) reached correlations up to 0.99,
+                with core links similarly aligned.
+            </li>
+        </ul>
+
+        <div class="chart-wrapper">
+            <iframe class="chart-content"
+                    src="/ada-data-story/assets/plots/RQ4/feature_isomorphism_peace.html"></iframe>
+            <div class="chart-caption">
+                Figure 4.4 Feature Isomorphism: Global vs. Peace
+            </div>
+        </div>
+
+        <p>This confirms that positive interactions do not merely dominate in volume; they define the overall social
+            architecture. <strong>Peace network acts as the galaxy’s gravitational anchor</strong>, holding core and peripheral
             clusters in predictable orbits.</p>
 
-        <h3 class="sub-glow">3. Structural Drift: Conflict-Induced Logic Shifts</h3>
-        <p>Examining the conflict-only network reveals that the mirror-constant assumption breaks down. Conflict does
-            not just amplify existing patterns—it generates a new social gravity, reshaping the galaxy’s landscape.</p>
+        <h3 class="sub-glow">2. Structural Drift: Conflict-Induced Logic Shifts</h3>
+        <p>Examining the conflict-only network reveals that the entire galaxy's structure breaks down. Conflict does
+            not just amplify existing patterns it generates a new social gravity, reshaping the galaxy’s landscape.</p>
 
         <div class="chart-wrapper">
             <iframe class="chart-content"
@@ -1263,18 +1293,20 @@ title: Digital Tribes
 
         <p>Correlations shrink significantly under conflict, with peripheral regions showing the largest divergence.
             This indicates that edge clusters are the first to experience destabilization. <strong>Conflict warps the
-                underlying social skeleton</strong>, producing behaviors unseen under steady conditions.</p>
+                underlying social skeleton</strong>, producing behaviors unseen under normal conditions.</p>
 
-        <h3 class="sub-glow">4. Role Drift & Structural Reorganization</h3>
-        <p>To analyze structural reorganization under conflict, we employed a combination of set theory and statistical
+        <h3 class="sub-glow">3. Structural Reorganization based on Conflicts</h3>
+        <p>To identify differences in network structure when only conflict is considered, we imagine that our original 
+            Peace network is changed into a conflict-only network. To analyze structural reorganization during this 
+            transition, we employed a combination of set theory and statistical
             comparison:</p>
         <ul style="line-height:1.8; padding-left:1.2rem;">
             <li><strong>Jaccard Similarity:</strong> Measures the overlap of core members between peace and conflict
                 networks, quantifying role retention or migration.
             </li>
-            <li><strong>Feature Drift Analysis:</strong> For nodes “relegated” from core to periphery, we track shifts
-                in language features (logic, pronouns, emotional tone, readability) before and after migration, testing
-                the hypothesis that high traffic does not guarantee structural influence.
+            <li><strong>Feature Drift Analysis:</strong> For nodes “demoted” from core to periphery, we track shifts
+                in language features (logic, pronouns, emotional tone, readability) before and after the transition, testing
+                the hypothesis that high traffic does not guarantee a Peaceful structural influence.
             </li>
         </ul>
 
@@ -1284,7 +1316,7 @@ title: Digital Tribes
                     <iframe class="chart-content"
                             src="/ada-data-story/assets/plots/RQ4/transition_flow_Positive.html"></iframe>
                     <div class="chart-caption">
-                        Figure 4.6 Role Transition Flow (Global -> Positive)
+                        Figure 4.6 Role Transition Flow (Peace Network)
                     </div>
                 </div>
 
@@ -1292,7 +1324,7 @@ title: Digital Tribes
                     <iframe class="chart-content"
                             src="/ada-data-story/assets/plots/RQ4/transition_flow_Negative.html"></iframe>
                     <div class="chart-caption">
-                        Figure 4.7 Role Transition Flow (Global -> Negative)
+                        Figure 4.7 Role Transition Flow (Conflict Network)
                     </div>
                 </div>
             </div>
@@ -1300,14 +1332,16 @@ title: Digital Tribes
 
         <div class="card-grid">
             <div class="info-card">
-                <span class="card-title" style="color: var(--accent-blue);">Relegation</span>
-                <p class="card-desc">High-traffic core links appear central in global models but lose influence in
-                    conflict contexts.</p>
+                <span class="card-title" style="color: var(--accent-blue);">Demotion to Periphery</span>
+                <p class="card-desc">Some high traffic core links appear central in global models but lose influence in
+                conflict contexts. There are some high traffic core links that are central in global netwrok, but 
+                weaker in conflict contexts, indicating not all core links have usual conflicts, some of them are pretty 
+                peaceful.</p>
             </div>
             <div class="info-card">
-                <span class="card-title" style="color: var(--accent-purple);">Bubble Effect</span>
-                <p class="card-desc">Their influence depends on mostly non-negative interactions—once conflict appears,
-                    the traffic “bubble” bursts.</p>
+                <span class="card-title" style="color: var(--accent-purple);">Change in Cross-Cluster</span>
+                <p class="card-desc">Similarly for the links that become weaker, their influence depends on mostly 
+                    non-negative interactions, and the traffic “bubble” bursts.</p>
             </div>
             <div class="info-card">
                 <span class="card-title" style="color: var(--accent-gold);">Reshuffling</span>
@@ -1316,7 +1350,7 @@ title: Digital Tribes
             </div>
         </div>
 
-        <h3 class="sub-glow" style="text-align: center; margin-top: 3rem;">5. Conflict vs. Peace: Macro Patterns</h3>
+        <h3 class="sub-glow" style="text-align: center; margin-top: 3rem;">4. Conflict vs. Peace: Macro Patterns</h3>
 
         <div class="dimensions-grid">
             <div class="info-card dimension-card">
