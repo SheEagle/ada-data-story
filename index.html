@@ -67,24 +67,45 @@ title: Digital Tribes
         <h2 class="rq-title">The Expanding Reddit Universe</h2>
 
 
-        <p> The <a href="https://snap.stanford.edu/data/soc-RedditHyperlinks.html" target="_blank" class="my-link">Reddit
-            Hyperlink
-            Network dataset</a> contains
-            approximately
-            860 000 hyperlinks from one community to another, over a period of 2.5 years,
-            with title citations forming two thirds of the total 572 000 links across 54 075
-            unique subreddits in the dataset.
-            In this 2.5 year period, the weekly number of posts with mentioning other subreddits grew in a steady pace,
-            following a strong linear trend (<em>R</em><sup>2</sup> = 0.87) (Figure <a href="#linear_exp"
-                                                                                       class="my-link">0.1</a>),
-            most of the posts encompassing positive or neutral sentiment. (The ratio of positive/neutral sentiment
-            to negative was 8.35 to 1!)
+        <p>
+            The
+            <a href="https://snap.stanford.edu/data/soc-RedditHyperlinks.html"
+               target="_blank"
+               class="my-link">
+                Reddit Hyperlink Network dataset
+            </a>
+            contains approximately
+            <strong>860,000 hyperlinks</strong>
+            from one community to another, over a period of
+            <strong>2.5 years</strong>,
+            with title citations forming
+            <strong>two thirds of the total 572,000 links</strong>
+            across
+            <strong>54,075 unique subreddits</strong>
+            in the dataset.
 
-            Furthermore, linear regression reveals a substantially steeper growth rate for
-            positive and
-            neutral mentions (slope = 2.39) than for negative mentions (slope = 0.24) (Figure <a
-                    href="#sentiment_slope" class="my-link">0.2</a>).
+            In this 2.5-year period, the
+            weekly number of posts mentioning other subreddits grew at a steady pace,
+            following a
+            strong linear trend
+            (<em>R</em><sup>2</sup> = <strong>0.87</strong>)
+            (Figure
+            <a href="#linear_exp" class="my-link">0.1</a>),
+            with most posts encompassing
+            positive or neutral sentiment.
+            (The ratio of positive/neutral sentiment to negative was
+            <strong>8.35 : 1</strong>!)
+
+            Furthermore, linear regression reveals a
+            substantially steeper growth rate
+            for positive and neutral mentions
+            (<strong>slope = 2.39</strong>)
+            than for negative mentions
+            (<strong>slope = 0.24</strong>)
+            (Figure
+            <a href="#sentiment_slope" class="my-link">0.2</a>).
         </p>
+
 
         <p><em>That’s a nice universe expansion metric! Neutral or positive inter-community exchange is growing
             faster than its negativity.</em>
@@ -120,28 +141,38 @@ title: Digital Tribes
     </div>
 
     <div class="container-text">
-        <p> We model the Reddit Hyperlink Network as a vast graph structure spanning all the subreddits and hyperlinks
-            between them over 2.5 years.
+        <p>
+            We model the Reddit Hyperlink Network as a vast graph structure spanning all the subreddits and hyperlinks
+            between them over <strong>2.5 years</strong>.
             Each subreddit is a node, and each hyperlink is a directed edge from one node to another. Our initial
             clustering analysis
             (details provided later) suggests that connectivity across Reddit is highly uneven and does not reach
-            all nodes. Most subreddits belong to one large weakly connected cluster of 65 648 nodes, while 711 smaller
-            clusters remain
+            all nodes. Most subreddits belong to one large weakly connected cluster of <strong>65,648 nodes</strong>,
+            while <strong>711 smaller
+            clusters</strong> remain
             isolated from the main graph.
-            However, strong connectivity is much more limited. Only 21 432 nodes form a single strongly connected
+            However, strong connectivity is much more limited. Only <strong>21,432 nodes</strong> form a single strongly
+            connected
             cluster, leaving
-            45 563 nodes weakly attached through mostly one-way connections.
+            <strong>45,563 nodes</strong> weakly attached through mostly one-way connections.
+        </p>
 
-        <p><em>The universe is big and not completely connected : A few crowded planets
-            constantly receive exchange information, while many others are explored less. Large parts of the galaxy
-            are not talked about. Chasing every quiet corner would stretch our energy thin. So we decide to focus on the
-            largest social hub, where every planet is interacted with at least once. Links within this large central
-            cluster of communities must be representative
-            of the primary linguistic style used in inter-community links.
 
-            <br>
-            We must hurry, the universe is expanding, and we need to make sense of it before it outgrows us!
+        <p><em>
+            The universe is big and not completely connected : A few crowded planets
+            constantly receive exchange information, while many others are explored less.
+            Large parts of the galaxy are not talked about. Chasing every quiet corner would
+            stretch our energy thin. So we decide to focus on the largest social hub, where
+            every planet is interacted with at least once. Links within this large central
+            cluster of communities must be representative of the primary linguistic style
+            used in inter-community links.
         </em></p>
+
+        <p><em>
+            We must hurry, the universe is expanding, and we need to make sense of it before
+            it outgrows us!
+        </em></p>
+
 
         <figure style="text-align:center; margin:2rem 0;">
             <img src="/ada-data-story/assets/plots/phase0/questions.png"
