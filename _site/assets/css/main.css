@@ -1471,3 +1471,8 @@ strong {
     }
 }
 
+.info-card.strong {
+    color: var(--accent-cyan);
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+}
