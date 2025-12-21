@@ -279,30 +279,16 @@ title: Digital Tribes
             How can we define four specific groups of reference links based on community status and connection strength?
         </em></p>
 
-        <p>
-            To analyze communication behavior, we use a two-stage classification framework. This system categorizes all
-            links into four distinct groups—Intra-Core, Intra-Periphery, Cross-Strong, and Cross-Weak—based on the
-            sender’s social role and the social distance between the communities.
-        </p>
-
         <ul style="line-height: 1.8; margin-bottom: 2rem; list-style-type: none; padding-left: 0;">
             <li style="margin-bottom: 2rem;">
                 <strong style="color: var(--accent-purple);">Stage 1: Within-cluster Link Classification
                 </strong><br>
                 Within each community cluster, communities are ranked by <strong>weighted degree (total connection
                 strength)</strong> to identify their influence levels:
-                <ul style="margin-top: 0.5rem;">
-                    <li><strong>Core Communities:</strong> The top 30% most active hubs, serving as discussion centers
-                        within the cluster.
-                    </li>
-                    <li><strong>Peripheral Communities:</strong> The remaining 70%, positioned at the social periphery.
-                    </li>
                 </ul>
-                Based on this, we define the first two groups:
-                <br>• <strong>Intra-Core:</strong> Links initiated by core communities targeting other members within
-                the same cluster.
-                <br>• <strong>Intra-Periphery:</strong> Links initiated by peripheral communities targeting other
-                members within the same cluster.
+                <br>• <strong>Intra-Core:</strong> core Communities, the top 30% most conected subreddits.
+                
+                <br>• <strong>Intra-Periphery:</strong> the remaining 70%, positioned at the social periphery.
             </li>
 
             <li>
@@ -321,8 +307,27 @@ title: Digital Tribes
             </li>
         </ul>
 
-
+        <div style="background: rgba(0, 195, 255, 0.1); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 4px;">
+            <h4 style="color: var(--accent-cyan); margin-top: 0;">Link groups</h4>
+            <p style="margin-bottom: 0;">
+            <ul style="margin-top: 0.5rem;">
+                <li><strong>Intra-Core</strong> links (edges) originating from core nodes (top 30%) within clusters
+                </li>
+                <li><strong>Intra-weak</strong> links (edges) originating from peripheral nodes (bottom 70%) within clusters
+                </li>
+                <li><strong>Cross-Strong</strong> links (edges) between clusters with edge weights above the cross-cluster median
+                </li>
+                <li><strong>Cross-Weak</strong> links (edges) between clusters with edge weights below the cross-cluster median
+                </li>
+            </ul>
+        </div>
+            <p><em>
+            Distribution of reports does not fall in equal proportions, that core planetary cluster is really socialy tightly conected.                Top 30% of most conected together planets really really send alot of reports about each other.
+            </em>
+        </ul>
     </div>
+
+</div>
 
 
     <!--    <div class="container-text">-->
