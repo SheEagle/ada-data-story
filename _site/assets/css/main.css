@@ -1476,3 +1476,9 @@ strong {
     font-weight: 700;
     text-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
 }
+
+
+.my-link {
+    color: white; /* 你想要的颜色 */
+    text-decoration: none; /* 去掉下划线（可选） */
+}
