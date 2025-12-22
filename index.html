@@ -433,15 +433,18 @@ title: Digital Tribes
 
         <div style="background: rgba(0, 195, 255, 0.1); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 4px;">
             <h4 style="color: var(--accent-cyan); margin-top: 0;">📋 Core Terminology</h4>
-            <p style="margin-bottom: 0;">To ensure analytical clarity, we divide interaction contexts into two
-                categories based on the sentiment of links:</p>
+            <p style="margin-bottom: 0.5rem;">To ensure analytical clarity, we operationalize our definitions based on
+                the Reddit Hyperlink Network attributes:</p>
             <ul style="margin-top: 0.5rem;">
-                <li><strong>Peace:</strong> Interactions classified as <strong>positive</strong> or
-                    <strong>neutral</strong>,
-                    representing the galaxy’s steady state.
+                <li><strong>Interaction, Communication & Message:</strong> These terms refer specifically to the act of
+                    one community <strong>referencing</strong> another via a directed hyperlink.
                 </li>
-                <li><strong>Conflict:</strong> Interactions classified as <strong>negative</strong>,
-                    representing periods of instability or disturbance.
+                <li><strong>Peace Context:</strong> References with <strong>positive</strong> or
+                    <strong>neutral</strong> sentiment (<code>POST_LABEL = 1</code>), representing the network's
+                    baseline steady state.
+                </li>
+                <li><strong>Conflict Context:</strong> References with <strong>negative</strong> sentiment (<code>POST_LABEL
+                    = -1</code>), representing inter-community friction and social pressure.
                 </li>
             </ul>
         </div>
@@ -823,7 +826,7 @@ title: Digital Tribes
             <h3 class="sub-glow">Negative Network: Four Dimensions of Change</h3>
             <p style="max-width: 800px; margin: 1rem auto; font-size: 1rem; opacity: 0.8;">
                 The clusters are remodelled now only on the negative links.
-                Negative refrencese are much rarer and theyr linguistic signature is quite different.
+                Conflict is rare but its linguistic signature is quite different.
             </p>
         </div>
 
@@ -970,13 +973,16 @@ title: Digital Tribes
                         </p>
                         <ul style="padding-left: 1.2rem;">
                             <li>
-                                <strong>Intra-Periphery:</strong> Anger rises by <strong
-                                    style="color: var(--accent-cyan)">+32.6%</strong> and swearing by
-                                an extreme <strong style="color: var(--accent-cyan)">+72.1%</strong>, indicating intense
-                                emotional release.
+                                <strong>Intra-Periphery:</strong> Exhibits a severe emotional surge in conflict.
+                                In stark contrast to the relative restraint observed in a Peace Context, the
+                                Intra-Periphery is distinguished by a violent emotional outburst, with anger levels
+                                <strong style="color: var(--accent-cyan)">+32.6%</strong> and profanity frequency
+                                reaching a staggering <strong>72.1% higher</strong> than the baseline.
                             </li>
-                            <li><strong>Intra-Core:</strong> Emotional escalation is present but moderated, indicating
-                                internal norms still constrain expression.
+                            <li>
+                                <strong>Intra-Core:</strong> Displays a moderated emotional profile relative to
+                                the periphery; while showing some deviation in identity-driven swearing,
+                                emotional markers remain comparatively constrained by internal community norms.
                             </li>
                             <li><strong>Cross-Strong:</strong> Emotional markers remain low, preserving stability.
                             </li>
@@ -1133,27 +1139,72 @@ title: Digital Tribes
 
         <p>The cluster visualization for the these different networks are shown below.</p>
 
-        <div class="chart-wrapper">
-            <iframe class="chart-content"
-                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_positive_new.html"></iframe>
-            <div class="chart-caption">Figure 4.1 Positive Network Clustering</div>
+        <!--        <div class="chart-wrapper">-->
+        <!--            <iframe class="chart-content"-->
+        <!--                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_positive_new.html"-->
+        <!--                    style="width: 1200px;"></iframe>-->
+        <!--            <div class="chart-caption">Figure 4.1 Positive Network Clustering</div>-->
+        <!--        </div>-->
+
+        <!--        <div class="chart-wrapper">-->
+        <!--            <iframe class="chart-content"-->
+        <!--                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_negative_new.html"></iframe>-->
+        <!--            <div class="chart-caption">Figure 4.2 Negative Network Clustering</div>-->
+        <!--        </div>-->
+
+        <div class="container-wide" style="width: 100%; max-width: 1100px; margin: 1.5rem auto; padding: 0 1rem;">
+            <div class="chart-wrapper"
+                 style="width: 100%; display: flex; flex-direction: column; align-items: center; overflow: hidden;">
+                <iframe
+                        class="chart-content"
+                        src="/ada-data-story/assets/plots/RQ4/viz_clustering_positive_new.html"
+                        style="width: 100%; height: 480px; border: none; border-radius: 12px; background: rgba(255,255,255,0.02);"
+                        scrolling="no">
+                </iframe>
+                <div class="chart-caption"
+                     style="margin-top: 1rem; opacity: 0.7; text-align: center; font-size: 0.85rem;">
+                    Figure 4.1 Positive Network Clustering
+                </div>
+            </div>
         </div>
 
-        <div class="chart-wrapper">
-            <iframe class="chart-content"
-                    src="/ada-data-story/assets/plots/RQ4/viz_clustering_negative_new.html"></iframe>
-            <div class="chart-caption">Figure 4.2 Negative Network Clustering</div>
+        <div class="container-wide" style="width: 100%; max-width: 1100px; margin: 1.5rem auto; padding: 0 1rem;">
+            <div class="chart-wrapper"
+                 style="width: 100%; display: flex; flex-direction: column; align-items: center; overflow: hidden;">
+                <iframe
+                        class="chart-content"
+                        src="/ada-data-story/assets/plots/RQ4/viz_clustering_negative_new.html"
+                        style="width: 100%; height: 480px; border: none; border-radius: 12px; background: rgba(255,255,255,0.02);"
+                        scrolling="no">
+                </iframe>
+                <div class="chart-caption"
+                     style="margin-top: 1rem; opacity: 0.7; text-align: center; font-size: 0.85rem;">
+                    Figure 4.1 Negative Network Clustering
+                </div>
+            </div>
         </div>
 
         <p>
             We then perform a network level audit to compare their global structural properties.
         </p>
 
-        <div class="container-wide">
-            <div class="chart-wrapper" style="margin-bottom: 3rem;">
-                <iframe class="chart-content" style="height: 600px; border: none;"
-                        src="/ada-data-story/assets/plots/RQ4/topo_radar.html"></iframe>
-                <div class="chart-caption">
+        <!--        <div class="container-wide">-->
+        <!--            <div class="chart-wrapper" style="margin-bottom: 3rem;">-->
+        <!--                <iframe class="chart-content" style="height: 600px; border: none;"-->
+        <!--                        src="/ada-data-story/assets/plots/RQ4/topo_radar.html"></iframe>-->
+        <!--                <div class="chart-caption">-->
+        <!--                    Figure 4.3 Network structure comparison-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <div class="container-wide" style="width: 100%; max-width: 1100px; margin: 1.5rem auto; padding: 0 1rem;">
+            <div class="chart-wrapper"
+                 style="width: 100%; display: flex; flex-direction: column; align-items: center; overflow: hidden;">
+                <iframe class="chart-content"
+                        src="/ada-data-story/assets/plots/RQ4/topo_radar.html"
+                        style="height: 650px;"></iframe>
+                <div class="chart-caption" style="margin-top: 1rem; opacity: 0.8;">
                     Figure 4.3 Network structure comparison
                 </div>
             </div>
@@ -1279,7 +1330,8 @@ title: Digital Tribes
 
         <div class="container-huge">
             <div class="chart-grid-huge">
-                <div class="chart-wrapper">
+                <div class="chart-wrapper"
+                     style="width: 100%; display: flex; flex-direction: column; align-items: center; overflow: hidden;">
                     <iframe class="chart-content"
                             src="/ada-data-story/assets/plots/RQ4/transition_flow_Positive.html"></iframe>
                     <div class="chart-caption">
@@ -1287,7 +1339,8 @@ title: Digital Tribes
                     </div>
                 </div>
 
-                <div class="chart-wrapper">
+                <div class="chart-wrapper"
+                     style="width: 100%; display: flex; flex-direction: column; align-items: center; overflow: hidden;">
                     <iframe class="chart-content"
                             src="/ada-data-story/assets/plots/RQ4/transition_flow_Negative.html"></iframe>
                     <div class="chart-caption">

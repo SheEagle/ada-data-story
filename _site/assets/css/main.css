@@ -1482,3 +1482,80 @@ strong {
     color: white; /* 你想要的颜色 */
     text-decoration: none; /* 去掉下划线（可选） */
 }
+
+/* 全局图片自适应与居中 */
+img {
+    display: block;
+    max-width: 100%; /* 图片宽度最大不超过父容器 */
+    height: auto; /* 高度随比例缩放 */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px; /* 可选：增加圆角美感 */
+}
+
+/* 确保所有 figure 容器内容居中 */
+figure {
+    display: block;
+    margin: 2rem auto;
+    text-align: center;
+    width: 100%;
+}
+
+/* 确保 iframe (图表) 在容器内自适应 */
+.chart-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 内部居中 */
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+iframe.chart-content {
+    width: 100%; /* 宽度撑满父容器 */
+    max-width: 1000px; /* 设置一个最大宽度，防止在大屏上过扁 */
+    border: none;
+    display: block;
+    margin: 0 auto;
+}
+
+/* 全局居中与响应式控制 */
+.container-wide, .container-text {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* 强制让所有 figure 和 chart-wrapper 内部元素居中 */
+figure, .chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+/* 解决图片居中与自适应 */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* 解决 iframe 图表居中与自适应 */
+iframe.chart-content {
+    display: block;
+    width: 100%;       /* 宽度占满父容器 */
+    max-width: 900px;  /* 限制最大宽度，防止大屏过扁 */
+    margin: 0 auto;
+    border: none;
+}
+
+/* 针对手机端的优化 */
+@media (max-width: 768px) {
+    iframe.chart-content {
+        height: 400px !important; /* 在移动端自动减小高度 */
+    }
+}
